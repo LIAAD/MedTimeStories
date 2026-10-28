@@ -14,22 +14,6 @@ const TYPE_MAP = {
   Treatment: "TREATMENT",
   "Treatment Response": "PROBLEM",
 };
-
-
-const TYPE_MAP = {
-  "Characterization of the Disease": "PROBLEM",
-  Examination: "TEST",
-  "Examination Result": "TEST",
-  "Drug Administration Route": "TREATMENT",
-  Intercurrence: "PROBLEM",
-  "Medical Procedure": "TREATMENT",
-  "Personal History": "PROBLEM",
-  "Principal Diagnosis": "PROBLEM",
-  "Sign or Symptom": "PROBLEM",
-  Treatment: "TREATMENT",
-  "Treatment Response": "PROBLEM",
-};
-
 function usage() {
   console.log(`Usage: node scripts/convert-inception.mjs <cas.json> [cas.json ...] [options]
 
