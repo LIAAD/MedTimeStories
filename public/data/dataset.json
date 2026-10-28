@@ -1,0 +1,2417 @@
+{
+  "patients": [
+    {
+      "id": "P001",
+      "reports": [
+        {
+          "id": "p1r1",
+          "patientId": "P001",
+          "title": "Emergency department note",
+          "type": "progress note",
+          "date": "2025-03-02",
+          "text": "58-year-old male presented to the ED with chest pain radiating to the left arm, associated with shortness of breath and diaphoresis. Denies nausea. An ECG showed ST elevation in the anterior leads. Troponin was elevated at 4.2. He was given aspirin and heparin and taken for emergent cardiac catheterization, which revealed 95% LAD occlusion. A drug-eluting stent was placed. History of hypertension. Plan: admit to CCU for monitoring.",
+          "events": [
+            {
+              "id": "p1r1_e1",
+              "reportId": "p1r1",
+              "start": 42,
+              "end": 52,
+              "surface": "chest pain",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r1_e2",
+              "reportId": "p1r1",
+              "start": 96,
+              "end": 115,
+              "surface": "shortness of breath",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r1_e3",
+              "reportId": "p1r1",
+              "start": 120,
+              "end": 131,
+              "surface": "diaphoresis",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r1_e4",
+              "reportId": "p1r1",
+              "start": 140,
+              "end": 146,
+              "surface": "nausea",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "NEGATED",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r1_e5",
+              "reportId": "p1r1",
+              "start": 151,
+              "end": 154,
+              "surface": "ECG",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e6",
+              "reportId": "p1r1",
+              "start": 162,
+              "end": 174,
+              "surface": "ST elevation",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r1_e7",
+              "reportId": "p1r1",
+              "start": 198,
+              "end": 206,
+              "surface": "Troponin",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e8",
+              "reportId": "p1r1",
+              "start": 211,
+              "end": 219,
+              "surface": "elevated",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e9",
+              "reportId": "p1r1",
+              "start": 241,
+              "end": 248,
+              "surface": "aspirin",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e10",
+              "reportId": "p1r1",
+              "start": 253,
+              "end": 260,
+              "surface": "heparin",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e11",
+              "reportId": "p1r1",
+              "start": 275,
+              "end": 307,
+              "surface": "emergent cardiac catheterization",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e12",
+              "reportId": "p1r1",
+              "start": 324,
+              "end": 341,
+              "surface": "95% LAD occlusion",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r1_e13",
+              "reportId": "p1r1",
+              "start": 345,
+              "end": 363,
+              "surface": "drug-eluting stent",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e14",
+              "reportId": "p1r1",
+              "start": 368,
+              "end": 374,
+              "surface": "placed",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e15",
+              "reportId": "p1r1",
+              "start": 387,
+              "end": 399,
+              "surface": "hypertension",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "HISTORICAL"
+              }
+            },
+            {
+              "id": "p1r1_e16",
+              "reportId": "p1r1",
+              "start": 407,
+              "end": 412,
+              "surface": "admit",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r1_e17",
+              "reportId": "p1r1",
+              "start": 424,
+              "end": 434,
+              "surface": "monitoring",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "p1r1_t1",
+              "source": "p1r1_e15",
+              "target": "p1r1_e1",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r1_t2",
+              "source": "p1r1_e1",
+              "target": "p1r1_e2",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r1_t3",
+              "source": "p1r1_e1",
+              "target": "p1r1_e3",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r1_t4",
+              "source": "p1r1_e1",
+              "target": "p1r1_e5",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r1_t5",
+              "source": "p1r1_e5",
+              "target": "p1r1_e6",
+              "type": "CONTAINS"
+            },
+            {
+              "id": "p1r1_t6",
+              "source": "p1r1_e5",
+              "target": "p1r1_e7",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r1_t7",
+              "source": "p1r1_e7",
+              "target": "p1r1_e8",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r1_t8",
+              "source": "p1r1_e8",
+              "target": "p1r1_e9",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r1_t9",
+              "source": "p1r1_e9",
+              "target": "p1r1_e10",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "p1r1_t10",
+              "source": "p1r1_e10",
+              "target": "p1r1_e11",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r1_t11",
+              "source": "p1r1_e11",
+              "target": "p1r1_e12",
+              "type": "CONTAINS"
+            },
+            {
+              "id": "p1r1_t12",
+              "source": "p1r1_e11",
+              "target": "p1r1_e13",
+              "type": "CONTAINS"
+            },
+            {
+              "id": "p1r1_t13",
+              "source": "p1r1_e13",
+              "target": "p1r1_e14",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r1_t14",
+              "source": "p1r1_e12",
+              "target": "p1r1_e14",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r1_t15",
+              "source": "p1r1_e11",
+              "target": "p1r1_e16",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r1_t16",
+              "source": "p1r1_e16",
+              "target": "p1r1_e17",
+              "type": "BEGINS-ON"
+            }
+          ]
+        },
+        {
+          "id": "p1r2",
+          "patientId": "P001",
+          "title": "Discharge summary",
+          "type": "discharge summary",
+          "date": "2025-03-06",
+          "text": "Admitted on 03/02 with chest discomfort and diagnosed with anterior STEMI. Underwent PCI with stent placement to the LAD. Hospital course was complicated by atrial fibrillation on day 2, treated with metoprolol. Echocardiogram showed reduced ejection fraction of 40%. No further chest pain. Patient was started on atorvastatin, clopidogrel, and lisinopril for hypertension. He was discharged home in stable condition with follow-up in cardiology clinic in 2 weeks. Recurrent ischemia should prompt return.",
+          "events": [
+            {
+              "id": "p1r2_e1",
+              "reportId": "p1r2",
+              "start": 23,
+              "end": 39,
+              "surface": "chest discomfort",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r2_e2",
+              "reportId": "p1r2",
+              "start": 59,
+              "end": 73,
+              "surface": "anterior STEMI",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r2_e3",
+              "reportId": "p1r2",
+              "start": 85,
+              "end": 88,
+              "surface": "PCI",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e4",
+              "reportId": "p1r2",
+              "start": 94,
+              "end": 109,
+              "surface": "stent placement",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e5",
+              "reportId": "p1r2",
+              "start": 157,
+              "end": 176,
+              "surface": "atrial fibrillation",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r2_e6",
+              "reportId": "p1r2",
+              "start": 200,
+              "end": 210,
+              "surface": "metoprolol",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e7",
+              "reportId": "p1r2",
+              "start": 212,
+              "end": 226,
+              "surface": "Echocardiogram",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e8",
+              "reportId": "p1r2",
+              "start": 234,
+              "end": 259,
+              "surface": "reduced ejection fraction",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r2_e9",
+              "reportId": "p1r2",
+              "start": 279,
+              "end": 289,
+              "surface": "chest pain",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "NEGATED",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r2_e10",
+              "reportId": "p1r2",
+              "start": 314,
+              "end": 326,
+              "surface": "atorvastatin",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e11",
+              "reportId": "p1r2",
+              "start": 328,
+              "end": 339,
+              "surface": "clopidogrel",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e12",
+              "reportId": "p1r2",
+              "start": 345,
+              "end": 355,
+              "surface": "lisinopril",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e13",
+              "reportId": "p1r2",
+              "start": 360,
+              "end": 372,
+              "surface": "hypertension",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r2_e14",
+              "reportId": "p1r2",
+              "start": 381,
+              "end": 391,
+              "surface": "discharged",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e15",
+              "reportId": "p1r2",
+              "start": 422,
+              "end": 431,
+              "surface": "follow-up",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r2_e16",
+              "reportId": "p1r2",
+              "start": 465,
+              "end": 483,
+              "surface": "Recurrent ischemia",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "HYPOTHETICAL"
+              }
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "p1r2_t1",
+              "source": "p1r2_e1",
+              "target": "p1r2_e2",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r2_t2",
+              "source": "p1r2_e2",
+              "target": "p1r2_e3",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r2_t3",
+              "source": "p1r2_e3",
+              "target": "p1r2_e4",
+              "type": "CONTAINS"
+            },
+            {
+              "id": "p1r2_t4",
+              "source": "p1r2_e4",
+              "target": "p1r2_e5",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r2_t5",
+              "source": "p1r2_e5",
+              "target": "p1r2_e6",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r2_t6",
+              "source": "p1r2_e4",
+              "target": "p1r2_e7",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r2_t7",
+              "source": "p1r2_e7",
+              "target": "p1r2_e8",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r2_t8",
+              "source": "p1r2_e4",
+              "target": "p1r2_e9",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r2_t9",
+              "source": "p1r2_e4",
+              "target": "p1r2_e10",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r2_t10",
+              "source": "p1r2_e10",
+              "target": "p1r2_e11",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "p1r2_t11",
+              "source": "p1r2_e11",
+              "target": "p1r2_e12",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "p1r2_t12",
+              "source": "p1r2_e12",
+              "target": "p1r2_e13",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r2_t13",
+              "source": "p1r2_e10",
+              "target": "p1r2_e14",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r2_t14",
+              "source": "p1r2_e14",
+              "target": "p1r2_e15",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r2_t15",
+              "source": "p1r2_e14",
+              "target": "p1r2_e16",
+              "type": "BEFORE"
+            }
+          ]
+        },
+        {
+          "id": "p1r3",
+          "patientId": "P001",
+          "title": "Cardiology clinic follow-up",
+          "type": "progress note",
+          "date": "2025-03-20",
+          "text": "Seen in clinic for follow-up after STEMI treated with stent on 03/02. Reports no chest pain but mild fatigue. Continues atorvastatin and clopidogrel. Metoprolol was stopped after atrial fibrillation resolved. Repeat echocardiogram shows improved ejection fraction of 50%. Hypertension is well controlled on lisinopril. Plan to enroll in cardiac rehabilitation.",
+          "events": [
+            {
+              "id": "p1r3_e1",
+              "reportId": "p1r3",
+              "start": 19,
+              "end": 28,
+              "surface": "follow-up",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e2",
+              "reportId": "p1r3",
+              "start": 35,
+              "end": 40,
+              "surface": "STEMI",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r3_e3",
+              "reportId": "p1r3",
+              "start": 54,
+              "end": 59,
+              "surface": "stent",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e4",
+              "reportId": "p1r3",
+              "start": 81,
+              "end": 91,
+              "surface": "chest pain",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "NEGATED",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r3_e5",
+              "reportId": "p1r3",
+              "start": 101,
+              "end": 108,
+              "surface": "fatigue",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r3_e6",
+              "reportId": "p1r3",
+              "start": 120,
+              "end": 132,
+              "surface": "atorvastatin",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e7",
+              "reportId": "p1r3",
+              "start": 137,
+              "end": 148,
+              "surface": "clopidogrel",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e8",
+              "reportId": "p1r3",
+              "start": 150,
+              "end": 160,
+              "surface": "Metoprolol",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e9",
+              "reportId": "p1r3",
+              "start": 165,
+              "end": 172,
+              "surface": "stopped",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e10",
+              "reportId": "p1r3",
+              "start": 179,
+              "end": 198,
+              "surface": "atrial fibrillation",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r3_e11",
+              "reportId": "p1r3",
+              "start": 199,
+              "end": 207,
+              "surface": "resolved",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e12",
+              "reportId": "p1r3",
+              "start": 216,
+              "end": 230,
+              "surface": "echocardiogram",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e13",
+              "reportId": "p1r3",
+              "start": 237,
+              "end": 263,
+              "surface": "improved ejection fraction",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r3_e14",
+              "reportId": "p1r3",
+              "start": 272,
+              "end": 284,
+              "surface": "Hypertension",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p1r3_e15",
+              "reportId": "p1r3",
+              "start": 288,
+              "end": 303,
+              "surface": "well controlled",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e16",
+              "reportId": "p1r3",
+              "start": 307,
+              "end": 317,
+              "surface": "lisinopril",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e17",
+              "reportId": "p1r3",
+              "start": 327,
+              "end": 333,
+              "surface": "enroll",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p1r3_e18",
+              "reportId": "p1r3",
+              "start": 337,
+              "end": 359,
+              "surface": "cardiac rehabilitation",
+              "type": "TREATMENT",
+              "attributes": {}
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "p1r3_t1",
+              "source": "p1r3_e2",
+              "target": "p1r3_e1",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t2",
+              "source": "p1r3_e3",
+              "target": "p1r3_e1",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t3",
+              "source": "p1r3_e1",
+              "target": "p1r3_e4",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r3_t4",
+              "source": "p1r3_e1",
+              "target": "p1r3_e5",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r3_t5",
+              "source": "p1r3_e6",
+              "target": "p1r3_e1",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r3_t6",
+              "source": "p1r3_e7",
+              "target": "p1r3_e1",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r3_t7",
+              "source": "p1r3_e2",
+              "target": "p1r3_e10",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t8",
+              "source": "p1r3_e10",
+              "target": "p1r3_e11",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t9",
+              "source": "p1r3_e11",
+              "target": "p1r3_e9",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t10",
+              "source": "p1r3_e8",
+              "target": "p1r3_e9",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t11",
+              "source": "p1r3_e3",
+              "target": "p1r3_e12",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t12",
+              "source": "p1r3_e12",
+              "target": "p1r3_e13",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t13",
+              "source": "p1r3_e14",
+              "target": "p1r3_e15",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r3_t14",
+              "source": "p1r3_e15",
+              "target": "p1r3_e16",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p1r3_t15",
+              "source": "p1r3_e1",
+              "target": "p1r3_e17",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p1r3_t16",
+              "source": "p1r3_e17",
+              "target": "p1r3_e18",
+              "type": "BEFORE"
+            }
+          ]
+        }
+      ],
+      "identityRelations": [
+        {
+          "id": "P001_c1",
+          "chain": [
+            "p1r1_e1",
+            "p1r2_e1",
+            "p1r2_e9",
+            "p1r3_e4"
+          ]
+        },
+        {
+          "id": "P001_c2",
+          "chain": [
+            "p1r1_e6",
+            "p1r2_e2",
+            "p1r3_e2"
+          ]
+        },
+        {
+          "id": "P001_c3",
+          "chain": [
+            "p1r1_e11",
+            "p1r2_e3"
+          ]
+        },
+        {
+          "id": "P001_c4",
+          "chain": [
+            "p1r1_e13",
+            "p1r2_e4",
+            "p1r3_e3"
+          ]
+        },
+        {
+          "id": "P001_c5",
+          "chain": [
+            "p1r1_e15",
+            "p1r2_e13",
+            "p1r3_e14"
+          ]
+        },
+        {
+          "id": "P001_c6",
+          "chain": [
+            "p1r2_e5",
+            "p1r3_e10"
+          ]
+        },
+        {
+          "id": "P001_c7",
+          "chain": [
+            "p1r2_e6",
+            "p1r3_e8"
+          ]
+        },
+        {
+          "id": "P001_c8",
+          "chain": [
+            "p1r2_e10",
+            "p1r3_e6"
+          ]
+        },
+        {
+          "id": "P001_c9",
+          "chain": [
+            "p1r2_e11",
+            "p1r3_e7"
+          ]
+        },
+        {
+          "id": "P001_c10",
+          "chain": [
+            "p1r2_e12",
+            "p1r3_e16"
+          ]
+        },
+        {
+          "id": "P001_c11",
+          "chain": [
+            "p1r2_e7",
+            "p1r3_e12"
+          ]
+        },
+        {
+          "id": "P001_c12",
+          "chain": [
+            "p1r2_e8",
+            "p1r3_e13"
+          ]
+        },
+        {
+          "id": "P001_c13",
+          "chain": [
+            "p1r2_e15",
+            "p1r3_e1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P002",
+      "reports": [
+        {
+          "id": "p2r1",
+          "patientId": "P002",
+          "title": "Admission note",
+          "type": "progress note",
+          "date": "2025-01-09",
+          "text": "72-year-old female with COPD presented with three days of productive cough, fever and worsening dyspnea. She is a former smoker. On exam, crackles at the right base. Chest X-ray showed right lower lobe pneumonia. Blood cultures were drawn and she was started on ceftriaxone and azithromycin. Albuterol nebulizers were given for wheezing. Supplemental oxygen was initiated for hypoxia. She will be admitted to the medical floor.",
+          "events": [
+            {
+              "id": "p2r1_e1",
+              "reportId": "p2r1",
+              "start": 24,
+              "end": 28,
+              "surface": "COPD",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r1_e2",
+              "reportId": "p2r1",
+              "start": 58,
+              "end": 74,
+              "surface": "productive cough",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r1_e3",
+              "reportId": "p2r1",
+              "start": 76,
+              "end": 81,
+              "surface": "fever",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r1_e4",
+              "reportId": "p2r1",
+              "start": 96,
+              "end": 103,
+              "surface": "dyspnea",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r1_e5",
+              "reportId": "p2r1",
+              "start": 114,
+              "end": 127,
+              "surface": "former smoker",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "HISTORICAL"
+              }
+            },
+            {
+              "id": "p2r1_e6",
+              "reportId": "p2r1",
+              "start": 138,
+              "end": 146,
+              "surface": "crackles",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r1_e7",
+              "reportId": "p2r1",
+              "start": 166,
+              "end": 177,
+              "surface": "Chest X-ray",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p2r1_e8",
+              "reportId": "p2r1",
+              "start": 185,
+              "end": 211,
+              "surface": "right lower lobe pneumonia",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r1_e9",
+              "reportId": "p2r1",
+              "start": 213,
+              "end": 227,
+              "surface": "Blood cultures",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p2r1_e10",
+              "reportId": "p2r1",
+              "start": 233,
+              "end": 238,
+              "surface": "drawn",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p2r1_e11",
+              "reportId": "p2r1",
+              "start": 262,
+              "end": 273,
+              "surface": "ceftriaxone",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p2r1_e12",
+              "reportId": "p2r1",
+              "start": 278,
+              "end": 290,
+              "surface": "azithromycin",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p2r1_e13",
+              "reportId": "p2r1",
+              "start": 292,
+              "end": 312,
+              "surface": "Albuterol nebulizers",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p2r1_e14",
+              "reportId": "p2r1",
+              "start": 328,
+              "end": 336,
+              "surface": "wheezing",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r1_e15",
+              "reportId": "p2r1",
+              "start": 338,
+              "end": 357,
+              "surface": "Supplemental oxygen",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p2r1_e16",
+              "reportId": "p2r1",
+              "start": 362,
+              "end": 371,
+              "surface": "initiated",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p2r1_e17",
+              "reportId": "p2r1",
+              "start": 376,
+              "end": 383,
+              "surface": "hypoxia",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r1_e18",
+              "reportId": "p2r1",
+              "start": 397,
+              "end": 405,
+              "surface": "admitted",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "p2r1_t1",
+              "source": "p2r1_e1",
+              "target": "p2r1_e2",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r1_t2",
+              "source": "p2r1_e2",
+              "target": "p2r1_e3",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p2r1_t3",
+              "source": "p2r1_e3",
+              "target": "p2r1_e4",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p2r1_t4",
+              "source": "p2r1_e2",
+              "target": "p2r1_e7",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r1_t5",
+              "source": "p2r1_e7",
+              "target": "p2r1_e8",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p2r1_t6",
+              "source": "p2r1_e7",
+              "target": "p2r1_e9",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r1_t7",
+              "source": "p2r1_e9",
+              "target": "p2r1_e10",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p2r1_t8",
+              "source": "p2r1_e10",
+              "target": "p2r1_e11",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r1_t9",
+              "source": "p2r1_e11",
+              "target": "p2r1_e12",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "p2r1_t10",
+              "source": "p2r1_e14",
+              "target": "p2r1_e13",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r1_t11",
+              "source": "p2r1_e17",
+              "target": "p2r1_e15",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r1_t12",
+              "source": "p2r1_e15",
+              "target": "p2r1_e16",
+              "type": "BEGINS-ON"
+            },
+            {
+              "id": "p2r1_t13",
+              "source": "p2r1_e12",
+              "target": "p2r1_e18",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r1_t14",
+              "source": "p2r1_e11",
+              "target": "p2r1_e18",
+              "type": "BEFORE"
+            }
+          ]
+        },
+        {
+          "id": "p2r2",
+          "patientId": "P002",
+          "title": "Chest X-ray report",
+          "type": "radiology",
+          "date": "2025-01-10",
+          "text": "CHEST X-RAY. INDICATION: pneumonia in a patient with COPD. FINDINGS: Consolidation in the right lower lobe, consistent with pneumonia. Small pleural effusion. Pneumothorax is absent. No pulmonary edema. Hyperinflation and emphysema are noted. A nasal cannula is in place. Compared with the prior study, the opacity has progressed. IMPRESSION: Recommend follow-up radiograph in six weeks to confirm resolution.",
+          "events": [
+            {
+              "id": "p2r2_e1",
+              "reportId": "p2r2",
+              "start": 25,
+              "end": 34,
+              "surface": "pneumonia",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e2",
+              "reportId": "p2r2",
+              "start": 53,
+              "end": 57,
+              "surface": "COPD",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e3",
+              "reportId": "p2r2",
+              "start": 69,
+              "end": 82,
+              "surface": "Consolidation",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e4",
+              "reportId": "p2r2",
+              "start": 124,
+              "end": 133,
+              "surface": "pneumonia",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e5",
+              "reportId": "p2r2",
+              "start": 141,
+              "end": 157,
+              "surface": "pleural effusion",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e6",
+              "reportId": "p2r2",
+              "start": 159,
+              "end": 171,
+              "surface": "Pneumothorax",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "NEGATED",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e7",
+              "reportId": "p2r2",
+              "start": 186,
+              "end": 201,
+              "surface": "pulmonary edema",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "NEGATED",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e8",
+              "reportId": "p2r2",
+              "start": 203,
+              "end": 217,
+              "surface": "Hyperinflation",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e9",
+              "reportId": "p2r2",
+              "start": 222,
+              "end": 231,
+              "surface": "emphysema",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e10",
+              "reportId": "p2r2",
+              "start": 245,
+              "end": 258,
+              "surface": "nasal cannula",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p2r2_e11",
+              "reportId": "p2r2",
+              "start": 290,
+              "end": 301,
+              "surface": "prior study",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p2r2_e12",
+              "reportId": "p2r2",
+              "start": 307,
+              "end": 314,
+              "surface": "opacity",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p2r2_e13",
+              "reportId": "p2r2",
+              "start": 319,
+              "end": 329,
+              "surface": "progressed",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p2r2_e14",
+              "reportId": "p2r2",
+              "start": 343,
+              "end": 352,
+              "surface": "Recommend",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p2r2_e15",
+              "reportId": "p2r2",
+              "start": 353,
+              "end": 373,
+              "surface": "follow-up radiograph",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p2r2_e16",
+              "reportId": "p2r2",
+              "start": 398,
+              "end": 408,
+              "surface": "resolution",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "p2r2_t1",
+              "source": "p2r2_e2",
+              "target": "p2r2_e1",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r2_t2",
+              "source": "p2r2_e3",
+              "target": "p2r2_e4",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p2r2_t3",
+              "source": "p2r2_e3",
+              "target": "p2r2_e5",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p2r2_t4",
+              "source": "p2r2_e8",
+              "target": "p2r2_e9",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p2r2_t5",
+              "source": "p2r2_e11",
+              "target": "p2r2_e13",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r2_t6",
+              "source": "p2r2_e13",
+              "target": "p2r2_e12",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p2r2_t7",
+              "source": "p2r2_e14",
+              "target": "p2r2_e15",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r2_t8",
+              "source": "p2r2_e15",
+              "target": "p2r2_e16",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p2r2_t9",
+              "source": "p2r2_e10",
+              "target": "p2r2_e3",
+              "type": "OVERLAP"
+            }
+          ]
+        }
+      ],
+      "identityRelations": [
+        {
+          "id": "P002_c1",
+          "chain": [
+            "p2r1_e8",
+            "p2r2_e1",
+            "p2r2_e3",
+            "p2r2_e4"
+          ]
+        },
+        {
+          "id": "P002_c2",
+          "chain": [
+            "p2r1_e1",
+            "p2r2_e2"
+          ]
+        },
+        {
+          "id": "P002_c3",
+          "chain": [
+            "p2r1_e15",
+            "p2r2_e10"
+          ]
+        },
+        {
+          "id": "P002_c4",
+          "chain": [
+            "p2r1_e7",
+            "p2r2_e11"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P003",
+      "reports": [
+        {
+          "id": "p3r1",
+          "patientId": "P003",
+          "title": "Primary care visit",
+          "type": "progress note",
+          "date": "2024-11-05",
+          "text": "54-year-old male with type 2 diabetes presents with polyuria and blurred vision for two weeks. HbA1c was elevated at 9.4%. Creatinine rose to 1.8, concerning for diabetic nephropathy. Denies chest pain. He has been taking metformin but admits to poor adherence. Insulin glargine was started and metformin will be held due to renal impairment. Urine albumin and renal ultrasound are ordered.",
+          "events": [
+            {
+              "id": "p3r1_e1",
+              "reportId": "p3r1",
+              "start": 22,
+              "end": 37,
+              "surface": "type 2 diabetes",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r1_e2",
+              "reportId": "p3r1",
+              "start": 52,
+              "end": 60,
+              "surface": "polyuria",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r1_e3",
+              "reportId": "p3r1",
+              "start": 65,
+              "end": 79,
+              "surface": "blurred vision",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r1_e4",
+              "reportId": "p3r1",
+              "start": 95,
+              "end": 100,
+              "surface": "HbA1c",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e5",
+              "reportId": "p3r1",
+              "start": 105,
+              "end": 113,
+              "surface": "elevated",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e6",
+              "reportId": "p3r1",
+              "start": 123,
+              "end": 133,
+              "surface": "Creatinine",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e7",
+              "reportId": "p3r1",
+              "start": 134,
+              "end": 138,
+              "surface": "rose",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e8",
+              "reportId": "p3r1",
+              "start": 162,
+              "end": 182,
+              "surface": "diabetic nephropathy",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r1_e9",
+              "reportId": "p3r1",
+              "start": 191,
+              "end": 201,
+              "surface": "chest pain",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "NEGATED",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r1_e10",
+              "reportId": "p3r1",
+              "start": 222,
+              "end": 231,
+              "surface": "metformin",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e11",
+              "reportId": "p3r1",
+              "start": 251,
+              "end": 260,
+              "surface": "adherence",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e12",
+              "reportId": "p3r1",
+              "start": 262,
+              "end": 278,
+              "surface": "Insulin glargine",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e13",
+              "reportId": "p3r1",
+              "start": 283,
+              "end": 290,
+              "surface": "started",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e14",
+              "reportId": "p3r1",
+              "start": 295,
+              "end": 304,
+              "surface": "metformin",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e15",
+              "reportId": "p3r1",
+              "start": 313,
+              "end": 317,
+              "surface": "held",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e16",
+              "reportId": "p3r1",
+              "start": 325,
+              "end": 341,
+              "surface": "renal impairment",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r1_e17",
+              "reportId": "p3r1",
+              "start": 343,
+              "end": 356,
+              "surface": "Urine albumin",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e18",
+              "reportId": "p3r1",
+              "start": 361,
+              "end": 377,
+              "surface": "renal ultrasound",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p3r1_e19",
+              "reportId": "p3r1",
+              "start": 382,
+              "end": 389,
+              "surface": "ordered",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "p3r1_t1",
+              "source": "p3r1_e1",
+              "target": "p3r1_e2",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r1_t2",
+              "source": "p3r1_e2",
+              "target": "p3r1_e3",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r1_t3",
+              "source": "p3r1_e4",
+              "target": "p3r1_e5",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r1_t4",
+              "source": "p3r1_e4",
+              "target": "p3r1_e6",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r1_t5",
+              "source": "p3r1_e6",
+              "target": "p3r1_e7",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r1_t6",
+              "source": "p3r1_e7",
+              "target": "p3r1_e8",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r1_t7",
+              "source": "p3r1_e1",
+              "target": "p3r1_e10",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r1_t8",
+              "source": "p3r1_e10",
+              "target": "p3r1_e11",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r1_t9",
+              "source": "p3r1_e10",
+              "target": "p3r1_e13",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r1_t10",
+              "source": "p3r1_e11",
+              "target": "p3r1_e13",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r1_t11",
+              "source": "p3r1_e12",
+              "target": "p3r1_e13",
+              "type": "BEGINS-ON"
+            },
+            {
+              "id": "p3r1_t12",
+              "source": "p3r1_e13",
+              "target": "p3r1_e15",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r1_t13",
+              "source": "p3r1_e14",
+              "target": "p3r1_e15",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r1_t14",
+              "source": "p3r1_e16",
+              "target": "p3r1_e15",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r1_t15",
+              "source": "p3r1_e19",
+              "target": "p3r1_e17",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r1_t16",
+              "source": "p3r1_e19",
+              "target": "p3r1_e18",
+              "type": "BEFORE"
+            }
+          ]
+        },
+        {
+          "id": "p3r2",
+          "patientId": "P003",
+          "title": "Renal ultrasound report",
+          "type": "radiology",
+          "date": "2024-11-12",
+          "text": "RENAL ULTRASOUND. INDICATION: renal impairment in a patient with diabetes. FINDINGS: Both kidneys are echogenic with cortical thinning. Hydronephrosis is absent. A simple cyst is seen in the right kidney. Renal artery stenosis cannot be excluded without Doppler. IMPRESSION: Findings consistent with chronic kidney disease, likely from diabetic nephropathy. Recommend nephrology referral and repeat ultrasound with eGFR monitoring.",
+          "events": [
+            {
+              "id": "p3r2_e1",
+              "reportId": "p3r2",
+              "start": 30,
+              "end": 46,
+              "surface": "renal impairment",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e2",
+              "reportId": "p3r2",
+              "start": 65,
+              "end": 73,
+              "surface": "diabetes",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e3",
+              "reportId": "p3r2",
+              "start": 102,
+              "end": 111,
+              "surface": "echogenic",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e4",
+              "reportId": "p3r2",
+              "start": 117,
+              "end": 134,
+              "surface": "cortical thinning",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e5",
+              "reportId": "p3r2",
+              "start": 136,
+              "end": 150,
+              "surface": "Hydronephrosis",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "NEGATED",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e6",
+              "reportId": "p3r2",
+              "start": 164,
+              "end": 175,
+              "surface": "simple cyst",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e7",
+              "reportId": "p3r2",
+              "start": 205,
+              "end": 226,
+              "surface": "Renal artery stenosis",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "NEGATED",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e8",
+              "reportId": "p3r2",
+              "start": 237,
+              "end": 245,
+              "surface": "excluded",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r2_e9",
+              "reportId": "p3r2",
+              "start": 254,
+              "end": 261,
+              "surface": "Doppler",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p3r2_e10",
+              "reportId": "p3r2",
+              "start": 300,
+              "end": 322,
+              "surface": "chronic kidney disease",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e11",
+              "reportId": "p3r2",
+              "start": 336,
+              "end": 356,
+              "surface": "diabetic nephropathy",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r2_e12",
+              "reportId": "p3r2",
+              "start": 358,
+              "end": 367,
+              "surface": "Recommend",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r2_e13",
+              "reportId": "p3r2",
+              "start": 368,
+              "end": 387,
+              "surface": "nephrology referral",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r2_e14",
+              "reportId": "p3r2",
+              "start": 392,
+              "end": 409,
+              "surface": "repeat ultrasound",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p3r2_e15",
+              "reportId": "p3r2",
+              "start": 415,
+              "end": 430,
+              "surface": "eGFR monitoring",
+              "type": "TEST",
+              "attributes": {}
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "p3r2_t1",
+              "source": "p3r2_e2",
+              "target": "p3r2_e1",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r2_t2",
+              "source": "p3r2_e1",
+              "target": "p3r2_e3",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r2_t3",
+              "source": "p3r2_e3",
+              "target": "p3r2_e4",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r2_t4",
+              "source": "p3r2_e3",
+              "target": "p3r2_e6",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r2_t5",
+              "source": "p3r2_e9",
+              "target": "p3r2_e8",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r2_t6",
+              "source": "p3r2_e7",
+              "target": "p3r2_e8",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r2_t7",
+              "source": "p3r2_e11",
+              "target": "p3r2_e10",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r2_t8",
+              "source": "p3r2_e10",
+              "target": "p3r2_e3",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r2_t9",
+              "source": "p3r2_e12",
+              "target": "p3r2_e13",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r2_t10",
+              "source": "p3r2_e13",
+              "target": "p3r2_e14",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r2_t11",
+              "source": "p3r2_e14",
+              "target": "p3r2_e15",
+              "type": "SIMULTANEOUS"
+            }
+          ]
+        },
+        {
+          "id": "p3r3",
+          "patientId": "P003",
+          "title": "Discharge summary",
+          "type": "discharge summary",
+          "date": "2024-12-20",
+          "text": "Admitted for diabetic ketoacidosis triggered by a urinary tract infection. Initial glucose was elevated at 520 with anion gap acidosis. Treated with insulin infusion and IV fluids; ceftriaxone was given for the UTI. Acute kidney injury on background chronic kidney disease improved with hydration. Blood glucose normalized and he was transitioned to insulin glargine. Metformin remains discontinued. Discharged with nephrology follow-up.",
+          "events": [
+            {
+              "id": "p3r3_e1",
+              "reportId": "p3r3",
+              "start": 13,
+              "end": 34,
+              "surface": "diabetic ketoacidosis",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r3_e2",
+              "reportId": "p3r3",
+              "start": 50,
+              "end": 73,
+              "surface": "urinary tract infection",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r3_e3",
+              "reportId": "p3r3",
+              "start": 83,
+              "end": 90,
+              "surface": "glucose",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e4",
+              "reportId": "p3r3",
+              "start": 95,
+              "end": 103,
+              "surface": "elevated",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e5",
+              "reportId": "p3r3",
+              "start": 116,
+              "end": 134,
+              "surface": "anion gap acidosis",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r3_e6",
+              "reportId": "p3r3",
+              "start": 149,
+              "end": 165,
+              "surface": "insulin infusion",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e7",
+              "reportId": "p3r3",
+              "start": 170,
+              "end": 179,
+              "surface": "IV fluids",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e8",
+              "reportId": "p3r3",
+              "start": 181,
+              "end": 192,
+              "surface": "ceftriaxone",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e9",
+              "reportId": "p3r3",
+              "start": 197,
+              "end": 202,
+              "surface": "given",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e10",
+              "reportId": "p3r3",
+              "start": 211,
+              "end": 214,
+              "surface": "UTI",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r3_e11",
+              "reportId": "p3r3",
+              "start": 216,
+              "end": 235,
+              "surface": "Acute kidney injury",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r3_e12",
+              "reportId": "p3r3",
+              "start": 250,
+              "end": 272,
+              "surface": "chronic kidney disease",
+              "type": "PROBLEM",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "modality": "FACTUAL"
+              }
+            },
+            {
+              "id": "p3r3_e13",
+              "reportId": "p3r3",
+              "start": 273,
+              "end": 281,
+              "surface": "improved",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e14",
+              "reportId": "p3r3",
+              "start": 298,
+              "end": 311,
+              "surface": "Blood glucose",
+              "type": "TEST",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e15",
+              "reportId": "p3r3",
+              "start": 312,
+              "end": 322,
+              "surface": "normalized",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e16",
+              "reportId": "p3r3",
+              "start": 334,
+              "end": 346,
+              "surface": "transitioned",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e17",
+              "reportId": "p3r3",
+              "start": 350,
+              "end": 366,
+              "surface": "insulin glargine",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e18",
+              "reportId": "p3r3",
+              "start": 368,
+              "end": 377,
+              "surface": "Metformin",
+              "type": "TREATMENT",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e19",
+              "reportId": "p3r3",
+              "start": 386,
+              "end": 398,
+              "surface": "discontinued",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e20",
+              "reportId": "p3r3",
+              "start": 400,
+              "end": 410,
+              "surface": "Discharged",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            },
+            {
+              "id": "p3r3_e21",
+              "reportId": "p3r3",
+              "start": 416,
+              "end": 436,
+              "surface": "nephrology follow-up",
+              "type": "OCCURRENCE",
+              "attributes": {}
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "p3r3_t1",
+              "source": "p3r3_e2",
+              "target": "p3r3_e1",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r3_t2",
+              "source": "p3r3_e3",
+              "target": "p3r3_e4",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r3_t3",
+              "source": "p3r3_e4",
+              "target": "p3r3_e5",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r3_t4",
+              "source": "p3r3_e1",
+              "target": "p3r3_e5",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r3_t5",
+              "source": "p3r3_e7",
+              "target": "p3r3_e13",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r3_t6",
+              "source": "p3r3_e8",
+              "target": "p3r3_e9",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r3_t7",
+              "source": "p3r3_e8",
+              "target": "p3r3_e10",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r3_t8",
+              "source": "p3r3_e12",
+              "target": "p3r3_e11",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r3_t9",
+              "source": "p3r3_e6",
+              "target": "p3r3_e14",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r3_t10",
+              "source": "p3r3_e14",
+              "target": "p3r3_e15",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r3_t11",
+              "source": "p3r3_e15",
+              "target": "p3r3_e16",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r3_t12",
+              "source": "p3r3_e16",
+              "target": "p3r3_e17",
+              "type": "BEGINS-ON"
+            },
+            {
+              "id": "p3r3_t13",
+              "source": "p3r3_e15",
+              "target": "p3r3_e20",
+              "type": "BEFORE"
+            },
+            {
+              "id": "p3r3_t14",
+              "source": "p3r3_e18",
+              "target": "p3r3_e19",
+              "type": "OVERLAP"
+            },
+            {
+              "id": "p3r3_t15",
+              "source": "p3r3_e20",
+              "target": "p3r3_e21",
+              "type": "BEFORE"
+            }
+          ]
+        }
+      ],
+      "identityRelations": [
+        {
+          "id": "P003_c1",
+          "chain": [
+            "p3r1_e1",
+            "p3r2_e2"
+          ]
+        },
+        {
+          "id": "P003_c2",
+          "chain": [
+            "p3r1_e8",
+            "p3r2_e11"
+          ]
+        },
+        {
+          "id": "P003_c3",
+          "chain": [
+            "p3r1_e16",
+            "p3r2_e1",
+            "p3r3_e11"
+          ]
+        },
+        {
+          "id": "P003_c4",
+          "chain": [
+            "p3r2_e10",
+            "p3r3_e12"
+          ]
+        },
+        {
+          "id": "P003_c5",
+          "chain": [
+            "p3r1_e10",
+            "p3r1_e14",
+            "p3r3_e18"
+          ]
+        },
+        {
+          "id": "P003_c6",
+          "chain": [
+            "p3r1_e12",
+            "p3r3_e17"
+          ]
+        },
+        {
+          "id": "P003_c7",
+          "chain": [
+            "p3r1_e15",
+            "p3r3_e19"
+          ]
+        },
+        {
+          "id": "P003_c8",
+          "chain": [
+            "p3r3_e2",
+            "p3r3_e10"
+          ]
+        }
+      ]
+    }
+  ]
+}
