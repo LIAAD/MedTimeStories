@@ -1,0 +1,9 @@
+services:
+  medstories:
+    build:
+      context: .
+      args:
+        VITE_DATASET_URL: ${VITE_DATASET_URL:-/data/inception-dataset.json}
+    ports:
+      - "8071:80"
+    restart: unless-stopped

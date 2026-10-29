@@ -12,6 +12,22 @@ npm run build      # type-check + production build into dist/
 
 Sample data (3 synthetic patients, 8 reports, 140 events) ships in `public/data/dataset.json`.
 
+## Run with Docker Compose
+
+Build and start the production app:
+
+```bash
+docker compose up --build
+```
+
+Open `http://localhost:8080`. Stop the app with `Ctrl+C`, or run `docker compose down`.
+
+The default dataset is `/data/inception-dataset.json`. To select a different JSON file under `public/data/`, set `VITE_DATASET_URL` in the environment or in a root `.env` file before building:
+
+```bash
+VITE_DATASET_URL=/data/dataset.json docker compose up --build
+```
+
 ## Plugging in your data
 
 1. Put your JSON in `public/data/` (e.g. `my-data.json`) and either
