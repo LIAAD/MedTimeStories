@@ -25,7 +25,7 @@ export function eventUrl(idx: Indexes, eventId: string): string {
 }
 
 export function isDateTimeExpression(event: ClinEvent): boolean {
-  return event.type.toUpperCase() === "TIME" && event.attributes?.Time_Type === "Date";
+  return event.type.toLowerCase() === "time" && event.attributes?.Time_Type === "Date";
 }
 
 export function graphEventLabel(event: ClinEvent): string {
@@ -38,7 +38,7 @@ export function graphEventLabel(event: ClinEvent): string {
 /** Original annotation kind: General Event (+ Class), Specialized Event (+ specialized class), or Time. */
 export function graphEventKind(event: ClinEvent): { type: string; sublabel: string } {
   const attrs = event.attributes ?? {};
-  const label = String(attrs.inceptionLabel ?? "");
+  const label = event.type;
   if (label === "General Event") {
     return { type: label, sublabel: attrs.Class ? `General · ${attrs.Class}` : "General Event" };
   }

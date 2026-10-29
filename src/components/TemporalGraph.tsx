@@ -26,7 +26,7 @@ export default function TemporalGraph({ events, relations, identityRelations, se
   // General events stay in the layout (so anchoring is unchanged) and are only hidden when drawing.
   const visibleEvents = events;
   const hiddenIds = useMemo(
-    () => new Set(hideGeneralEvents ? events.filter((e) => String(e.attributes?.inceptionLabel ?? "").toLowerCase() === "general event").map((e) => e.id) : []),
+    () => new Set(hideGeneralEvents ? events.filter((e) => e.type.toLowerCase() === "general event").map((e) => e.id) : []),
     [events, hideGeneralEvents],
   );
   const visible = useMemo(() => new Set(visibleEvents.map((e) => e.id)), [visibleEvents]);

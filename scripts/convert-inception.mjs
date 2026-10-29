@@ -1,19 +1,6 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, extname } from "node:path";
 
-const TYPE_MAP = {
-  "Characterization of the Disease": "PROBLEM",
-  Examination: "TEST",
-  "Examination Result": "TEST",
-  "Drug Administration Route": "TREATMENT",
-  Intercurrence: "PROBLEM",
-  "Medical Procedure": "TREATMENT",
-  "Personal History": "PROBLEM",
-  "Principal Diagnosis": "PROBLEM",
-  "Sign or Symptom": "PROBLEM",
-  Treatment: "TREATMENT",
-  "Treatment Response": "PROBLEM",
-};
 function usage() {
   console.log(`Usage: node scripts/convert-inception.mjs <cas.json> [cas.json ...] [options]
 
@@ -61,10 +48,7 @@ function resolveDate(text) {
 }
 
 function annotationType(span) {
-  if (span.label === "Time") return "TIME";
-  if (span.label === "General Event") return "General Event";
-  if (span.SpecializedEventClass) return TYPE_MAP[span.SpecializedEventClass] ?? "PROBLEM";
-  return "General Event";
+  return span.label ?? "General Event";
 }
 
 function annotationAttributes(span) {
@@ -73,7 +57,6 @@ function annotationAttributes(span) {
     const polarity = span.Polarity.toLowerCase();
     attributes.polarity = polarity === "neg" ? "NEGATED" : polarity === "pos" ? "POSITIVE" : span.Polarity;
   }
-  if (span.label) attributes.inceptionLabel = span.label;
   if (span.SpecializedEventClass) attributes.specializedEventClass = span.SpecializedEventClass;
 
   for (const [key, value] of Object.entries(span)) {
