@@ -54,6 +54,9 @@ export default function EventPanel({ event, onNavigate, onHover }: Props) {
           <h2 className="break-words text-xl font-semibold">{event.surface}</h2>
           <EventChip event={event} />
         </div>
+        {event.surfaceEn && event.surfaceEn.toLowerCase() !== event.surface.toLowerCase() && (
+          <p className="mt-1 text-sm italic text-slate-500" lang="en" translate="no">English: {event.surfaceEn}</p>
+        )}
         <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
           <dt className="text-slate-500">ID</dt>
           <dd className="break-all font-mono text-xs">{event.id}</dd>

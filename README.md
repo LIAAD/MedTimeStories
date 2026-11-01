@@ -1,22 +1,30 @@
-# MedStories
+# MedTime Stories
 
-MedStories is a conference demo for exploring clinical narratives and their NLP annotations across reports. It brings annotated events and temporal relations together in an interactive patient-centred interface.
+MedTime Stories is a conference demo for exploring clinical narratives and their NLP annotations across reports. It brings annotated events and temporal relations together in an interactive patient-centred interface.
 
 This is a research prototype for demonstration and exploration, not a medical device or clinical decision-support system. Do not use it to make decisions about patient care.
 
-## Run the conference demo
+## Run with Docker
 
-Docker Compose starts the published demo image:
+Place one or more INCEpTION CAS JSON exports in `inception/` (and optionally a `metadata.json` config; see [Converting INCEpTION CAS JSON](#converting-inception-cas-json)). Then start the app:
 
 ```bash
-docker compose up -d
+docker compose up --build -d
 ```
 
-Open [http://localhost:8070](http://localhost:8070). To stop the demo:
+Docker converts the files in the mounted `inception/` directory each time the container starts and serves the result. The directory is mounted read-only; the generated dataset is stored inside the container. To switch or update the CAS files, replace them in `inception/` and restart the service:
+
+```bash
+docker compose restart medstories
+```
+
+Open [http://localhost:8071](http://localhost:8071). If `inception/` contains no CAS JSON files, the app uses the bundled dataset. To stop the app:
 
 ```bash
 docker compose down
 ```
+
+Input JSON files in `inception/` are excluded from Git. Treat the converted dataset as clinical data: ensure appropriate approvals and de-identification before making the app available to others.
 
 ## Run from source
 
@@ -108,6 +116,22 @@ Notes:
 - Overlapping or nested events are supported; the innermost span receives the click/colour.
 - Offsets are JavaScript string indices (UTF-16 code units). Convert if your offsets are in bytes or code points.
 - Each patient requires an `id` and `reports`. Each report requires `id`, `patientId`, `title`, `type`, `text`, and `events`; `date` is optional and `temporalRelations` defaults to an empty list. Patient-level `identityRelations` also defaults to an empty list. Each identity chain must contain at least two event IDs.
+- `report.textEn` and `event.surfaceEn` are optional English translations (see [English translations](#english-translations)). Offsets always refer to the original `text`; the translation is displayed separately and never annotated.
+
+## English translations
+
+Reports can show an English translation next to the original Portuguese text (toggle "English translation" in the report view; the event panel and tooltips also show translated event text). Translations are generated ahead of time with `scripts/translate.py`, which uses the [deep-translator](https://pypi.org/project/deep-translator/) package:
+
+```bash
+pip install deep-translator
+node scripts/convert-inception.mjs inception/lma_005.json inception/lma_018.json --out inception/converted/converted-dataset.json
+python scripts/translate.py inception/converted/converted-dataset.json --out inception/translations.json
+docker compose restart medstories
+```
+
+The script writes `inception/translations.json`; on startup Docker merges it into the converted dataset automatically. (When running from source, pass `--translations inception/translations.json` to the converter.) Translations are keyed by a hash of the report text and by event surface, so re-running only translates new texts, and edited reports are never paired with a stale translation. Exclude `translations.json` from the CAS file list when running the converter manually (list your CAS files explicitly).
+
+> **Privacy:** deep-translator sends the text to an online service (Google Translate by default). Only run it on data that is de-identified and approved for external services. Machine translation of clinical text can contain errors, so the interface labels it as machine translated.
 
 ## Regenerating sample data
 
@@ -118,12 +142,12 @@ Notes:
 Convert one or more INCEpTION CAS JSON exports with:
 
 ```bash
-npm run convert:inception -- annotations/555.json annotations/661.json
+npm run convert:inception -- inception/lma_555.json inception/lma_560.json
 ```
 
-This writes `annotations/converted-dataset.json` by default. For a custom output or metadata config, invoke the script directly with Node, e.g. `node scripts/convert-inception.mjs annotations/555.json annotations/661.json --config annotations/metadata.json --out annotations/converted-dataset.json`.
+This writes `inception/converted/converted-dataset.json` by default. For a custom output or metadata config, invoke the script directly with Node, e.g. `node scripts/convert-inception.mjs inception/lma_555.json inception/lma_560.json --config inception/metadata.json --out inception/converted/converted-dataset.json`.
 
-Each input file becomes one patient. Its sofa text is split into reports at blank lines (two newline characters). The converter makes annotation offsets relative to each report, converts `custom.Relation` governor/dependent links, and groups `TLINK_identity` links into patient-level identity chains. Cross-report temporal links are stored with their Governor event's report. You can set report titles, types, dates, or IDs with a JSON config keyed by input filename:
+Each input file becomes one patient. Its sofa text is split into reports at blank lines (two newline characters). The converter makes annotation offsets relative to each report, converts `custom.Relation` governor/dependent links, and groups `TLINK_identity` links into patient-level identity chains. Cross-report temporal links are stored with their Governor event's report. You can set report titles, types, dates, or IDs with a JSON config keyed by input filename. For Docker startup conversion, save this config as `inception/metadata.json` alongside the CAS files:
 
 ```json
 {
@@ -137,7 +161,7 @@ Each input file becomes one patient. Its sofa text is split into reports at blan
 }
 ```
 
-The `reports` array is in the same order as the blank-line-separated sections; omitted entries receive generated metadata. The default output stays under `annotations/` so clinical text is not served by the app. To load it in the app, choose an output under `public/data/` and set `VITE_DATASET_URL` in `.env.local` to its public URL. Review and de-identify clinical data before placing it under `public/`.
+The `reports` array is in the same order as the blank-line-separated sections; omitted entries receive generated metadata. The default output stays under `inception/converted/` so clinical text is not served by the app. To load it in the app, choose an output under `public/data/` and set `VITE_DATASET_URL` in `.env.local` to its public URL. Review and de-identify clinical data before placing it under `public/`.
 
 ## Demo features
 

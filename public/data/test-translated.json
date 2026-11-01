@@ -1,0 +1,3869 @@
+{
+  "patients": [
+    {
+      "id": "P_lma_035",
+      "reports": [
+        {
+          "id": "R_lma_035_1",
+          "patientId": "P_lma_035",
+          "title": "lma_035.json - Report 1",
+          "type": "clinical note",
+          "date": "2019-08-12",
+          "text": "Clínica : Onco - Hematologia - C O - Hematológico\n    Data Alta Clínica: 12/08/2019\n    Data Admissão: 06 - 07 - 2019\n    Motivo Admissão  Quimioterapia de indução por LMA \nResumo do Episódio Recebeu QT de indução com esquema \"7+3\" citarabina, mitoxantrone sem intercorrências. Durante a aplasia 2 sindromes febris, com boa evolução sob antibioterapia de largo espectro. Terapia para o domicilio - a habitual, amoxicilina e ác. - clavulânico 1g 2id;",
+          "events": [
+            {
+              "id": "R_lma_035_1_e1",
+              "reportId": "R_lma_035_1",
+              "start": 59,
+              "end": 71,
+              "surface": "Alta Clínica",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "Discharge Clinic"
+            },
+            {
+              "id": "R_lma_035_1_e2",
+              "reportId": "R_lma_035_1",
+              "start": 73,
+              "end": 83,
+              "surface": "12/08/2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "TemporalFunction": "DischargeTime",
+                "Value": "2019-08-12"
+              }
+            },
+            {
+              "id": "R_lma_035_1_e3",
+              "reportId": "R_lma_035_1",
+              "start": 93,
+              "end": 101,
+              "surface": "Admissão",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "inlet"
+            },
+            {
+              "id": "R_lma_035_1_e4",
+              "reportId": "R_lma_035_1",
+              "start": 103,
+              "end": 117,
+              "surface": "06 - 07 - 2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "TemporalFunction": "AdmissionTime",
+                "Value": "2019-07-06"
+              }
+            },
+            {
+              "id": "R_lma_035_1_e5",
+              "reportId": "R_lma_035_1",
+              "start": 122,
+              "end": 128,
+              "surface": "Motivo",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "Reason*"
+            },
+            {
+              "id": "R_lma_035_1_e6",
+              "reportId": "R_lma_035_1",
+              "start": 129,
+              "end": 137,
+              "surface": "Admissão",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "inlet"
+            },
+            {
+              "id": "R_lma_035_1_e7",
+              "reportId": "R_lma_035_1",
+              "start": 139,
+              "end": 163,
+              "surface": "Quimioterapia de indução",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "Chemotherapies, Induction"
+            },
+            {
+              "id": "R_lma_035_1_e8",
+              "reportId": "R_lma_035_1",
+              "start": 168,
+              "end": 171,
+              "surface": "LMA",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "full width at half maximum"
+            },
+            {
+              "id": "R_lma_035_1_e9",
+              "reportId": "R_lma_035_1",
+              "start": 173,
+              "end": 179,
+              "surface": "Resumo",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "Summary"
+            },
+            {
+              "id": "R_lma_035_1_e10",
+              "reportId": "R_lma_035_1",
+              "start": 183,
+              "end": 191,
+              "surface": "Episódio",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "Episode"
+            },
+            {
+              "id": "R_lma_035_1_e11",
+              "reportId": "R_lma_035_1",
+              "start": 192,
+              "end": 199,
+              "surface": "Recebeu",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              },
+              "surfaceEn": "You received-- "
+            },
+            {
+              "id": "R_lma_035_1_e12",
+              "reportId": "R_lma_035_1",
+              "start": 200,
+              "end": 213,
+              "surface": "QT de indução",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "Induction QT"
+            },
+            {
+              "id": "R_lma_035_1_e13",
+              "reportId": "R_lma_035_1",
+              "start": 218,
+              "end": 225,
+              "surface": "esquema",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "scene"
+            },
+            {
+              "id": "R_lma_035_1_e14",
+              "reportId": "R_lma_035_1",
+              "start": 227,
+              "end": 228,
+              "surface": "7",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "P7D"
+              }
+            },
+            {
+              "id": "R_lma_035_1_e15",
+              "reportId": "R_lma_035_1",
+              "start": 229,
+              "end": 230,
+              "surface": "3",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "P3D"
+              }
+            },
+            {
+              "id": "R_lma_035_1_e16",
+              "reportId": "R_lma_035_1",
+              "start": 261,
+              "end": 276,
+              "surface": "intercorrências",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "NEGATED",
+                "specializedEventClass": "Intercurrence",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "complications"
+            },
+            {
+              "id": "R_lma_035_1_e17",
+              "reportId": "R_lma_035_1",
+              "start": 288,
+              "end": 295,
+              "surface": "aplasia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Intercurrence",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "754 APLASIAS"
+            },
+            {
+              "id": "R_lma_035_1_e18",
+              "reportId": "R_lma_035_1",
+              "start": 298,
+              "end": 314,
+              "surface": "sindromes febris",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Intercurrence",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "febrile syndromes"
+            },
+            {
+              "id": "R_lma_035_1_e19",
+              "reportId": "R_lma_035_1",
+              "start": 320,
+              "end": 332,
+              "surface": "boa evolução",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment Response",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "Good Progress"
+            },
+            {
+              "id": "R_lma_035_1_e20",
+              "reportId": "R_lma_035_1",
+              "start": 337,
+              "end": 369,
+              "surface": "antibioterapia de largo espectro",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "broad-spectrum antibiotic therapy"
+            },
+            {
+              "id": "R_lma_035_1_e21",
+              "reportId": "R_lma_035_1",
+              "start": 371,
+              "end": 378,
+              "surface": "Terapia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "THER"
+            },
+            {
+              "id": "R_lma_035_1_e22",
+              "reportId": "R_lma_035_1",
+              "start": 445,
+              "end": 448,
+              "surface": "2id",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "PXD, freq=2x"
+              },
+              "surfaceEn": "2id"
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "R_lma_035_1_t1",
+              "source": "R_lma_035_1_e1",
+              "target": "R_lma_035_1_e2",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_1_t2",
+              "source": "R_lma_035_1_e3",
+              "target": "R_lma_035_1_e4",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_1_t3",
+              "source": "R_lma_035_1_e3",
+              "target": "R_lma_035_1_e1",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_1_t4",
+              "source": "R_lma_035_1_e5",
+              "target": "R_lma_035_1_e3",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_1_t5",
+              "source": "R_lma_035_1_e6",
+              "target": "R_lma_035_1_e5",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_1_t6",
+              "source": "R_lma_035_1_e7",
+              "target": "R_lma_035_1_e6",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_1_t7",
+              "source": "R_lma_035_1_e8",
+              "target": "R_lma_035_1_e7",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_1_t8",
+              "source": "R_lma_035_1_e9",
+              "target": "R_lma_035_1_e8",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_1_t9",
+              "source": "R_lma_035_1_e10",
+              "target": "R_lma_035_1_e9",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_1_t10",
+              "source": "R_lma_035_1_e11",
+              "target": "R_lma_035_1_e10",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_1_t11",
+              "source": "R_lma_035_1_e12",
+              "target": "R_lma_035_1_e11",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_1_t12",
+              "source": "R_lma_035_1_e13",
+              "target": "R_lma_035_1_e12",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_1_t13",
+              "source": "R_lma_035_1_e13",
+              "target": "R_lma_035_1_e14",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_1_t14",
+              "source": "R_lma_035_1_e13",
+              "target": "R_lma_035_1_e15",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_1_t15",
+              "source": "R_lma_035_1_e16",
+              "target": "R_lma_035_1_e13",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_1_t16",
+              "source": "R_lma_035_1_e17",
+              "target": "R_lma_035_1_e16",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_1_t17",
+              "source": "R_lma_035_1_e18",
+              "target": "R_lma_035_1_e17",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_1_t18",
+              "source": "R_lma_035_1_e19",
+              "target": "R_lma_035_1_e18",
+              "type": "OVERLAP_AFTER"
+            },
+            {
+              "id": "R_lma_035_1_t19",
+              "source": "R_lma_035_1_e20",
+              "target": "R_lma_035_1_e19",
+              "type": "BEFORE_OVERLAP"
+            },
+            {
+              "id": "R_lma_035_1_t20",
+              "source": "R_lma_035_1_e21",
+              "target": "R_lma_035_1_e20",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_1_t21",
+              "source": "R_lma_035_1_e21",
+              "target": "R_lma_035_1_e22",
+              "type": "SIMULTANEOUS"
+            }
+          ],
+          "textEn": "Clinic : Onco - Hematology - C O - Hematology\n    Clinical Discharge Date: 08/12/2019\n    Admission Date: 06 - 07 - 2019\n    Reason for Admission AML Induction Chemotherapy \nEpisode Summary Received induction QT with “7+3” regimen cytarabine, mitoxantrone uneventful. During aplasia 2 febrile syndromes, with good evolution under broad-spectrum antibiotic therapy. Therapy for the home - the usual, amoxicillin and acid. - clavulanic 1g 2id;"
+        },
+        {
+          "id": "R_lma_035_2",
+          "patientId": "P_lma_035",
+          "title": "lma_035.json - Report 2",
+          "type": "clinical note",
+          "date": "2019-10-16",
+          "text": "Serviço executante: Grupo Multi.-C. O.-Hematológico \n    Data de registo: 16-10-2019 \n    Doente de 69 anos de idade, antecedentes de hipotiroidismo e com um quadro de pancitopenia de longa duração interpretada como síndrome mielodisplásico. Em maio de 2019, foi documentado um agravamento dos parâmetros hematológicos, motivo pelo qual fez uma avaliação medular que foi compatível com progressão para leucemia mieloide aguda. A análise por FISH mostrou a presença de uma trissomia do cromossoma 8. Quadro clinico e analítico compatível com o diagnóstico de uma leucemia mieloide aguda secundária a síndrome mielodisplásico. O doente foi submetido a tratamento de quimioterapia de indução com um ciclo de Mitoxantrone e Citarabina. Uma reavaliação após o tratamento mostrou desaparecimento dos blastos, no entanto persistência de pancitopenia. Cerca de 3 meses após o ciclo de quimioterapia de indução apresenta novamente um quadro de agravamento da pancitopenia. Decide-se por isso propor uma nova reavaliação medular e caso apresente novamente critérios de leucemia propor para tratamento paliativo de suporte. Se não existir excesso de blastos poderá ser equacionada a utilização de Azacitidina.",
+          "events": [
+            {
+              "id": "R_lma_035_2_e1",
+              "reportId": "R_lma_035_2",
+              "start": 65,
+              "end": 72,
+              "surface": "registo",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e2",
+              "reportId": "R_lma_035_2",
+              "start": 74,
+              "end": 84,
+              "surface": "16-10-2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "TemporalFunction": "DOCTIME",
+                "Value": "2019-10-16"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e3",
+              "reportId": "R_lma_035_2",
+              "start": 118,
+              "end": 130,
+              "surface": "antecedentes",
+              "type": "Specialized Event",
+              "attributes": {
+                "specializedEventClass": "Personal History",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e4",
+              "reportId": "R_lma_035_2",
+              "start": 134,
+              "end": 148,
+              "surface": "hipotiroidismo",
+              "type": "Specialized Event",
+              "attributes": {
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Comorbidity",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e5",
+              "reportId": "R_lma_035_2",
+              "start": 158,
+              "end": 164,
+              "surface": "quadro",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e6",
+              "reportId": "R_lma_035_2",
+              "start": 168,
+              "end": 197,
+              "surface": "pancitopenia de longa duração",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e7",
+              "reportId": "R_lma_035_2",
+              "start": 198,
+              "end": 210,
+              "surface": "interpretada",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e8",
+              "reportId": "R_lma_035_2",
+              "start": 216,
+              "end": 240,
+              "surface": "síndrome mielodisplásico",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e9",
+              "reportId": "R_lma_035_2",
+              "start": 245,
+              "end": 257,
+              "surface": "maio de 2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Time",
+                "Value": "2019-05"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e10",
+              "reportId": "R_lma_035_2",
+              "start": 263,
+              "end": 274,
+              "surface": "documentado",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e11",
+              "reportId": "R_lma_035_2",
+              "start": 278,
+              "end": 289,
+              "surface": "agravamento",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e12",
+              "reportId": "R_lma_035_2",
+              "start": 294,
+              "end": 318,
+              "surface": "parâmetros hematológicos",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e13",
+              "reportId": "R_lma_035_2",
+              "start": 320,
+              "end": 326,
+              "surface": "motivo",
+              "type": "Specialized Event",
+              "attributes": {
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e14",
+              "reportId": "R_lma_035_2",
+              "start": 337,
+              "end": 340,
+              "surface": "fez",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e15",
+              "reportId": "R_lma_035_2",
+              "start": 345,
+              "end": 362,
+              "surface": "avaliação medular",
+              "type": "Specialized Event",
+              "attributes": {
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e16",
+              "reportId": "R_lma_035_2",
+              "start": 363,
+              "end": 366,
+              "surface": "que",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e17",
+              "reportId": "R_lma_035_2",
+              "start": 371,
+              "end": 381,
+              "surface": "compatível",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Adjective",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e18",
+              "reportId": "R_lma_035_2",
+              "start": 386,
+              "end": 396,
+              "surface": "progressão",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e19",
+              "reportId": "R_lma_035_2",
+              "start": 402,
+              "end": 425,
+              "surface": "leucemia mieloide aguda",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e20",
+              "reportId": "R_lma_035_2",
+              "start": 429,
+              "end": 445,
+              "surface": "análise por FISH",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e21",
+              "reportId": "R_lma_035_2",
+              "start": 446,
+              "end": 453,
+              "surface": "mostrou",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e22",
+              "reportId": "R_lma_035_2",
+              "start": 456,
+              "end": 464,
+              "surface": "presença",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e23",
+              "reportId": "R_lma_035_2",
+              "start": 472,
+              "end": 481,
+              "surface": "trissomia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e24",
+              "reportId": "R_lma_035_2",
+              "start": 499,
+              "end": 525,
+              "surface": "Quadro clinico e analítico",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e25",
+              "reportId": "R_lma_035_2",
+              "start": 526,
+              "end": 536,
+              "surface": "compatível",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Adjective"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e26",
+              "reportId": "R_lma_035_2",
+              "start": 543,
+              "end": 554,
+              "surface": "diagnóstico",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e27",
+              "reportId": "R_lma_035_2",
+              "start": 562,
+              "end": 585,
+              "surface": "leucemia mieloide aguda",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e28",
+              "reportId": "R_lma_035_2",
+              "start": 586,
+              "end": 596,
+              "surface": "secundária",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Characterization of the Disease",
+                "Pos": "Adjective"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e29",
+              "reportId": "R_lma_035_2",
+              "start": 599,
+              "end": 623,
+              "surface": "síndrome mielodisplásico",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Characterization of the Disease",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e30",
+              "reportId": "R_lma_035_2",
+              "start": 638,
+              "end": 647,
+              "surface": "submetido",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Process",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e31",
+              "reportId": "R_lma_035_2",
+              "start": 650,
+              "end": 660,
+              "surface": "tratamento",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e32",
+              "reportId": "R_lma_035_2",
+              "start": 664,
+              "end": 688,
+              "surface": "quimioterapia de indução",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e33",
+              "reportId": "R_lma_035_2",
+              "start": 696,
+              "end": 701,
+              "surface": "ciclo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e34",
+              "reportId": "R_lma_035_2",
+              "start": 736,
+              "end": 747,
+              "surface": "reavaliação",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e35",
+              "reportId": "R_lma_035_2",
+              "start": 755,
+              "end": 765,
+              "surface": "tratamento",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e36",
+              "reportId": "R_lma_035_2",
+              "start": 766,
+              "end": 773,
+              "surface": "mostrou",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e37",
+              "reportId": "R_lma_035_2",
+              "start": 774,
+              "end": 789,
+              "surface": "desaparecimento",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e38",
+              "reportId": "R_lma_035_2",
+              "start": 814,
+              "end": 826,
+              "surface": "persistência",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e39",
+              "reportId": "R_lma_035_2",
+              "start": 830,
+              "end": 842,
+              "surface": "pancitopenia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e40",
+              "reportId": "R_lma_035_2",
+              "start": 853,
+              "end": 860,
+              "surface": "3 meses",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "P3M"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e41",
+              "reportId": "R_lma_035_2",
+              "start": 868,
+              "end": 873,
+              "surface": "ciclo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e42",
+              "reportId": "R_lma_035_2",
+              "start": 877,
+              "end": 901,
+              "surface": "quimioterapia de indução",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e43",
+              "reportId": "R_lma_035_2",
+              "start": 902,
+              "end": 911,
+              "surface": "apresenta",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Present"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e44",
+              "reportId": "R_lma_035_2",
+              "start": 925,
+              "end": 931,
+              "surface": "quadro",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e45",
+              "reportId": "R_lma_035_2",
+              "start": 935,
+              "end": 946,
+              "surface": "agravamento",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e46",
+              "reportId": "R_lma_035_2",
+              "start": 950,
+              "end": 962,
+              "surface": "pancitopenia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e47",
+              "reportId": "R_lma_035_2",
+              "start": 964,
+              "end": 973,
+              "surface": "Decide-se",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "I_Action",
+                "Event_Type": "Transition",
+                "Tense": "Present"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e48",
+              "reportId": "R_lma_035_2",
+              "start": 978,
+              "end": 982,
+              "surface": "isso",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e49",
+              "reportId": "R_lma_035_2",
+              "start": 983,
+              "end": 989,
+              "surface": "propor",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "I_Action",
+                "Event_Type": "Transition",
+                "VForm": "Infinitive"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e50",
+              "reportId": "R_lma_035_2",
+              "start": 994,
+              "end": 1018,
+              "surface": "nova reavaliação medular",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e51",
+              "reportId": "R_lma_035_2",
+              "start": 1026,
+              "end": 1035,
+              "surface": "apresente",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Present",
+                "Mood": "Subjunctive"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e52",
+              "reportId": "R_lma_035_2",
+              "start": 1046,
+              "end": 1055,
+              "surface": "critérios",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e53",
+              "reportId": "R_lma_035_2",
+              "start": 1059,
+              "end": 1067,
+              "surface": "leucemia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e54",
+              "reportId": "R_lma_035_2",
+              "start": 1068,
+              "end": 1074,
+              "surface": "propor",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "I_Action",
+                "Event_Type": "Transition",
+                "VForm": "Infinitive"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e55",
+              "reportId": "R_lma_035_2",
+              "start": 1080,
+              "end": 1111,
+              "surface": "tratamento paliativo de suporte",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e56",
+              "reportId": "R_lma_035_2",
+              "start": 1120,
+              "end": 1127,
+              "surface": "existir",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "NEGATED",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "VForm": "Infinitive"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e57",
+              "reportId": "R_lma_035_2",
+              "start": 1128,
+              "end": 1135,
+              "surface": "excesso",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e58",
+              "reportId": "R_lma_035_2",
+              "start": 1158,
+              "end": 1169,
+              "surface": "equacionada",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Future",
+                "Mood": "Future",
+                "Modality": "Poder"
+              }
+            },
+            {
+              "id": "R_lma_035_2_e59",
+              "reportId": "R_lma_035_2",
+              "start": 1172,
+              "end": 1182,
+              "surface": "utilização",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "R_lma_035_2_t1",
+              "source": "R_lma_035_2_e1",
+              "target": "R_lma_035_2_e2",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t2",
+              "source": "R_lma_035_2_e2",
+              "target": "R_lma_035_1_e2",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t3",
+              "source": "R_lma_035_2_e3",
+              "target": "R_lma_035_2_e1",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t4",
+              "source": "R_lma_035_2_e4",
+              "target": "R_lma_035_2_e3",
+              "type": "BEFORE_OVERLAP"
+            },
+            {
+              "id": "R_lma_035_2_t5",
+              "source": "R_lma_035_2_e5",
+              "target": "R_lma_035_2_e4",
+              "type": "OVERLAP_AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t6",
+              "source": "R_lma_035_2_e6",
+              "target": "R_lma_035_2_e5",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t7",
+              "source": "R_lma_035_2_e7",
+              "target": "R_lma_035_2_e6",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t8",
+              "source": "R_lma_035_2_e8",
+              "target": "R_lma_035_2_e7",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t9",
+              "source": "R_lma_035_2_e10",
+              "target": "R_lma_035_2_e9",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t10",
+              "source": "R_lma_035_2_e10",
+              "target": "R_lma_035_2_e8",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t11",
+              "source": "R_lma_035_2_e11",
+              "target": "R_lma_035_2_e10",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t12",
+              "source": "R_lma_035_2_e12",
+              "target": "R_lma_035_2_e11",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t13",
+              "source": "R_lma_035_2_e14",
+              "target": "R_lma_035_2_e13",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t14",
+              "source": "R_lma_035_2_e15",
+              "target": "R_lma_035_2_e14",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t15",
+              "source": "R_lma_035_2_e17",
+              "target": "R_lma_035_2_e16",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t16",
+              "source": "R_lma_035_2_e18",
+              "target": "R_lma_035_2_e17",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t17",
+              "source": "R_lma_035_2_e19",
+              "target": "R_lma_035_2_e18",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_2_t18",
+              "source": "R_lma_035_2_e20",
+              "target": "R_lma_035_2_e19",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t19",
+              "source": "R_lma_035_2_e21",
+              "target": "R_lma_035_2_e20",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t20",
+              "source": "R_lma_035_2_e22",
+              "target": "R_lma_035_2_e21",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t21",
+              "source": "R_lma_035_2_e23",
+              "target": "R_lma_035_2_e22",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t22",
+              "source": "R_lma_035_2_e24",
+              "target": "R_lma_035_2_e23",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t23",
+              "source": "R_lma_035_2_e25",
+              "target": "R_lma_035_2_e24",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t24",
+              "source": "R_lma_035_2_e26",
+              "target": "R_lma_035_2_e25",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t25",
+              "source": "R_lma_035_2_e27",
+              "target": "R_lma_035_2_e26",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_2_t26",
+              "source": "R_lma_035_2_e28",
+              "target": "R_lma_035_2_e27",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t27",
+              "source": "R_lma_035_2_e29",
+              "target": "R_lma_035_2_e28",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t28",
+              "source": "R_lma_035_2_e30",
+              "target": "R_lma_035_2_e29",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t29",
+              "source": "R_lma_035_2_e31",
+              "target": "R_lma_035_2_e30",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t30",
+              "source": "R_lma_035_2_e33",
+              "target": "R_lma_035_2_e32",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t31",
+              "source": "R_lma_035_2_e34",
+              "target": "R_lma_035_2_e33",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t32",
+              "source": "R_lma_035_2_e35",
+              "target": "R_lma_035_2_e34",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_2_t33",
+              "source": "R_lma_035_2_e36",
+              "target": "R_lma_035_2_e35",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t34",
+              "source": "R_lma_035_2_e37",
+              "target": "R_lma_035_2_e36",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t35",
+              "source": "R_lma_035_2_e38",
+              "target": "R_lma_035_2_e37",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t36",
+              "source": "R_lma_035_2_e39",
+              "target": "R_lma_035_2_e38",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t37",
+              "source": "R_lma_035_2_e41",
+              "target": "R_lma_035_2_e40",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_2_t38",
+              "source": "R_lma_035_2_e41",
+              "target": "R_lma_035_2_e39",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_2_t39",
+              "source": "R_lma_035_2_e42",
+              "target": "R_lma_035_2_e41",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_2_t40",
+              "source": "R_lma_035_2_e43",
+              "target": "R_lma_035_2_e40",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t41",
+              "source": "R_lma_035_2_e44",
+              "target": "R_lma_035_2_e43",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t42",
+              "source": "R_lma_035_2_e45",
+              "target": "R_lma_035_2_e44",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t43",
+              "source": "R_lma_035_2_e46",
+              "target": "R_lma_035_2_e45",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t44",
+              "source": "R_lma_035_2_e47",
+              "target": "R_lma_035_2_e46",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t45",
+              "source": "R_lma_035_2_e48",
+              "target": "R_lma_035_2_e47",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_2_t46",
+              "source": "R_lma_035_2_e49",
+              "target": "R_lma_035_2_e48",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t47",
+              "source": "R_lma_035_2_e50",
+              "target": "R_lma_035_2_e49",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t48",
+              "source": "R_lma_035_2_e51",
+              "target": "R_lma_035_2_e50",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_2_t49",
+              "source": "R_lma_035_2_e52",
+              "target": "R_lma_035_2_e51",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t50",
+              "source": "R_lma_035_2_e53",
+              "target": "R_lma_035_2_e52",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t51",
+              "source": "R_lma_035_2_e54",
+              "target": "R_lma_035_2_e53",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t52",
+              "source": "R_lma_035_2_e55",
+              "target": "R_lma_035_2_e54",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_2_t53",
+              "source": "R_lma_035_2_e56",
+              "target": "R_lma_035_2_e55",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_2_t54",
+              "source": "R_lma_035_2_e57",
+              "target": "R_lma_035_2_e56",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t55",
+              "source": "R_lma_035_2_e58",
+              "target": "R_lma_035_2_e57",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_2_t56",
+              "source": "R_lma_035_2_e59",
+              "target": "R_lma_035_2_e58",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_2_t57",
+              "source": "R_lma_035_2_e1",
+              "target": "R_lma_035_1_e21",
+              "type": "AFTER"
+            }
+          ]
+        },
+        {
+          "id": "R_lma_035_3",
+          "patientId": "P_lma_035",
+          "title": "lma_035.json - Report 3",
+          "type": "clinical note",
+          "text": "Relatório Homem nascido a 05.06.1950 admitido nesta instituição a 06.07.2019 por leucemia mieloide aguda. Individuo com bom estado geral sem comorbilidades de relevo. 1. Leucemia mieloide aguda, pós SMD, diagnosticada no sangue periférico, com diferenciação monocitica, leucocitose de 15.500 /microlitro – 60% de blastos, hgb 98 g/L e plaquetas 41.000/ micro litro, no cariotipo não realizado, +8 no estudo FISH, FLT3 negativo. Imunofenótipo dos blastos: cd13, cd64 expressão forte; cMPO, hla-dr forte, cd35 expressão parcial; cd45 baixa expressão; sem expressão para cd34, cd117, cd11b, cd14, cd300e, cd7, cCD3, CD3, cd19 e cCD79a. Diagnóstico em maio de 2019 noutra instituição. Tem história de trombocitopenia já com vários meses de evolução a anteceder o presente diagnóstico. Iniciou tratamento noutra instituição, com hidroxicarbamida que recebeu apenas durante 2 semanas, com controlo da leucocitose, manteve necessidade de suporte transfusional. Programado o inico de tratamento com Azacitidina que não chegou a iniciar pois preferiu continuar cuidados na instituição actual. Em julho de 2019 recebeu quimioterapia (QT) de indução com esquema “7+3” – mitoxantrone e Citarabina com boa tolerância. Recuperação incompleta com trombocitopenia persistente. Alta hospitalar ao dia +32 da indução. A avaliação medular mostrou remissão completa morfológica e de igual modo por imunofenotipagem. A avaliação cardíaca antes da QT mostrou fev de 59%. Ao dia +78 da indução apresentou no sangue periférico hgb 106 g/L, leu 1.79 com neut 0.77 /microlitro e plaquetas 60.000/ microlitro. Deste modo sem condições para receber quimioterapia de consolidação. Ao dia +98 (15.10.2019) apresentou ligeiro agravamento das citopenias com hgb 96, leu 1.39 e plaq 35. O doente tinha viagem de regresso ao País D. programada para daí a 7 dias. Quadro compatível com persistência de doença. Peço reavaliação no País D e consideração da oportunidade de terapia com Azacitidina.  Como comorbilidades apresenta: 1. hipotiroidismo desde há anos sob terapia de substituição com levotiroxina; 2. adenocarcinoma da próstata em 2017. Fez tratamento cirúrgico radical no País D onde reside habitualmente. Em remissão sustentada. Incontinência urinária neste contexto. 17-10-2019\n",
+          "events": [
+            {
+              "id": "R_lma_035_3_e1",
+              "reportId": "R_lma_035_3",
+              "start": 16,
+              "end": 23,
+              "surface": "nascido",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e2",
+              "reportId": "R_lma_035_3",
+              "start": 26,
+              "end": 36,
+              "surface": "05.06.1950",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "1950-06-05"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e3",
+              "reportId": "R_lma_035_3",
+              "start": 37,
+              "end": 45,
+              "surface": "admitido",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e4",
+              "reportId": "R_lma_035_3",
+              "start": 66,
+              "end": 76,
+              "surface": "06.07.2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2019-07-06"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e5",
+              "reportId": "R_lma_035_3",
+              "start": 81,
+              "end": 104,
+              "surface": "leucemia mieloide aguda",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e6",
+              "reportId": "R_lma_035_3",
+              "start": 120,
+              "end": 136,
+              "surface": "bom estado geral",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Sign or Symptom",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e7",
+              "reportId": "R_lma_035_3",
+              "start": 141,
+              "end": 165,
+              "surface": "comorbilidades de relevo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "NEGATED",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Comorbidity",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e8",
+              "reportId": "R_lma_035_3",
+              "start": 170,
+              "end": 193,
+              "surface": "Leucemia mieloide aguda",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e9",
+              "reportId": "R_lma_035_3",
+              "start": 199,
+              "end": 202,
+              "surface": "SMD",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun",
+                "Value": "Síndrome Mielodisplásico"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e10",
+              "reportId": "R_lma_035_3",
+              "start": 204,
+              "end": 217,
+              "surface": "diagnosticada",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e11",
+              "reportId": "R_lma_035_3",
+              "start": 244,
+              "end": 268,
+              "surface": "diferenciação monocitica",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e12",
+              "reportId": "R_lma_035_3",
+              "start": 270,
+              "end": 281,
+              "surface": "leucocitose",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e13",
+              "reportId": "R_lma_035_3",
+              "start": 369,
+              "end": 378,
+              "surface": "cariotipo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e14",
+              "reportId": "R_lma_035_3",
+              "start": 383,
+              "end": 392,
+              "surface": "realizado",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "NEGATED",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e15",
+              "reportId": "R_lma_035_3",
+              "start": 394,
+              "end": 395,
+              "surface": "+",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Other"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e16",
+              "reportId": "R_lma_035_3",
+              "start": 400,
+              "end": 411,
+              "surface": "estudo FISH",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e17",
+              "reportId": "R_lma_035_3",
+              "start": 413,
+              "end": 417,
+              "surface": "FLT3",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e18",
+              "reportId": "R_lma_035_3",
+              "start": 418,
+              "end": 426,
+              "surface": "negativo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Adjective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e19",
+              "reportId": "R_lma_035_3",
+              "start": 466,
+              "end": 481,
+              "surface": "expressão forte",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e20",
+              "reportId": "R_lma_035_3",
+              "start": 496,
+              "end": 501,
+              "surface": "forte",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Adjective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e21",
+              "reportId": "R_lma_035_3",
+              "start": 508,
+              "end": 525,
+              "surface": "expressão parcial",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e22",
+              "reportId": "R_lma_035_3",
+              "start": 532,
+              "end": 547,
+              "surface": "baixa expressão",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e23",
+              "reportId": "R_lma_035_3",
+              "start": 553,
+              "end": 562,
+              "surface": "expressão",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "NEGATED",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e24",
+              "reportId": "R_lma_035_3",
+              "start": 633,
+              "end": 644,
+              "surface": "Diagnóstico",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e25",
+              "reportId": "R_lma_035_3",
+              "start": 648,
+              "end": 660,
+              "surface": "maio de 2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2019-05"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e26",
+              "reportId": "R_lma_035_3",
+              "start": 685,
+              "end": 693,
+              "surface": "história",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Undefined",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e27",
+              "reportId": "R_lma_035_3",
+              "start": 697,
+              "end": 712,
+              "surface": "trombocitopenia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Undefined",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e28",
+              "reportId": "R_lma_035_3",
+              "start": 720,
+              "end": 732,
+              "surface": "vários meses",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "PXM"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e29",
+              "reportId": "R_lma_035_3",
+              "start": 736,
+              "end": 744,
+              "surface": "evolução",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e30",
+              "reportId": "R_lma_035_3",
+              "start": 747,
+              "end": 756,
+              "surface": "anteceder",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "VForm": "Infinitive"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e31",
+              "reportId": "R_lma_035_3",
+              "start": 759,
+              "end": 779,
+              "surface": "presente diagnóstico",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e32",
+              "reportId": "R_lma_035_3",
+              "start": 781,
+              "end": 788,
+              "surface": "Iniciou",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e33",
+              "reportId": "R_lma_035_3",
+              "start": 789,
+              "end": 799,
+              "surface": "tratamento",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e34",
+              "reportId": "R_lma_035_3",
+              "start": 845,
+              "end": 852,
+              "surface": "recebeu",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Process",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e35",
+              "reportId": "R_lma_035_3",
+              "start": 868,
+              "end": 877,
+              "surface": "2 semanas",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "P2W"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e36",
+              "reportId": "R_lma_035_3",
+              "start": 883,
+              "end": 891,
+              "surface": "controlo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e37",
+              "reportId": "R_lma_035_3",
+              "start": 895,
+              "end": 906,
+              "surface": "leucocitose",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e38",
+              "reportId": "R_lma_035_3",
+              "start": 908,
+              "end": 915,
+              "surface": "manteve",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Process",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e39",
+              "reportId": "R_lma_035_3",
+              "start": 916,
+              "end": 927,
+              "surface": "necessidade",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e40",
+              "reportId": "R_lma_035_3",
+              "start": 931,
+              "end": 952,
+              "surface": "suporte transfusional",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e41",
+              "reportId": "R_lma_035_3",
+              "start": 954,
+              "end": 964,
+              "surface": "Programado",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e42",
+              "reportId": "R_lma_035_3",
+              "start": 967,
+              "end": 972,
+              "surface": "inico",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e43",
+              "reportId": "R_lma_035_3",
+              "start": 976,
+              "end": 986,
+              "surface": "tratamento",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e44",
+              "reportId": "R_lma_035_3",
+              "start": 1003,
+              "end": 1006,
+              "surface": "que",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Pronoun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e45",
+              "reportId": "R_lma_035_3",
+              "start": 1011,
+              "end": 1017,
+              "surface": "chegou",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "NEGATED",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e46",
+              "reportId": "R_lma_035_3",
+              "start": 1020,
+              "end": 1027,
+              "surface": "iniciar",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "VForm": "Infinitive"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e47",
+              "reportId": "R_lma_035_3",
+              "start": 1033,
+              "end": 1041,
+              "surface": "preferiu",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e48",
+              "reportId": "R_lma_035_3",
+              "start": 1042,
+              "end": 1051,
+              "surface": "continuar",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Process",
+                "VForm": "Infinitive"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e49",
+              "reportId": "R_lma_035_3",
+              "start": 1052,
+              "end": 1060,
+              "surface": "cuidados",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e50",
+              "reportId": "R_lma_035_3",
+              "start": 1087,
+              "end": 1100,
+              "surface": "julho de 2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2019-07"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e51",
+              "reportId": "R_lma_035_3",
+              "start": 1101,
+              "end": 1108,
+              "surface": "recebeu",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Process",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e52",
+              "reportId": "R_lma_035_3",
+              "start": 1109,
+              "end": 1138,
+              "surface": "quimioterapia (QT) de indução",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e53",
+              "reportId": "R_lma_035_3",
+              "start": 1143,
+              "end": 1150,
+              "surface": "esquema",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              },
+              "surfaceEn": "scene"
+            },
+            {
+              "id": "R_lma_035_3_e54",
+              "reportId": "R_lma_035_3",
+              "start": 1152,
+              "end": 1153,
+              "surface": "7",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "P7D"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e55",
+              "reportId": "R_lma_035_3",
+              "start": 1154,
+              "end": 1155,
+              "surface": "3",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "P3D"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e56",
+              "reportId": "R_lma_035_3",
+              "start": 1189,
+              "end": 1203,
+              "surface": "boa tolerância",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment Response",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e57",
+              "reportId": "R_lma_035_3",
+              "start": 1205,
+              "end": 1227,
+              "surface": "Recuperação incompleta",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment Response",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e58",
+              "reportId": "R_lma_035_3",
+              "start": 1232,
+              "end": 1259,
+              "surface": "trombocitopenia persistente",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e59",
+              "reportId": "R_lma_035_3",
+              "start": 1261,
+              "end": 1276,
+              "surface": "Alta hospitalar",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e60",
+              "reportId": "R_lma_035_3",
+              "start": 1280,
+              "end": 1287,
+              "surface": "dia +32",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2019-08-12"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e61",
+              "reportId": "R_lma_035_3",
+              "start": 1291,
+              "end": 1298,
+              "surface": "indução",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e62",
+              "reportId": "R_lma_035_3",
+              "start": 1302,
+              "end": 1319,
+              "surface": "avaliação medular",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e63",
+              "reportId": "R_lma_035_3",
+              "start": 1320,
+              "end": 1327,
+              "surface": "mostrou",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e64",
+              "reportId": "R_lma_035_3",
+              "start": 1328,
+              "end": 1357,
+              "surface": "remissão completa morfológica",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e65",
+              "reportId": "R_lma_035_3",
+              "start": 1363,
+              "end": 1373,
+              "surface": "igual modo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e66",
+              "reportId": "R_lma_035_3",
+              "start": 1378,
+              "end": 1394,
+              "surface": "imunofenotipagem",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e67",
+              "reportId": "R_lma_035_3",
+              "start": 1398,
+              "end": 1416,
+              "surface": "avaliação cardíaca",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e68",
+              "reportId": "R_lma_035_3",
+              "start": 1426,
+              "end": 1428,
+              "surface": "QT",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun",
+                "Value": "quimioterapia"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e69",
+              "reportId": "R_lma_035_3",
+              "start": 1429,
+              "end": 1436,
+              "surface": "mostrou",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e70",
+              "reportId": "R_lma_035_3",
+              "start": 1437,
+              "end": 1440,
+              "surface": "fev",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun",
+                "Value": "Fração de Ejeção do Ventrículo Esquerdo"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e71",
+              "reportId": "R_lma_035_3",
+              "start": 1452,
+              "end": 1459,
+              "surface": "dia +78",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2019-09-27"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e72",
+              "reportId": "R_lma_035_3",
+              "start": 1463,
+              "end": 1470,
+              "surface": "indução",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e73",
+              "reportId": "R_lma_035_3",
+              "start": 1471,
+              "end": 1481,
+              "surface": "apresentou",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e74",
+              "reportId": "R_lma_035_3",
+              "start": 1516,
+              "end": 1519,
+              "surface": "leu",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e75",
+              "reportId": "R_lma_035_3",
+              "start": 1598,
+              "end": 1607,
+              "surface": "condições",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "NEGATED",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e76",
+              "reportId": "R_lma_035_3",
+              "start": 1613,
+              "end": 1620,
+              "surface": "receber",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Process",
+                "VForm": "Infinitive"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e77",
+              "reportId": "R_lma_035_3",
+              "start": 1621,
+              "end": 1650,
+              "surface": "quimioterapia de consolidação",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e78",
+              "reportId": "R_lma_035_3",
+              "start": 1655,
+              "end": 1662,
+              "surface": "dia +98",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "P98D"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e79",
+              "reportId": "R_lma_035_3",
+              "start": 1664,
+              "end": 1674,
+              "surface": "15.10.2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2019-10-15"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e80",
+              "reportId": "R_lma_035_3",
+              "start": 1676,
+              "end": 1686,
+              "surface": "apresentou",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e81",
+              "reportId": "R_lma_035_3",
+              "start": 1687,
+              "end": 1706,
+              "surface": "ligeiro agravamento",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e82",
+              "reportId": "R_lma_035_3",
+              "start": 1711,
+              "end": 1721,
+              "surface": "citopenias",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e83",
+              "reportId": "R_lma_035_3",
+              "start": 1734,
+              "end": 1737,
+              "surface": "leu",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e84",
+              "reportId": "R_lma_035_3",
+              "start": 1763,
+              "end": 1768,
+              "surface": "tinha",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e85",
+              "reportId": "R_lma_035_3",
+              "start": 1769,
+              "end": 1787,
+              "surface": "viagem de regresso",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e86",
+              "reportId": "R_lma_035_3",
+              "start": 1799,
+              "end": 1809,
+              "surface": "programada",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e87",
+              "reportId": "R_lma_035_3",
+              "start": 1821,
+              "end": 1827,
+              "surface": "7 dias",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "P7D"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e88",
+              "reportId": "R_lma_035_3",
+              "start": 1829,
+              "end": 1846,
+              "surface": "Quadro compatível",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e89",
+              "reportId": "R_lma_035_3",
+              "start": 1851,
+              "end": 1863,
+              "surface": "persistência",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment Response",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e90",
+              "reportId": "R_lma_035_3",
+              "start": 1867,
+              "end": 1873,
+              "surface": "doença",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e91",
+              "reportId": "R_lma_035_3",
+              "start": 1875,
+              "end": 1879,
+              "surface": "Peço",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "I_Action",
+                "Event_Type": "Transition",
+                "Tense": "Present"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e92",
+              "reportId": "R_lma_035_3",
+              "start": 1880,
+              "end": 1891,
+              "surface": "reavaliação",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e93",
+              "reportId": "R_lma_035_3",
+              "start": 1904,
+              "end": 1916,
+              "surface": "consideração",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e94",
+              "reportId": "R_lma_035_3",
+              "start": 1920,
+              "end": 1932,
+              "surface": "oportunidade",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e95",
+              "reportId": "R_lma_035_3",
+              "start": 1936,
+              "end": 1943,
+              "surface": "terapia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e96",
+              "reportId": "R_lma_035_3",
+              "start": 1967,
+              "end": 1981,
+              "surface": "comorbilidades",
+              "type": "Specialized Event",
+              "attributes": {
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Comorbidity",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e97",
+              "reportId": "R_lma_035_3",
+              "start": 1982,
+              "end": 1991,
+              "surface": "apresenta",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Present"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e98",
+              "reportId": "R_lma_035_3",
+              "start": 1996,
+              "end": 2010,
+              "surface": "hipotiroidismo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Comorbidity",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e99",
+              "reportId": "R_lma_035_3",
+              "start": 2017,
+              "end": 2024,
+              "surface": "há anos",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Duration",
+                "Value": "PXY"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e100",
+              "reportId": "R_lma_035_3",
+              "start": 2029,
+              "end": 2052,
+              "surface": "terapia de substituição",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e101",
+              "reportId": "R_lma_035_3",
+              "start": 2074,
+              "end": 2088,
+              "surface": "adenocarcinoma",
+              "type": "Specialized Event",
+              "attributes": {
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Past Medical History",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e102",
+              "reportId": "R_lma_035_3",
+              "start": 2104,
+              "end": 2108,
+              "surface": "2017",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2017"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e103",
+              "reportId": "R_lma_035_3",
+              "start": 2110,
+              "end": 2113,
+              "surface": "Fez",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e104",
+              "reportId": "R_lma_035_3",
+              "start": 2114,
+              "end": 2142,
+              "surface": "tratamento cirúrgico radical",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e105",
+              "reportId": "R_lma_035_3",
+              "start": 2158,
+              "end": 2164,
+              "surface": "reside",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Present"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e106",
+              "reportId": "R_lma_035_3",
+              "start": 2183,
+              "end": 2202,
+              "surface": "remissão sustentada",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment Response",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e107",
+              "reportId": "R_lma_035_3",
+              "start": 2204,
+              "end": 2226,
+              "surface": "Incontinência urinária",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Intercurrence",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e108",
+              "reportId": "R_lma_035_3",
+              "start": 2233,
+              "end": 2241,
+              "surface": "contexto",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_035_3_e109",
+              "reportId": "R_lma_035_3",
+              "start": 2243,
+              "end": 2253,
+              "surface": "17-10-2019",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "TemporalFunction": "DOCTIME",
+                "Value": "2019-10-17"
+              }
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "R_lma_035_3_t1",
+              "source": "R_lma_035_3_e109",
+              "target": "R_lma_035_2_e2",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t2",
+              "source": "R_lma_035_3_e1",
+              "target": "R_lma_035_3_e109",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t3",
+              "source": "R_lma_035_3_e1",
+              "target": "R_lma_035_3_e2",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t4",
+              "source": "R_lma_035_3_e3",
+              "target": "R_lma_035_3_e1",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t5",
+              "source": "R_lma_035_3_e3",
+              "target": "R_lma_035_3_e4",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t6",
+              "source": "R_lma_035_3_e5",
+              "target": "R_lma_035_3_e3",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_3_t7",
+              "source": "R_lma_035_3_e6",
+              "target": "R_lma_035_3_e5",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t8",
+              "source": "R_lma_035_3_e7",
+              "target": "R_lma_035_3_e6",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t9",
+              "source": "R_lma_035_3_e8",
+              "target": "R_lma_035_3_e7",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_3_t10",
+              "source": "R_lma_035_3_e9",
+              "target": "R_lma_035_3_e8",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t11",
+              "source": "R_lma_035_3_e10",
+              "target": "R_lma_035_3_e9",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t12",
+              "source": "R_lma_035_3_e11",
+              "target": "R_lma_035_3_e10",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t13",
+              "source": "R_lma_035_3_e12",
+              "target": "R_lma_035_3_e11",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t14",
+              "source": "R_lma_035_3_e13",
+              "target": "R_lma_035_3_e12",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t15",
+              "source": "R_lma_035_3_e14",
+              "target": "R_lma_035_3_e13",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t16",
+              "source": "R_lma_035_3_e15",
+              "target": "R_lma_035_3_e14",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t17",
+              "source": "R_lma_035_3_e16",
+              "target": "R_lma_035_3_e15",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t18",
+              "source": "R_lma_035_3_e17",
+              "target": "R_lma_035_3_e16",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t19",
+              "source": "R_lma_035_3_e18",
+              "target": "R_lma_035_3_e17",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t20",
+              "source": "R_lma_035_3_e19",
+              "target": "R_lma_035_3_e18",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t21",
+              "source": "R_lma_035_3_e20",
+              "target": "R_lma_035_3_e19",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t22",
+              "source": "R_lma_035_3_e21",
+              "target": "R_lma_035_3_e20",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t23",
+              "source": "R_lma_035_3_e22",
+              "target": "R_lma_035_3_e21",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t24",
+              "source": "R_lma_035_3_e23",
+              "target": "R_lma_035_3_e22",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t25",
+              "source": "R_lma_035_3_e24",
+              "target": "R_lma_035_3_e23",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t26",
+              "source": "R_lma_035_3_e24",
+              "target": "R_lma_035_3_e25",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t27",
+              "source": "R_lma_035_3_e26",
+              "target": "R_lma_035_3_e24",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t28",
+              "source": "R_lma_035_3_e27",
+              "target": "R_lma_035_3_e26",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t29",
+              "source": "R_lma_035_3_e29",
+              "target": "R_lma_035_3_e28",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t30",
+              "source": "R_lma_035_3_e29",
+              "target": "R_lma_035_3_e27",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t31",
+              "source": "R_lma_035_3_e30",
+              "target": "R_lma_035_3_e29",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t32",
+              "source": "R_lma_035_3_e31",
+              "target": "R_lma_035_3_e30",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t33",
+              "source": "R_lma_035_3_e32",
+              "target": "R_lma_035_3_e31",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t34",
+              "source": "R_lma_035_3_e33",
+              "target": "R_lma_035_3_e32",
+              "type": "BEGUN_BY"
+            },
+            {
+              "id": "R_lma_035_3_t35",
+              "source": "R_lma_035_3_e34",
+              "target": "R_lma_035_3_e33",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t36",
+              "source": "R_lma_035_3_e34",
+              "target": "R_lma_035_3_e35",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t37",
+              "source": "R_lma_035_3_e36",
+              "target": "R_lma_035_3_e34",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t38",
+              "source": "R_lma_035_3_e37",
+              "target": "R_lma_035_3_e36",
+              "type": "BEFORE_OVERLAP"
+            },
+            {
+              "id": "R_lma_035_3_t39",
+              "source": "R_lma_035_3_e38",
+              "target": "R_lma_035_3_e37",
+              "type": "OVERLAP_AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t40",
+              "source": "R_lma_035_3_e39",
+              "target": "R_lma_035_3_e38",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t41",
+              "source": "R_lma_035_3_e40",
+              "target": "R_lma_035_3_e39",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t42",
+              "source": "R_lma_035_3_e41",
+              "target": "R_lma_035_3_e40",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t43",
+              "source": "R_lma_035_3_e42",
+              "target": "R_lma_035_3_e41",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t44",
+              "source": "R_lma_035_3_e43",
+              "target": "R_lma_035_3_e42",
+              "type": "BEGUN_BY"
+            },
+            {
+              "id": "R_lma_035_3_t45",
+              "source": "R_lma_035_3_e45",
+              "target": "R_lma_035_3_e44",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t46",
+              "source": "R_lma_035_3_e46",
+              "target": "R_lma_035_3_e45",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t47",
+              "source": "R_lma_035_3_e47",
+              "target": "R_lma_035_3_e46",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t48",
+              "source": "R_lma_035_3_e48",
+              "target": "R_lma_035_3_e47",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t49",
+              "source": "R_lma_035_3_e49",
+              "target": "R_lma_035_3_e48",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t50",
+              "source": "R_lma_035_3_e51",
+              "target": "R_lma_035_3_e50",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t51",
+              "source": "R_lma_035_3_e51",
+              "target": "R_lma_035_3_e49",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t52",
+              "source": "R_lma_035_3_e52",
+              "target": "R_lma_035_3_e51",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t53",
+              "source": "R_lma_035_3_e53",
+              "target": "R_lma_035_3_e52",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t54",
+              "source": "R_lma_035_3_e53",
+              "target": "R_lma_035_3_e54",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_3_t55",
+              "source": "R_lma_035_3_e53",
+              "target": "R_lma_035_3_e55",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_3_t56",
+              "source": "R_lma_035_3_e56",
+              "target": "R_lma_035_3_e53",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t57",
+              "source": "R_lma_035_3_e57",
+              "target": "R_lma_035_3_e56",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t58",
+              "source": "R_lma_035_3_e58",
+              "target": "R_lma_035_3_e57",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t59",
+              "source": "R_lma_035_3_e59",
+              "target": "R_lma_035_3_e60",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t60",
+              "source": "R_lma_035_3_e61",
+              "target": "R_lma_035_3_e59",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_3_t61",
+              "source": "R_lma_035_3_e62",
+              "target": "R_lma_035_3_e61",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t62",
+              "source": "R_lma_035_3_e63",
+              "target": "R_lma_035_3_e62",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t63",
+              "source": "R_lma_035_3_e64",
+              "target": "R_lma_035_3_e63",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t64",
+              "source": "R_lma_035_3_e66",
+              "target": "R_lma_035_3_e65",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t65",
+              "source": "R_lma_035_3_e67",
+              "target": "R_lma_035_3_e66",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t66",
+              "source": "R_lma_035_3_e68",
+              "target": "R_lma_035_3_e67",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t67",
+              "source": "R_lma_035_3_e69",
+              "target": "R_lma_035_3_e68",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t68",
+              "source": "R_lma_035_3_e70",
+              "target": "R_lma_035_3_e69",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t69",
+              "source": "R_lma_035_3_e71",
+              "target": "R_lma_035_3_e60",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t70",
+              "source": "R_lma_035_3_e72",
+              "target": "R_lma_035_3_e71",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_3_t71",
+              "source": "R_lma_035_3_e73",
+              "target": "R_lma_035_3_e72",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t72",
+              "source": "R_lma_035_3_e74",
+              "target": "R_lma_035_3_e73",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t73",
+              "source": "R_lma_035_3_e75",
+              "target": "R_lma_035_3_e74",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t74",
+              "source": "R_lma_035_3_e76",
+              "target": "R_lma_035_3_e75",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t75",
+              "source": "R_lma_035_3_e77",
+              "target": "R_lma_035_3_e76",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t76",
+              "source": "R_lma_035_3_e80",
+              "target": "R_lma_035_3_e79",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t77",
+              "source": "R_lma_035_3_e78",
+              "target": "R_lma_035_3_e71",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t78",
+              "source": "R_lma_035_3_e81",
+              "target": "R_lma_035_3_e80",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t79",
+              "source": "R_lma_035_3_e82",
+              "target": "R_lma_035_3_e81",
+              "type": "BEFORE_OVERLAP"
+            },
+            {
+              "id": "R_lma_035_3_t80",
+              "source": "R_lma_035_3_e83",
+              "target": "R_lma_035_3_e82",
+              "type": "OVERLAP_AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t81",
+              "source": "R_lma_035_3_e84",
+              "target": "R_lma_035_3_e83",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t82",
+              "source": "R_lma_035_3_e85",
+              "target": "R_lma_035_3_e84",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t83",
+              "source": "R_lma_035_3_e86",
+              "target": "R_lma_035_3_e85",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t84",
+              "source": "R_lma_035_3_e85",
+              "target": "R_lma_035_3_e87",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t85",
+              "source": "R_lma_035_3_e88",
+              "target": "R_lma_035_3_e86",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t86",
+              "source": "R_lma_035_3_e89",
+              "target": "R_lma_035_3_e88",
+              "type": "BEFORE_OVERLAP"
+            },
+            {
+              "id": "R_lma_035_3_t87",
+              "source": "R_lma_035_3_e90",
+              "target": "R_lma_035_3_e89",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t88",
+              "source": "R_lma_035_3_e91",
+              "target": "R_lma_035_3_e90",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t89",
+              "source": "R_lma_035_3_e92",
+              "target": "R_lma_035_3_e91",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t90",
+              "source": "R_lma_035_3_e93",
+              "target": "R_lma_035_3_e92",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t91",
+              "source": "R_lma_035_3_e94",
+              "target": "R_lma_035_3_e93",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t92",
+              "source": "R_lma_035_3_e95",
+              "target": "R_lma_035_3_e94",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t93",
+              "source": "R_lma_035_3_e96",
+              "target": "R_lma_035_3_e95",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_035_3_t94",
+              "source": "R_lma_035_3_e97",
+              "target": "R_lma_035_3_e96",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t95",
+              "source": "R_lma_035_3_e98",
+              "target": "R_lma_035_3_e97",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t96",
+              "source": "R_lma_035_3_e98",
+              "target": "R_lma_035_3_e99",
+              "type": "BEGINS"
+            },
+            {
+              "id": "R_lma_035_3_t97",
+              "source": "R_lma_035_3_e100",
+              "target": "R_lma_035_3_e98",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t98",
+              "source": "R_lma_035_3_e101",
+              "target": "R_lma_035_3_e100",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t99",
+              "source": "R_lma_035_3_e101",
+              "target": "R_lma_035_3_e102",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t100",
+              "source": "R_lma_035_3_e103",
+              "target": "R_lma_035_3_e101",
+              "type": "OVERLAP_AFTER"
+            },
+            {
+              "id": "R_lma_035_3_t101",
+              "source": "R_lma_035_3_e104",
+              "target": "R_lma_035_3_e103",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t102",
+              "source": "R_lma_035_3_e105",
+              "target": "R_lma_035_3_e104",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_035_3_t103",
+              "source": "R_lma_035_3_e106",
+              "target": "R_lma_035_3_e105",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_035_3_t104",
+              "source": "R_lma_035_3_e107",
+              "target": "R_lma_035_3_e101",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t105",
+              "source": "R_lma_035_3_e108",
+              "target": "R_lma_035_3_e107",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_035_3_t106",
+              "source": "R_lma_035_3_e1",
+              "target": "R_lma_035_2_e59",
+              "type": "BEFORE"
+            }
+          ]
+        }
+      ],
+      "identityRelations": [
+        {
+          "id": "P_lma_035_c1",
+          "chain": [
+            "R_lma_035_1_e1",
+            "R_lma_035_3_e59"
+          ]
+        },
+        {
+          "id": "P_lma_035_c2",
+          "chain": [
+            "R_lma_035_1_e2",
+            "R_lma_035_3_e60"
+          ]
+        },
+        {
+          "id": "P_lma_035_c3",
+          "chain": [
+            "R_lma_035_1_e3",
+            "R_lma_035_1_e6"
+          ]
+        },
+        {
+          "id": "P_lma_035_c4",
+          "chain": [
+            "R_lma_035_1_e4",
+            "R_lma_035_3_e4"
+          ]
+        },
+        {
+          "id": "P_lma_035_c5",
+          "chain": [
+            "R_lma_035_1_e7",
+            "R_lma_035_1_e12",
+            "R_lma_035_2_e31",
+            "R_lma_035_2_e32",
+            "R_lma_035_2_e35",
+            "R_lma_035_2_e42",
+            "R_lma_035_3_e52",
+            "R_lma_035_3_e61",
+            "R_lma_035_3_e68",
+            "R_lma_035_3_e72"
+          ]
+        },
+        {
+          "id": "P_lma_035_c6",
+          "chain": [
+            "R_lma_035_1_e13",
+            "R_lma_035_3_e53"
+          ]
+        },
+        {
+          "id": "P_lma_035_c7",
+          "chain": [
+            "R_lma_035_1_e14",
+            "R_lma_035_3_e54"
+          ]
+        },
+        {
+          "id": "P_lma_035_c8",
+          "chain": [
+            "R_lma_035_1_e15",
+            "R_lma_035_3_e55"
+          ]
+        },
+        {
+          "id": "P_lma_035_c9",
+          "chain": [
+            "R_lma_035_2_e8",
+            "R_lma_035_2_e29",
+            "R_lma_035_3_e9"
+          ]
+        },
+        {
+          "id": "P_lma_035_c10",
+          "chain": [
+            "R_lma_035_2_e11",
+            "R_lma_035_2_e13"
+          ]
+        },
+        {
+          "id": "P_lma_035_c11",
+          "chain": [
+            "R_lma_035_2_e15",
+            "R_lma_035_2_e16"
+          ]
+        },
+        {
+          "id": "P_lma_035_c12",
+          "chain": [
+            "R_lma_035_2_e20",
+            "R_lma_035_3_e16"
+          ]
+        },
+        {
+          "id": "P_lma_035_c13",
+          "chain": [
+            "R_lma_035_2_e23",
+            "R_lma_035_3_e15"
+          ]
+        },
+        {
+          "id": "P_lma_035_c14",
+          "chain": [
+            "R_lma_035_2_e27",
+            "R_lma_035_2_e53",
+            "R_lma_035_3_e5",
+            "R_lma_035_3_e8",
+            "R_lma_035_3_e90"
+          ]
+        },
+        {
+          "id": "P_lma_035_c15",
+          "chain": [
+            "R_lma_035_2_e33",
+            "R_lma_035_2_e41"
+          ]
+        },
+        {
+          "id": "P_lma_035_c16",
+          "chain": [
+            "R_lma_035_2_e45",
+            "R_lma_035_2_e48"
+          ]
+        },
+        {
+          "id": "P_lma_035_c17",
+          "chain": [
+            "R_lma_035_3_e24",
+            "R_lma_035_3_e31"
+          ]
+        },
+        {
+          "id": "P_lma_035_c18",
+          "chain": [
+            "R_lma_035_3_e43",
+            "R_lma_035_3_e44"
+          ]
+        },
+        {
+          "id": "P_lma_035_c19",
+          "chain": [
+            "R_lma_035_3_e64",
+            "R_lma_035_3_e65"
+          ]
+        },
+        {
+          "id": "P_lma_035_c20",
+          "chain": [
+            "R_lma_035_3_e78",
+            "R_lma_035_3_e79",
+            "R_lma_035_3_e87"
+          ]
+        },
+        {
+          "id": "P_lma_035_c21",
+          "chain": [
+            "R_lma_035_3_e101",
+            "R_lma_035_3_e108"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, extname } from "node:path";
 
@@ -5,23 +6,25 @@ function usage() {
   console.log(`Usage: node scripts/convert-inception.mjs <cas.json> [cas.json ...] [options]
 
 Options:
-  --out <file>       Output path (default: annotations/converted-dataset.json)
+  --out <file>       Output path (default: inception/converted/converted-dataset.json)
   --config <file>    Optional JSON metadata map keyed by input filename
+  --translations <file>
+                     Optional English translations produced by scripts/translate.py
   --help             Show this help
 
 Provide each input JSON file as a separate argument.`);
 }
 
 function parseArgs(args) {
-  const options = { inputs: [], output: "annotations/converted-dataset.json" };
+  const options = { inputs: [], output: "inception/converted/converted-dataset.json" };
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
     if (arg === "--help" || arg === "-h") {
       options.help = true;
-    } else if (arg === "--out" || arg === "--config") {
+    } else if (arg === "--out" || arg === "--config" || arg === "--translations") {
       const value = args[++i];
       if (!value) throw new Error(`Missing value for ${arg}`);
-      options[arg === "--out" ? "output" : "config"] = value;
+      options[arg === "--out" ? "output" : arg.slice(2)] = value;
     } else if (arg.startsWith("-")) {
       throw new Error(`Unknown option: ${arg}`);
     } else {
@@ -213,6 +216,18 @@ function convertDocument(path, config = {}) {
   };
 }
 
+// Translations are keyed by the SHA-256 of the report text and by event surface, so edited reports are never paired with stale translations.
+function applyTranslations(reports, translations) {
+  for (const report of reports) {
+    const textEn = translations.reports?.[createHash("sha256").update(report.text, "utf8").digest("hex")];
+    if (textEn) report.textEn = textEn;
+    for (const event of report.events) {
+      const surfaceEn = translations.surfaces?.[event.surface];
+      if (surfaceEn) event.surfaceEn = surfaceEn;
+    }
+  }
+}
+
 function main() {
   const options = parseArgs(process.argv.slice(2));
   if (options.help) return usage();
@@ -236,6 +251,10 @@ function main() {
   }
 
   const output = { patients: [...patients.values()] };
+  if (options.translations) {
+    const translations = JSON.parse(readFileSync(options.translations, "utf8"));
+    applyTranslations(output.patients.flatMap((patient) => patient.reports), translations);
+  }
   const serialized = JSON.stringify(output, null, 2);
   mkdirSync(dirname(options.output), { recursive: true });
   writeFileSync(options.output, serialized);

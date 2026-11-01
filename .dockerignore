@@ -1,5 +1,7 @@
 .git
 .env*
+inception/*.json
 node_modules
 dist
 npm-debug.log*
+inception/converted/

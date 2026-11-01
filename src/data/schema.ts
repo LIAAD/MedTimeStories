@@ -8,6 +8,7 @@ export const EventSchema = z.object({
   start: z.number().int().min(0),
   end: z.number().int().min(1),
   surface: z.string().min(1),
+  surfaceEn: z.string().optional(),
   type: z.string().min(1),
   attributes: z.record(attrValue).optional(),
 });
@@ -32,6 +33,7 @@ export const ReportSchema = z
       .transform((v) => v ?? undefined)
       .refine((v) => v === undefined || !Number.isNaN(Date.parse(v)), "date must be a valid ISO date string"),
     text: z.string(),
+    textEn: z.string().optional(),
     events: z.array(EventSchema),
     temporalRelations: z.array(TemporalRelationSchema).default([]),
   })

@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { useFilters, useLoaded } from "../data/DataContext";
 import type { Report } from "../data/schema";
 import { typeStyle } from "../lib/colors";
-import { formatDate, graphEventKind, reportUrl } from "../lib/util";
+import { alignEnglish, formatDate, graphEventKind, reportUrl, withEnglishSurfaces } from "../lib/util";
 import { Card, EmptyState, Tabs, Toggle } from "../components/ui";
 import TextWithSpans, { type Arrow } from "../components/TextWithSpans";
 import EventPanel from "../components/EventPanel";
@@ -32,6 +32,7 @@ function ReportInner({ report }: { report: Report }) {
   const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set());
   const [showArrows, setShowArrows] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
+  const [showEnglish, setShowEnglish] =   useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
 
   const tab = sp.get("tab") === "graph" ? "graph" : "text";
@@ -40,6 +41,9 @@ function ReportInner({ report }: { report: Report }) {
   const selectedHere = selected?.reportId === report.id ? selected : undefined;
 
   const visibleEvents = useMemo(() => report.events.filter((e) => !hiddenTypes.has(graphEventKind(e).type)), [report, hiddenTypes]);
+  const english = showEnglish && !!report.textEn;
+  const textEvents = useMemo(() => (english ? alignEnglish(report.textEn!, visibleEvents, report.text.length) : visibleEvents), [english, report, visibleEvents]);
+  const graphEvents = useMemo(() => (english ? withEnglishSurfaces(visibleEvents) : visibleEvents), [english, visibleEvents]);
   const navigable = useMemo(() => [...visibleEvents].sort((a, b) => a.start - b.start || b.end - a.end), [visibleEvents]);
   const typeCounts = useMemo(() => {
     const m = new Map<string, number>();
@@ -151,12 +155,11 @@ function ReportInner({ report }: { report: Report }) {
             <span className={`h-2 w-2 rounded-full ${typeStyle(t).dot}`} /> {t} ({c})
           </button>
         ))}
-        {tab === "text" && (
-          <span className="ml-auto flex items-center gap-4">
-            <Toggle checked={showArrows} onChange={setShowArrows} label="Temporal arrows" />
-            {showArrows && <Toggle checked={showLabels} onChange={setShowLabels} label="Relation labels" />}
-          </span>
-        )}
+        <span className="ml-auto flex items-center gap-4">
+          {tab === "text" && <Toggle checked={showArrows} onChange={setShowArrows} label="Temporal arrows" />}
+          {tab === "text" && showArrows && <Toggle checked={showLabels} onChange={setShowLabels} label="Relation labels" />}
+          {report.textEn && <Toggle checked={showEnglish} onChange={setShowEnglish} label="English (machine translated)" />}
+        </span>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_380px]">
@@ -166,24 +169,28 @@ function ReportInner({ report }: { report: Report }) {
             report.text.trim() === "" ? (
               <EmptyState title="This report has no text" />
             ) : (
-              <Card className="p-5">
-                <TextWithSpans
-                  text={report.text}
-                  events={visibleEvents}
-                  selectedId={selectedHere?.id}
-                  relatedIds={relatedIds}
-                  isDimmed={(e) => active && !matchEvent(e)}
-                  onSelect={select}
-                  onHover={setHovered}
-                  arrows={arrows}
-                  showArrowLabels={showLabels}
-                  highlightArrows={!!selectedHere}
-                />
-              </Card>
+              <>
+                <Card className="p-5">
+                  <div lang={english ? "en" : "pt"} translate={english ? "no" : undefined}>
+                  <TextWithSpans
+                    text={english ? report.textEn! : report.text}
+                    events={textEvents}
+                    selectedId={selectedHere?.id}
+                    relatedIds={relatedIds}
+                    isDimmed={(e) => active && !matchEvent(e)}
+                    onSelect={select}
+                    onHover={setHovered}
+                    arrows={arrows}
+                    showArrowLabels={showLabels}
+                    highlightArrows={!!selectedHere}
+                  />
+                  </div>
+                </Card>
+              </>
             )
           ) : (
             <TemporalGraph
-              events={visibleEvents}
+              events={graphEvents}
               relations={report.temporalRelations}
               identityRelations={identityRelations}
               selectedId={selectedHere?.id}

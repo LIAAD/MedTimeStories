@@ -138,7 +138,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-900/90">
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-3 px-4 py-2.5">
           <Link to="/" className="mr-2 text-lg font-semibold text-indigo-600 dark:text-indigo-400">
-            ⚕ Clinical NLP Explorer
+            ⚕ MedTime Stories
           </Link>
           <Link to="/patterns" className="text-sm text-slate-600 hover:underline dark:text-slate-300">Patterns</Link>
           <Link to="/words" className="text-sm text-slate-600 hover:underline dark:text-slate-300">Word graph</Link>

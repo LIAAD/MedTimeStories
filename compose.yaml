@@ -5,5 +5,7 @@ services:
       args:
         VITE_DATASET_URL: ${VITE_DATASET_URL:-/data/inception-dataset.json}
     ports:
-      - "8071:80"
+      - "8080:80"
+    volumes:
+      - ./inception:/inception:ro
     restart: unless-stopped
