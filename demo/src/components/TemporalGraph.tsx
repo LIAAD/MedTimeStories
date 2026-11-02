@@ -19,6 +19,7 @@ interface Props {
 export default function TemporalGraph({ events, relations, selectedId, onSelect, onHover, eventOrder, sublabelPrefix }: Props) {
   const [hiddenRel, setHiddenRel] = useState<Set<string>>(new Set());
   const [showIsolated, setShowIsolated] = useState(false);
+  const [showRelations, setShowRelations] = useState(false);
   const [showGeneralEvents, setShowGeneralEvents] = useState(false);
   const hideGeneralEvents = !showGeneralEvents;
 
@@ -110,8 +111,9 @@ export default function TemporalGraph({ events, relations, selectedId, onSelect,
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-sm text-slate-500">Relations:</span>
-        {relCounts.map(([t, c]) => (
+        <Toggle checked={showRelations} onChange={setShowRelations} label="Show relations" />
+        {showRelations && <span className="text-sm text-slate-500">Relations:</span>}
+        {showRelations && relCounts.map(([t, c]) => (
           <button
             key={t}
             onClick={() => toggleRel(t)}
@@ -140,6 +142,7 @@ export default function TemporalGraph({ events, relations, selectedId, onSelect,
           onHover={onHover}
           nestIncluded
           hiddenIds={hiddenIds}
+          showEdges={showRelations}
         />
       )}
       <p className="text-xs text-slate-500">Left to right follows temporal start order. Simultaneous events share a column; colors identify event types. <span className="inline-block h-2 w-2 rounded-full bg-blue-600" /> admission date, <span className="inline-block h-2 w-2 rounded-full bg-red-600" /> discharge date.</p>

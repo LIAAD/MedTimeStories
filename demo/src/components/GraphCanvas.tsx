@@ -37,9 +37,11 @@ interface Props {
   nestIncluded?: boolean;
   /** Nodes kept in the layout (so positions don't change) but not drawn, along with their edges. */
   hiddenIds?: Set<string>;
+  /** Draw the edges; the layout still accounts for them. */
+  showEdges?: boolean;
 }
 
-export default function GraphCanvas({ nodes, edges, selectedIds, onSelect, onHover, nestIncluded, hiddenIds }: Props) {
+export default function GraphCanvas({ nodes, edges, selectedIds, onSelect, onHover, nestIncluded, hiddenIds, showEdges = true }: Props) {
   const layout = useMemo(
     () => layoutGraph(nodes.map((n) => ({ id: n.id, lane: n.lane ?? "Events", hint: n.hint, temporalTime: n.temporalTime, present: n.present })),     edges.map((e) => ({ ...e, type: e.layoutType ?? e.type })), nestIncluded, hiddenIds),
         [nodes, edges, nestIncluded, hiddenIds],
@@ -105,7 +107,7 @@ export default function GraphCanvas({ nodes, edges, selectedIds, onSelect, onHov
             </text>
           </g>
         ))}
-        {edges.map((e) => {
+        {showEdges && edges.map((e) => {
           const le = edgeById.get(e.id);
           if (!le || layout.hiddenEdges.has(e.id) || hiddenIds?.has(e.source) || hiddenIds?.has(e.target)) return null;
           const hi = selectedIds.has(e.source) || selectedIds.has(e.target);
