@@ -82,52 +82,6 @@ export function truncate(s: string, n: number): string {
   return s.length > n ? `${s.slice(0, n - 1)}…` : s;
 }
 
-const words = (t: string) => [...t.matchAll(/[\p{L}\p{N}]+/gu)].map((m) => ({ w: m[0].toLowerCase(), start: m.index!, end: m.index! + m[0].length }));
-const stem = (w: string) => w.slice(0, 5);
-
-/**
- * Locates each translated surface inside the English text. Exact matches closest to the expected
- * (proportional) position win; otherwise the word window with the best stem overlap near that position is used.
- * Events with no convincing match are left unhighlighted.
- */
-export function alignEnglish(textEn: string, events: ClinEvent[], sourceLength: number): ClinEvent[] {
-  const hay = textEn.toLowerCase();
-  const toks = words(textEn);
-  const ratio = textEn.length / Math.max(sourceLength, 1);
-  const out: ClinEvent[] = [];
-  for (const e of events) {
-    const needle = e.surfaceEn?.trim().toLowerCase();
-    if (!needle) continue;
-    const expected = e.start * ratio;
-    let best: { start: number; end: number } | null = null;
-    let bestDist = Infinity;
-    for (let i = hay.indexOf(needle); i >= 0; i = hay.indexOf(needle, i + 1)) {
-      const d = Math.abs(i - expected);
-      if (d < bestDist) (bestDist = d), (best = { start: i, end: i + needle.length });
-    }
-    if (!best) {
-      const target = words(needle).map((t) => stem(t.w));
-      if (target.length) {
-        const radius = Math.max(120, textEn.length * 0.15);
-        let bestScore = 0;
-        for (let a = 0; a < toks.length; a++) {
-          if (Math.abs(toks[a].start - expected) > radius) continue;
-          for (let n = Math.max(1, target.length - 1); n <= target.length + 1 && a + n <= toks.length; n++) {
-            const win = toks.slice(a, a + n).map((t) => stem(t.w));
-            const common = target.filter((t) => win.includes(t)).length;
-            const score = common / Math.max(target.length, n) - Math.abs(toks[a].start - expected) / (radius * 20);
-            if (common > 0 && score > bestScore && common / target.length >= 0.5) {
-              bestScore = score;
-              best = { start: toks[a].start, end: toks[a + n - 1].end };
-            }
-          }
-        }
-      }
-    }
-    if (best) out.push({ ...e, start: best.start, end: best.end });
-  }
-  return out;
-}
 export function withEnglishSurfaces(events: ClinEvent[]): ClinEvent[] {
   return events.map((e) => (e.surfaceEn ? { ...e, surface: e.surfaceEn } : e));
 }

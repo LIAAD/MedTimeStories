@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { useFilters, useLoaded } from "../data/DataContext";
 import type { Report } from "../data/schema";
 import { typeStyle } from "../lib/colors";
-import { alignEnglish, formatDate, graphEventKind, reportUrl, withEnglishSurfaces } from "../lib/util";
+import { formatDate, graphEventKind, reportUrl, withEnglishSurfaces } from "../lib/util";
 import { Card, EmptyState, Tabs, Toggle } from "../components/ui";
 import TextWithSpans, { type Arrow } from "../components/TextWithSpans";
 import EventPanel from "../components/EventPanel";
@@ -32,7 +32,7 @@ function ReportInner({ report }: { report: Report }) {
   const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set());
   const [showArrows, setShowArrows] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
-  const [showEnglish, setShowEnglish] =   useState(false);
+  const [showEnglish, setShowEnglish] = useState(true);
   const [hovered, setHovered] = useState<string | null>(null);
 
   const tab = sp.get("tab") === "graph" ? "graph" : "text";
@@ -42,7 +42,6 @@ function ReportInner({ report }: { report: Report }) {
 
   const visibleEvents = useMemo(() => report.events.filter((e) => !hiddenTypes.has(graphEventKind(e).type)), [report, hiddenTypes]);
   const english = showEnglish && !!report.textEn;
-  const textEvents = useMemo(() => (english ? alignEnglish(report.textEn!, visibleEvents, report.text.length) : visibleEvents), [english, report, visibleEvents]);
   const graphEvents = useMemo(() => (english ? withEnglishSurfaces(visibleEvents) : visibleEvents), [english, visibleEvents]);
   const navigable = useMemo(() => [...visibleEvents].sort((a, b) => a.start - b.start || b.end - a.end), [visibleEvents]);
   const typeCounts = useMemo(() => {
@@ -171,10 +170,10 @@ function ReportInner({ report }: { report: Report }) {
             ) : (
               <>
                 <Card className="p-5">
-                  <div lang={english ? "en" : "pt"} translate={english ? "no" : undefined}>
+                  <div lang="pt">
                   <TextWithSpans
-                    text={english ? report.textEn! : report.text}
-                    events={textEvents}
+                    text={report.text}
+                    events={visibleEvents}
                     selectedId={selectedHere?.id}
                     relatedIds={relatedIds}
                     isDimmed={(e) => active && !matchEvent(e)}
@@ -186,6 +185,14 @@ function ReportInner({ report }: { report: Report }) {
                   />
                   </div>
                 </Card>
+                {english && (
+                  <Card className="p-5">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      English translation <span className="font-normal normal-case">(machine translated, may contain errors)</span>
+                    </p>
+                    <div lang="en" translate="no" className="whitespace-pre-wrap text-[15px] leading-relaxed">{report.textEn}</div>
+                  </Card>
+                )}
               </>
             )
           ) : (
