@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { useFilters, useLoaded } from "../data/DataContext";
 import type { Report } from "../data/schema";
 import { typeStyle } from "../lib/colors";
-import { formatDate, graphEventKind, reportUrl, withEnglishSurfaces } from "../lib/util";
+import { formatDate, graphEventKind, reportUrl } from "../lib/util";
 import { Card, EmptyState, Tabs, Toggle } from "../components/ui";
 import TextWithSpans, { type Arrow } from "../components/TextWithSpans";
 import EventPanel from "../components/EventPanel";
@@ -21,18 +21,20 @@ export default function ReportView() {
 
 function ReportInner({ report }: { report: Report }) {
   const { idx } = useLoaded();
-  const identityRelations = idx.patients.get(report.patientId)?.identityRelations ?? [];
-  const localIdentityLinkCount = identityRelations.reduce((total, chain) => {
-    const mentions = new Set(chain.chain.filter((id) => idx.events.get(id)?.reportId === report.id));
-    return total + Math.max(0, mentions.size - 1);
-  }, 0);
+  const { inReport, crossReport } = useMemo(() => {
+    const here = (id: string) => idx.events.get(id)?.reportId === report.id;
+    const all = (idx.patients.get(report.patientId)?.reports ?? []).flatMap((r) => r.temporalRelations);
+    return {
+      inReport: all.filter((t) => here(t.source) && here(t.target)).length,
+      crossReport: all.filter((t) => here(t.source) !== here(t.target)).length,
+    };
+  }, [idx, report]);
   const { active, matchEvent, filters } = useFilters();
   const navigate = useNavigate();
   const [sp, setSp] = useSearchParams();
   const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set());
   const [showArrows, setShowArrows] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
-  const [showEnglish, setShowEnglish] = useState(true);
   const [hovered, setHovered] = useState<string | null>(null);
 
   const tab = sp.get("tab") === "graph" ? "graph" : "text";
@@ -41,8 +43,7 @@ function ReportInner({ report }: { report: Report }) {
   const selectedHere = selected?.reportId === report.id ? selected : undefined;
 
   const visibleEvents = useMemo(() => report.events.filter((e) => !hiddenTypes.has(graphEventKind(e).type)), [report, hiddenTypes]);
-  const english = showEnglish && !!report.textEn;
-  const graphEvents = useMemo(() => (english ? withEnglishSurfaces(visibleEvents) : visibleEvents), [english, visibleEvents]);
+  const graphEvents = visibleEvents;
   const navigable = useMemo(() => [...visibleEvents].sort((a, b) => a.start - b.start || b.end - a.end), [visibleEvents]);
   const typeCounts = useMemo(() => {
     const m = new Map<string, number>();
@@ -95,25 +96,18 @@ function ReportInner({ report }: { report: Report }) {
     const s = new Set<string>();
     if (!focusId) return s;
     idx.relationsByEvent.get(focusId)?.forEach((r) => s.add(r.other));
-    idx.chainByEvent.get(focusId)?.chain.forEach((id) => id !== focusId && s.add(id));
     return s;
   }, [focusId, idx]);
 
   const arrows = useMemo<Arrow[]>(() => {
     if (!showArrows) return [];
     const vis = new Set(visibleEvents.map((e) => e.id));
-    const temporal = report.temporalRelations
+    return report.temporalRelations
       .filter((r) => vis.has(r.source) && vis.has(r.target))
       .filter((r) => !filters.rel || r.type === filters.rel)
-      .map((r) => ({ source: r.source, target: r.target, type: r.type }));
-    const identity: Arrow[] = filters.rel
-      ? []
-      : identityRelations.flatMap((chain) => {
-          const mentions = [...new Set(chain.chain.filter((id) => vis.has(id) && idx.events.get(id)?.reportId === report.id))];
-          return mentions.slice(1).map((id, i): Arrow => ({ source: mentions[i], target: id, type: "IDENTITY", identity: true }));
-        });
-    return [...temporal, ...identity].filter((r) => !selectedHere || r.source === selectedHere.id || r.target === selectedHere.id);
-  }, [showArrows, visibleEvents, report, filters.rel, selectedHere, identityRelations, idx]);
+      .map((r): Arrow => ({ source: r.source, target: r.target, type: r.type, identity: r.type === "IDENTITY" }))
+      .filter((r) => !selectedHere || r.source === selectedHere.id || r.target === selectedHere.id);
+  }, [showArrows, visibleEvents, report, filters.rel, selectedHere]);
 
   const toggleType = (t: string) =>
     setHiddenTypes((cur) => {
@@ -135,7 +129,7 @@ function ReportInner({ report }: { report: Report }) {
           <Link to={`/patient/${encodeURIComponent(report.patientId)}`} className="hover:underline">{report.patientId}</Link>
           <span className="rounded bg-slate-100 px-1.5 py-0.5 dark:bg-slate-800">{report.type}</span>
           <span>{formatDate(report.date)}</span>
-          <span>{report.events.length} events · {report.temporalRelations.length} temporal TLinks · {localIdentityLinkCount} identity TLinks</span>
+          <span>{report.events.length} events · {inReport} relations · {crossReport} cross-report relations</span>
         </div>
         <h1 className="text-2xl font-semibold">{report.title}</h1>
       </div>
@@ -155,13 +149,12 @@ function ReportInner({ report }: { report: Report }) {
           </button>
         ))}
         <span className="ml-auto flex items-center gap-4">
-          {tab === "text" && <Toggle checked={showArrows} onChange={setShowArrows} label="Temporal arrows" />}
+          {tab === "text" && <Toggle checked={showArrows} onChange={setShowArrows} label="Relation arrows" />}
           {tab === "text" && showArrows && <Toggle checked={showLabels} onChange={setShowLabels} label="Relation labels" />}
-          {report.textEn && <Toggle checked={showEnglish} onChange={setShowEnglish} label="English (machine translated)" />}
         </span>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_380px]">
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div className="space-y-3">
           <Tabs value={tab} onChange={setTab} tabs={[{ id: "text", label: "Text" }, { id: "graph", label: "Temporal graph" }]} />
           {tab === "text" ? (
@@ -185,21 +178,12 @@ function ReportInner({ report }: { report: Report }) {
                   />
                   </div>
                 </Card>
-                {english && (
-                  <Card className="p-5">
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                      English translation <span className="font-normal normal-case">(machine translated, may contain errors)</span>
-                    </p>
-                    <div lang="en" translate="no" className="whitespace-pre-wrap text-[15px] leading-relaxed">{report.textEn}</div>
-                  </Card>
-                )}
               </>
             )
           ) : (
             <TemporalGraph
               events={graphEvents}
               relations={report.temporalRelations}
-              identityRelations={identityRelations}
               selectedId={selectedHere?.id}
               onSelect={select}
               onHover={setHovered}

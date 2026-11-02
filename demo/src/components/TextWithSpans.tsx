@@ -125,7 +125,7 @@ export default function TextWithSpans({ text, events, selectedId, relatedIds, is
             tabIndex={-1}
             data-ev={p.id}
             data-starts={s.starts.length ? s.starts.join(" ") : undefined}
-            title={`${graphEventKind(p).sublabel}: ${p.surface}${p.surfaceEn ? ` (${p.surfaceEn})` : ""}`}
+            title={`${graphEventKind(p).sublabel}: ${p.surface}`}
             onClick={() => onSelect(p.id)}
             onMouseEnter={() => onHover(p.id)}
             onMouseLeave={() => onHover(null)}

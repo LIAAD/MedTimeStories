@@ -102,6 +102,24 @@ const STYLES: Record<string, TypeStyle> = {
     dot: "bg-lime-500",
     hex: "#84cc16",
   },
+  "TIME (DURATION)": {
+    mark: "bg-purple-200 text-purple-950 dark:bg-purple-500/30 dark:text-purple-50",
+    chip: "border-purple-400 bg-purple-50 text-purple-800 dark:border-purple-500/60 dark:bg-purple-500/10 dark:text-purple-200",
+    dot: "bg-purple-500",
+    hex: "#a855f7",
+  },
+  "TIME (SET)": {
+    mark: "bg-sky-200 text-sky-950 dark:bg-sky-500/30 dark:text-sky-50",
+    chip: "border-sky-400 bg-sky-50 text-sky-800 dark:border-sky-500/60 dark:bg-sky-500/10 dark:text-sky-200",
+    dot: "bg-sky-500",
+    hex: "#0ea5e9",
+  },
+  "TIME (TIME)": {
+    mark: "bg-pink-200 text-pink-950 dark:bg-pink-500/30 dark:text-pink-50",
+    chip: "border-pink-400 bg-pink-50 text-pink-800 dark:border-pink-500/60 dark:bg-pink-500/10 dark:text-pink-200",
+    dot: "bg-pink-500",
+    hex: "#ec4899",
+  },
   OCCURRENCE: {
     mark: "bg-amber-200 text-amber-950 dark:bg-amber-500/30 dark:text-amber-50",
     chip: "border-amber-400 bg-amber-50 text-amber-800 dark:border-amber-500/60 dark:bg-amber-500/10 dark:text-amber-200",

@@ -32,7 +32,6 @@ if [ "$#" -gt 0 ]; then
   mkdir -p "$(dirname "$dataset_path")"
   extra=""
   [ -f "$input_dir/metadata.json" ] && extra="$extra --config $input_dir/metadata.json"
-  [ -f "$input_dir/translations.json" ] && extra="$extra --translations $input_dir/translations.json"
   # shellcheck disable=SC2086
   node /app/scripts/convert-inception.mjs "$@" $extra --out "$dataset_path"
 else

@@ -1,0 +1,1965 @@
+{
+  "%TYPES" : {
+    "custom.Relation" : {
+      "%NAME" : "custom.Relation",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "Dependent" : {
+        "%NAME" : "Dependent",
+        "%RANGE" : "custom.Span"
+      },
+      "Governor" : {
+        "%NAME" : "Governor",
+        "%RANGE" : "custom.Span"
+      },
+      "DiscourseLinks" : {
+        "%NAME" : "DiscourseLinks",
+        "%RANGE" : "uima.cas.String"
+      },
+      "label" : {
+        "%NAME" : "label",
+        "%RANGE" : "uima.cas.String"
+      },
+      "SubordinationLinks" : {
+        "%NAME" : "SubordinationLinks",
+        "%RANGE" : "uima.cas.String"
+      },
+      "AspectualLinks" : {
+        "%NAME" : "AspectualLinks",
+        "%RANGE" : "uima.cas.String"
+      },
+      "MeasureLinks" : {
+        "%NAME" : "MeasureLinks",
+        "%RANGE" : "uima.cas.String"
+      },
+      "ObjectalLinks" : {
+        "%NAME" : "ObjectalLinks",
+        "%RANGE" : "uima.cas.String"
+      },
+      "SemanticRoleLinks" : {
+        "%NAME" : "SemanticRoleLinks",
+        "%RANGE" : "uima.cas.String"
+      },
+      "SpatialLinks" : {
+        "%NAME" : "SpatialLinks",
+        "%RANGE" : "uima.cas.String"
+      },
+      "temporal_links" : {
+        "%NAME" : "temporal_links",
+        "%RANGE" : "uima.cas.String"
+      },
+      "SignalLinks" : {
+        "%NAME" : "SignalLinks",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "custom.Span" : {
+      "%NAME" : "custom.Span",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "label" : {
+        "%NAME" : "label",
+        "%RANGE" : "uima.cas.String"
+      },
+      "SpecializedEventClass" : {
+        "%NAME" : "SpecializedEventClass",
+        "%RANGE" : "uima.cas.String"
+      },
+      "PersonalHistory" : {
+        "%NAME" : "PersonalHistory",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Arguments" : {
+        "%NAME" : "Arguments",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Pos" : {
+        "%NAME" : "Pos",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Polarity" : {
+        "%NAME" : "Polarity",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Class" : {
+        "%NAME" : "Class",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Event_Type" : {
+        "%NAME" : "Event_Type",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Tense" : {
+        "%NAME" : "Tense",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Aspect" : {
+        "%NAME" : "Aspect",
+        "%RANGE" : "uima.cas.String"
+      },
+      "VForm" : {
+        "%NAME" : "VForm",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Mood" : {
+        "%NAME" : "Mood",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Modality" : {
+        "%NAME" : "Modality",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Factuality" : {
+        "%NAME" : "Factuality",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Lexical_Head" : {
+        "%NAME" : "Lexical_Head",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Individuation_Domain" : {
+        "%NAME" : "Individuation_Domain",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Participant_Type_Domain" : {
+        "%NAME" : "Participant_Type_Domain",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Involvement" : {
+        "%NAME" : "Involvement",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Time_Type" : {
+        "%NAME" : "Time_Type",
+        "%RANGE" : "uima.cas.String"
+      },
+      "TemporalFunction" : {
+        "%NAME" : "TemporalFunction",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Type" : {
+        "%NAME" : "Type",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Topological" : {
+        "%NAME" : "Topological",
+        "%RANGE" : "uima.cas.String"
+      },
+      "PathDefining" : {
+        "%NAME" : "PathDefining",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Signal_Type" : {
+        "%NAME" : "Signal_Type",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Signal_PoS" : {
+        "%NAME" : "Signal_PoS",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Numericalrelation" : {
+        "%NAME" : "Numericalrelation",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Value" : {
+        "%NAME" : "Value",
+        "%RANGE" : "uima.cas.String"
+      },
+      "Observations" : {
+        "%NAME" : "Observations",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition" : {
+      "%NAME" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+      "%SUPER_TYPE" : "uima.cas.TOP",
+      "layer" : {
+        "%NAME" : "layer",
+        "%RANGE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.LayerDefinition"
+      },
+      "name" : {
+        "%NAME" : "name",
+        "%RANGE" : "uima.cas.String"
+      },
+      "uiName" : {
+        "%NAME" : "uiName",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.clarin.webanno.api.type.LayerDefinition" : {
+      "%NAME" : "de.tudarmstadt.ukp.clarin.webanno.api.type.LayerDefinition",
+      "%SUPER_TYPE" : "uima.cas.TOP",
+      "name" : {
+        "%NAME" : "name",
+        "%RANGE" : "uima.cas.String"
+      },
+      "uiName" : {
+        "%NAME" : "uiName",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.MorphologicalFeatures" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.MorphologicalFeatures",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "gender" : {
+        "%NAME" : "gender",
+        "%RANGE" : "uima.cas.String"
+      },
+      "number" : {
+        "%NAME" : "number",
+        "%RANGE" : "uima.cas.String"
+      },
+      "case" : {
+        "%NAME" : "case",
+        "%RANGE" : "uima.cas.String"
+      },
+      "degree" : {
+        "%NAME" : "degree",
+        "%RANGE" : "uima.cas.String"
+      },
+      "verbForm" : {
+        "%NAME" : "verbForm",
+        "%RANGE" : "uima.cas.String"
+      },
+      "tense" : {
+        "%NAME" : "tense",
+        "%RANGE" : "uima.cas.String"
+      },
+      "mood" : {
+        "%NAME" : "mood",
+        "%RANGE" : "uima.cas.String"
+      },
+      "voice" : {
+        "%NAME" : "voice",
+        "%RANGE" : "uima.cas.String"
+      },
+      "definiteness" : {
+        "%NAME" : "definiteness",
+        "%RANGE" : "uima.cas.String"
+      },
+      "value" : {
+        "%NAME" : "value",
+        "%RANGE" : "uima.cas.String"
+      },
+      "person" : {
+        "%NAME" : "person",
+        "%RANGE" : "uima.cas.String"
+      },
+      "aspect" : {
+        "%NAME" : "aspect",
+        "%RANGE" : "uima.cas.String"
+      },
+      "animacy" : {
+        "%NAME" : "animacy",
+        "%RANGE" : "uima.cas.String"
+      },
+      "negative" : {
+        "%NAME" : "negative",
+        "%RANGE" : "uima.cas.String"
+      },
+      "numType" : {
+        "%NAME" : "numType",
+        "%RANGE" : "uima.cas.String"
+      },
+      "possessive" : {
+        "%NAME" : "possessive",
+        "%RANGE" : "uima.cas.String"
+      },
+      "pronType" : {
+        "%NAME" : "pronType",
+        "%RANGE" : "uima.cas.String"
+      },
+      "reflex" : {
+        "%NAME" : "reflex",
+        "%RANGE" : "uima.cas.String"
+      },
+      "transitivity" : {
+        "%NAME" : "transitivity",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "PosValue" : {
+        "%NAME" : "PosValue",
+        "%RANGE" : "uima.cas.String"
+      },
+      "coarseValue" : {
+        "%NAME" : "coarseValue",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData",
+      "%SUPER_TYPE" : "uima.tcas.DocumentAnnotation",
+      "documentTitle" : {
+        "%NAME" : "documentTitle",
+        "%RANGE" : "uima.cas.String"
+      },
+      "documentId" : {
+        "%NAME" : "documentId",
+        "%RANGE" : "uima.cas.String"
+      },
+      "documentUri" : {
+        "%NAME" : "documentUri",
+        "%RANGE" : "uima.cas.String"
+      },
+      "collectionId" : {
+        "%NAME" : "collectionId",
+        "%RANGE" : "uima.cas.String"
+      },
+      "documentBaseUri" : {
+        "%NAME" : "documentBaseUri",
+        "%RANGE" : "uima.cas.String"
+      },
+      "isLastSegment" : {
+        "%NAME" : "isLastSegment",
+        "%RANGE" : "uima.cas.Boolean"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription",
+      "%SUPER_TYPE" : "uima.cas.TOP",
+      "name" : {
+        "%NAME" : "name",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagsetDescription" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagsetDescription",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "layer" : {
+        "%NAME" : "layer",
+        "%RANGE" : "uima.cas.String"
+      },
+      "name" : {
+        "%NAME" : "name",
+        "%RANGE" : "uima.cas.String"
+      },
+      "tags" : {
+        "%NAME" : "tags",
+        "%RANGE" : "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription[]"
+      },
+      "componentName" : {
+        "%NAME" : "componentName",
+        "%RANGE" : "uima.cas.String"
+      },
+      "modelLocation" : {
+        "%NAME" : "modelLocation",
+        "%RANGE" : "uima.cas.String"
+      },
+      "modelVariant" : {
+        "%NAME" : "modelVariant",
+        "%RANGE" : "uima.cas.String"
+      },
+      "modelLanguage" : {
+        "%NAME" : "modelLanguage",
+        "%RANGE" : "uima.cas.String"
+      },
+      "modelVersion" : {
+        "%NAME" : "modelVersion",
+        "%RANGE" : "uima.cas.String"
+      },
+      "input" : {
+        "%NAME" : "input",
+        "%RANGE" : "uima.cas.Boolean"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "value" : {
+        "%NAME" : "value",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "id" : {
+        "%NAME" : "id",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Stem" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Stem",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "value" : {
+        "%NAME" : "value",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "parent" : {
+        "%NAME" : "parent",
+        "%RANGE" : "uima.tcas.Annotation"
+      },
+      "lemma" : {
+        "%NAME" : "lemma",
+        "%RANGE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma"
+      },
+      "stem" : {
+        "%NAME" : "stem",
+        "%RANGE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Stem"
+      },
+      "pos" : {
+        "%NAME" : "pos",
+        "%RANGE" : "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS"
+      },
+      "morph" : {
+        "%NAME" : "morph",
+        "%RANGE" : "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.MorphologicalFeatures"
+      },
+      "id" : {
+        "%NAME" : "id",
+        "%RANGE" : "uima.cas.String"
+      },
+      "form" : {
+        "%NAME" : "form",
+        "%RANGE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.TokenForm"
+      },
+      "syntacticFunction" : {
+        "%NAME" : "syntacticFunction",
+        "%RANGE" : "uima.cas.String"
+      },
+      "order" : {
+        "%NAME" : "order",
+        "%RANGE" : "uima.cas.Integer"
+      }
+    },
+    "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.TokenForm" : {
+      "%NAME" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.TokenForm",
+      "%SUPER_TYPE" : "uima.tcas.Annotation",
+      "value" : {
+        "%NAME" : "value",
+        "%RANGE" : "uima.cas.String"
+      }
+    },
+    "de.tudarmstadt.ukp.inception.annotation.type.ResumptionLocation" : {
+      "%NAME" : "de.tudarmstadt.ukp.inception.annotation.type.ResumptionLocation",
+      "%SUPER_TYPE" : "uima.cas.AnnotationBase",
+      "offset" : {
+        "%NAME" : "offset",
+        "%RANGE" : "uima.cas.Integer"
+      }
+    }
+  },
+  "%FEATURE_STRUCTURES" : [ {
+    "%ID" : 1,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 92,
+    "end" : 107,
+    "@Dependent" : 3,
+    "@Governor" : 4,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 5,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 92,
+    "end" : 107,
+    "@Dependent" : 3,
+    "@Governor" : 6,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 7,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 157,
+    "end" : 170,
+    "@Dependent" : 8,
+    "@Governor" : 9,
+    "temporal_links" : "TLINK_simultaneous"
+  }, {
+    "%ID" : 10,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 194,
+    "end" : 201,
+    "@Dependent" : 9,
+    "@Governor" : 11,
+    "temporal_links" : "TLINK_simultaneous"
+  }, {
+    "%ID" : 12,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 203,
+    "end" : 211,
+    "@Dependent" : 11,
+    "@Governor" : 13,
+    "temporal_links" : "TLINK_simultaneous"
+  }, {
+    "%ID" : 14,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 137,
+    "end" : 152,
+    "@Dependent" : 6,
+    "@Governor" : 9,
+    "temporal_links" : "TLINK_after"
+  }, {
+    "%ID" : 15,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 253,
+    "end" : 266,
+    "@Dependent" : 16,
+    "@Governor" : 17,
+    "temporal_links" : "TLINK_simultaneous"
+  }, {
+    "%ID" : 18,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 270,
+    "end" : 286,
+    "@Dependent" : 17,
+    "@Governor" : 19,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 20,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 270,
+    "end" : 286,
+    "@Dependent" : 17,
+    "@Governor" : 21,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 22,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 270,
+    "end" : 286,
+    "@Dependent" : 17,
+    "@Governor" : 23,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 24,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 359,
+    "end" : 372,
+    "@Dependent" : 25,
+    "@Governor" : 26,
+    "temporal_links" : "TLINK_simultaneous"
+  }, {
+    "%ID" : 27,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 405,
+    "end" : 428,
+    "@Dependent" : 26,
+    "@Governor" : 28,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 29,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 436,
+    "end" : 452,
+    "@Dependent" : 28,
+    "@Governor" : 30,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 31,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 338,
+    "end" : 354,
+    "@Dependent" : 23,
+    "@Governor" : 26,
+    "temporal_links" : "TLINK_after"
+  }, {
+    "%ID" : 32,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 457,
+    "end" : 474,
+    "@Dependent" : 30,
+    "@Governor" : 33,
+    "temporal_links" : "TLINK_after"
+  }, {
+    "%ID" : 34,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 502,
+    "end" : 524,
+    "@Dependent" : 33,
+    "@Governor" : 35,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 36,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 530,
+    "end" : 542,
+    "@Dependent" : 35,
+    "@Governor" : 37,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 38,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 547,
+    "end" : 557,
+    "@Dependent" : 37,
+    "@Governor" : 39,
+    "temporal_links" : "TLINK_after"
+  }, {
+    "%ID" : 40,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 571,
+    "end" : 592,
+    "@Dependent" : 39,
+    "@Governor" : 41,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 42,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 253,
+    "end" : 266,
+    "@Dependent" : 16,
+    "@Governor" : 25,
+    "temporal_links" : "TLINK_after"
+  }, {
+    "%ID" : 43,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 157,
+    "end" : 170,
+    "@Dependent" : 8,
+    "@Governor" : 16,
+    "temporal_links" : "TLINK_after"
+  }, {
+    "%ID" : 44,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 52,
+    "end" : 62,
+    "@Dependent" : 45,
+    "@Governor" : 8,
+    "temporal_links" : "TLINK_before"
+  }, {
+    "%ID" : 46,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 52,
+    "end" : 62,
+    "@Dependent" : 45,
+    "@Governor" : 25,
+    "temporal_links" : "TLINK_identity"
+  }, {
+    "%ID" : 47,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 52,
+    "end" : 62,
+    "@Dependent" : 45,
+    "@Governor" : 48,
+    "temporal_links" : "TLINK_isIncluded"
+  }, {
+    "%ID" : 49,
+    "%TYPE" : "custom.Relation",
+    "@sofa" : 2,
+    "begin" : 38,
+    "end" : 50,
+    "@Dependent" : 48,
+    "@Governor" : 3,
+    "temporal_links" : "TLINK_before"
+  }, {
+    "%ID" : 45,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 52,
+    "end" : 62,
+    "label" : "Time",
+    "Time_Type" : "Date",
+    "TemporalFunction" : "DOCTIME"
+  }, {
+    "%ID" : 3,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 92,
+    "end" : 107,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Personal History",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 4,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 111,
+    "end" : 132,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Personal History",
+    "PersonalHistory" : "Comorbidity",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 6,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 137,
+    "end" : 152,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Personal History",
+    "PersonalHistory" : "Past Medical History",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 8,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 157,
+    "end" : 170,
+    "label" : "Time",
+    "Time_Type" : "Date",
+    "Value" : "2022-03-26"
+  }, {
+    "%ID" : 9,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 194,
+    "end" : 201,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Sign or Symptom",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 11,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 203,
+    "end" : 211,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Sign or Symptom",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 13,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 218,
+    "end" : 234,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Sign or Symptom",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 16,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 253,
+    "end" : 266,
+    "label" : "Time",
+    "Time_Type" : "Date",
+    "Value" : "2022-04-12"
+  }, {
+    "%ID" : 17,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 270,
+    "end" : 286,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Examination",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 19,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 312,
+    "end" : 324,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Examination Result",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 21,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 326,
+    "end" : 333,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Examination Result",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 23,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 338,
+    "end" : 354,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Examination Result",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 25,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 359,
+    "end" : 372,
+    "label" : "Time",
+    "Time_Type" : "Date",
+    "Value" : "2022-04-20"
+  }, {
+    "%ID" : 26,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 405,
+    "end" : 428,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Principal Diagnosis",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 28,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 436,
+    "end" : 452,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Characterization of the Disease",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 30,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 457,
+    "end" : 474,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Characterization of the Disease",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 33,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 502,
+    "end" : 524,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Treatment",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 35,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 530,
+    "end" : 542,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Treatment",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 37,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 547,
+    "end" : 557,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Treatment",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 39,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 571,
+    "end" : 592,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Treatment",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 41,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 598,
+    "end" : 608,
+    "label" : "Specialized Event",
+    "SpecializedEventClass" : "Treatment",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 48,
+    "%TYPE" : "custom.Span",
+    "@sofa" : 2,
+    "begin" : 38,
+    "end" : 50,
+    "label" : "General Event",
+    "Pos" : "Noun",
+    "Polarity" : "Pos"
+  }, {
+    "%ID" : 50,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "AspectualLinks",
+    "uiName" : "Aspectual Links"
+  }, {
+    "%ID" : 52,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "Dependent",
+    "uiName" : "Target"
+  }, {
+    "%ID" : 53,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "DiscourseLinks",
+    "uiName" : "Discourse Links"
+  }, {
+    "%ID" : 54,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "Governor",
+    "uiName" : "Source"
+  }, {
+    "%ID" : 55,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "MeasureLinks",
+    "uiName" : "Measure Links"
+  }, {
+    "%ID" : 56,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "ObjectalLinks",
+    "uiName" : "Objectal Links"
+  }, {
+    "%ID" : 57,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "SemanticRoleLinks",
+    "uiName" : "Semantic Role Links"
+  }, {
+    "%ID" : 58,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "SignalLinks",
+    "uiName" : "Signal Links"
+  }, {
+    "%ID" : 59,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "SpatialLinks",
+    "uiName" : "Spatial Links"
+  }, {
+    "%ID" : 60,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "SubordinationLinks",
+    "uiName" : "Subordination Links"
+  }, {
+    "%ID" : 61,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "label",
+    "uiName" : "Label"
+  }, {
+    "%ID" : 62,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 51,
+    "name" : "temporal_links",
+    "uiName" : "Temporal Links"
+  }, {
+    "%ID" : 63,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Arguments",
+    "uiName" : "Roles"
+  }, {
+    "%ID" : 65,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Aspect",
+    "uiName" : "Aspect"
+  }, {
+    "%ID" : 66,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Class",
+    "uiName" : "Class"
+  }, {
+    "%ID" : 67,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Event_Type",
+    "uiName" : "Event_Type"
+  }, {
+    "%ID" : 68,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Factuality",
+    "uiName" : "Factuality"
+  }, {
+    "%ID" : 69,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Individuation_Domain",
+    "uiName" : "Individuation_Domain"
+  }, {
+    "%ID" : 70,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Involvement",
+    "uiName" : "Involvement"
+  }, {
+    "%ID" : 71,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Lexical_Head",
+    "uiName" : "Lexical_Head"
+  }, {
+    "%ID" : 72,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Modality",
+    "uiName" : "Modality"
+  }, {
+    "%ID" : 73,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Mood",
+    "uiName" : "Mood"
+  }, {
+    "%ID" : 74,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Numericalrelation",
+    "uiName" : "Numerical relation"
+  }, {
+    "%ID" : 75,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Observations",
+    "uiName" : "Observations"
+  }, {
+    "%ID" : 76,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Participant_Type_Domain",
+    "uiName" : "Participant_Type_Domain"
+  }, {
+    "%ID" : 77,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "PathDefining",
+    "uiName" : "PathDefining"
+  }, {
+    "%ID" : 78,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "PersonalHistory",
+    "uiName" : "Personal History"
+  }, {
+    "%ID" : 79,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Polarity",
+    "uiName" : "Polarity"
+  }, {
+    "%ID" : 80,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Pos",
+    "uiName" : "Pos"
+  }, {
+    "%ID" : 81,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Signal_PoS",
+    "uiName" : "Signal_PoS"
+  }, {
+    "%ID" : 82,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Signal_Type",
+    "uiName" : "Signal_Type"
+  }, {
+    "%ID" : 83,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "SpecializedEventClass",
+    "uiName" : "Specialized Event"
+  }, {
+    "%ID" : 84,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "TemporalFunction",
+    "uiName" : "TemporalFunction"
+  }, {
+    "%ID" : 85,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Tense",
+    "uiName" : "Tense"
+  }, {
+    "%ID" : 86,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Time_Type",
+    "uiName" : "Time_Type"
+  }, {
+    "%ID" : 87,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Topological",
+    "uiName" : "Topological"
+  }, {
+    "%ID" : 88,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Type",
+    "uiName" : "Type"
+  }, {
+    "%ID" : 89,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "VForm",
+    "uiName" : "VForm"
+  }, {
+    "%ID" : 90,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "Value",
+    "uiName" : "Value"
+  }, {
+    "%ID" : 91,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.FeatureDefinition",
+    "@layer" : 64,
+    "name" : "label",
+    "uiName" : "Label"
+  }, {
+    "%ID" : 51,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.LayerDefinition",
+    "name" : "custom.Relation",
+    "uiName" : "Relation"
+  }, {
+    "%ID" : 64,
+    "%TYPE" : "de.tudarmstadt.ukp.clarin.webanno.api.type.LayerDefinition",
+    "name" : "custom.Span",
+    "uiName" : "Span"
+  }, {
+    "%ID" : 92,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData",
+    "@sofa" : 2,
+    "begin" : 0,
+    "end" : 611,
+    "language" : "x-unspecified",
+    "documentTitle" : "lma_001 (English Sample).txt",
+    "documentId" : "ana.l.fernandes",
+    "documentUri" : "text2story-ana-luisa/lma_001 (English Sample).txt",
+    "collectionId" : "text2story-ana-luisa",
+    "documentBaseUri" : "text2story-ana-luisa",
+    "isLastSegment" : false
+  }, {
+    "%ID" : 93,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagsetDescription",
+    "@sofa" : 2,
+    "begin" : 0,
+    "end" : 0,
+    "layer" : "custom.Relation",
+    "name" : "Signal_LINK",
+    "input" : false
+  }, {
+    "%ID" : 94,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagsetDescription",
+    "@sofa" : 2,
+    "begin" : 0,
+    "end" : 0,
+    "layer" : "custom.Span",
+    "name" : "involvement_numerical_relations",
+    "input" : false
+  }, {
+    "%ID" : 95,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence",
+    "@sofa" : 2,
+    "begin" : 0,
+    "end" : 153
+  }, {
+    "%ID" : 96,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence",
+    "@sofa" : 2,
+    "begin" : 154,
+    "end" : 235
+  }, {
+    "%ID" : 97,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence",
+    "@sofa" : 2,
+    "begin" : 236,
+    "end" : 355
+  }, {
+    "%ID" : 98,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence",
+    "@sofa" : 2,
+    "begin" : 356,
+    "end" : 475
+  }, {
+    "%ID" : 99,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence",
+    "@sofa" : 2,
+    "begin" : 476,
+    "end" : 609
+  }, {
+    "%ID" : 100,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 0,
+    "end" : 10,
+    "order" : 0
+  }, {
+    "%ID" : 101,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 10,
+    "end" : 11,
+    "order" : 0
+  }, {
+    "%ID" : 102,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 12,
+    "end" : 23,
+    "order" : 0
+  }, {
+    "%ID" : 103,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 24,
+    "end" : 29,
+    "order" : 0
+  }, {
+    "%ID" : 104,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 30,
+    "end" : 34,
+    "order" : 0
+  }, {
+    "%ID" : 105,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 35,
+    "end" : 37,
+    "order" : 0
+  }, {
+    "%ID" : 106,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 38,
+    "end" : 50,
+    "order" : 0
+  }, {
+    "%ID" : 107,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 50,
+    "end" : 51,
+    "order" : 0
+  }, {
+    "%ID" : 108,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 52,
+    "end" : 54,
+    "order" : 0
+  }, {
+    "%ID" : 109,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 54,
+    "end" : 55,
+    "order" : 0
+  }, {
+    "%ID" : 110,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 55,
+    "end" : 57,
+    "order" : 0
+  }, {
+    "%ID" : 111,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 57,
+    "end" : 58,
+    "order" : 0
+  }, {
+    "%ID" : 112,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 58,
+    "end" : 62,
+    "order" : 0
+  }, {
+    "%ID" : 113,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 63,
+    "end" : 64,
+    "order" : 0
+  }, {
+    "%ID" : 114,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 65,
+    "end" : 67,
+    "order" : 0
+  }, {
+    "%ID" : 115,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 67,
+    "end" : 68,
+    "order" : 0
+  }, {
+    "%ID" : 116,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 68,
+    "end" : 76,
+    "order" : 0
+  }, {
+    "%ID" : 117,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 77,
+    "end" : 84,
+    "order" : 0
+  }, {
+    "%ID" : 118,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 85,
+    "end" : 89,
+    "order" : 0
+  }, {
+    "%ID" : 119,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 90,
+    "end" : 91,
+    "order" : 0
+  }, {
+    "%ID" : 120,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 92,
+    "end" : 99,
+    "order" : 0
+  }, {
+    "%ID" : 121,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 100,
+    "end" : 107,
+    "order" : 0
+  }, {
+    "%ID" : 122,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 108,
+    "end" : 110,
+    "order" : 0
+  }, {
+    "%ID" : 123,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 111,
+    "end" : 119,
+    "order" : 0
+  }, {
+    "%ID" : 124,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 120,
+    "end" : 132,
+    "order" : 0
+  }, {
+    "%ID" : 125,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 133,
+    "end" : 136,
+    "order" : 0
+  }, {
+    "%ID" : 126,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 137,
+    "end" : 152,
+    "order" : 0
+  }, {
+    "%ID" : 127,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 152,
+    "end" : 153,
+    "order" : 0
+  }, {
+    "%ID" : 128,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 154,
+    "end" : 156,
+    "order" : 0
+  }, {
+    "%ID" : 129,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 157,
+    "end" : 159,
+    "order" : 0
+  }, {
+    "%ID" : 130,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 160,
+    "end" : 165,
+    "order" : 0
+  }, {
+    "%ID" : 131,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 166,
+    "end" : 170,
+    "order" : 0
+  }, {
+    "%ID" : 132,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 170,
+    "end" : 171,
+    "order" : 0
+  }, {
+    "%ID" : 133,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 172,
+    "end" : 175,
+    "order" : 0
+  }, {
+    "%ID" : 134,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 176,
+    "end" : 183,
+    "order" : 0
+  }, {
+    "%ID" : 135,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 184,
+    "end" : 193,
+    "order" : 0
+  }, {
+    "%ID" : 136,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 194,
+    "end" : 201,
+    "order" : 0
+  }, {
+    "%ID" : 137,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 201,
+    "end" : 202,
+    "order" : 0
+  }, {
+    "%ID" : 138,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 203,
+    "end" : 211,
+    "order" : 0
+  }, {
+    "%ID" : 139,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 212,
+    "end" : 215,
+    "order" : 0
+  }, {
+    "%ID" : 140,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 216,
+    "end" : 217,
+    "order" : 0
+  }, {
+    "%ID" : 141,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 218,
+    "end" : 225,
+    "order" : 0
+  }, {
+    "%ID" : 142,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 226,
+    "end" : 234,
+    "order" : 0
+  }, {
+    "%ID" : 143,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 234,
+    "end" : 235,
+    "order" : 0
+  }, {
+    "%ID" : 144,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 236,
+    "end" : 248,
+    "order" : 0
+  }, {
+    "%ID" : 145,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 248,
+    "end" : 249,
+    "order" : 0
+  }, {
+    "%ID" : 146,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 250,
+    "end" : 252,
+    "order" : 0
+  }, {
+    "%ID" : 147,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 253,
+    "end" : 255,
+    "order" : 0
+  }, {
+    "%ID" : 148,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 256,
+    "end" : 261,
+    "order" : 0
+  }, {
+    "%ID" : 149,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 262,
+    "end" : 266,
+    "order" : 0
+  }, {
+    "%ID" : 150,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 266,
+    "end" : 267,
+    "order" : 0
+  }, {
+    "%ID" : 151,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 268,
+    "end" : 269,
+    "order" : 0
+  }, {
+    "%ID" : 152,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 270,
+    "end" : 274,
+    "order" : 0
+  }, {
+    "%ID" : 153,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 275,
+    "end" : 280,
+    "order" : 0
+  }, {
+    "%ID" : 154,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 281,
+    "end" : 286,
+    "order" : 0
+  }, {
+    "%ID" : 155,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 287,
+    "end" : 290,
+    "order" : 0
+  }, {
+    "%ID" : 156,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 291,
+    "end" : 300,
+    "order" : 0
+  }, {
+    "%ID" : 157,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 300,
+    "end" : 301,
+    "order" : 0
+  }, {
+    "%ID" : 158,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 302,
+    "end" : 311,
+    "order" : 0
+  }, {
+    "%ID" : 159,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 312,
+    "end" : 324,
+    "order" : 0
+  }, {
+    "%ID" : 160,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 324,
+    "end" : 325,
+    "order" : 0
+  }, {
+    "%ID" : 161,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 326,
+    "end" : 333,
+    "order" : 0
+  }, {
+    "%ID" : 162,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 334,
+    "end" : 337,
+    "order" : 0
+  }, {
+    "%ID" : 163,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 338,
+    "end" : 354,
+    "order" : 0
+  }, {
+    "%ID" : 164,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 354,
+    "end" : 355,
+    "order" : 0
+  }, {
+    "%ID" : 165,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 356,
+    "end" : 358,
+    "order" : 0
+  }, {
+    "%ID" : 166,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 359,
+    "end" : 361,
+    "order" : 0
+  }, {
+    "%ID" : 167,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 362,
+    "end" : 367,
+    "order" : 0
+  }, {
+    "%ID" : 168,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 368,
+    "end" : 372,
+    "order" : 0
+  }, {
+    "%ID" : 169,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 372,
+    "end" : 373,
+    "order" : 0
+  }, {
+    "%ID" : 170,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 374,
+    "end" : 377,
+    "order" : 0
+  }, {
+    "%ID" : 171,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 378,
+    "end" : 385,
+    "order" : 0
+  }, {
+    "%ID" : 172,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 386,
+    "end" : 389,
+    "order" : 0
+  }, {
+    "%ID" : 173,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 390,
+    "end" : 399,
+    "order" : 0
+  }, {
+    "%ID" : 174,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 400,
+    "end" : 404,
+    "order" : 0
+  }, {
+    "%ID" : 175,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 405,
+    "end" : 410,
+    "order" : 0
+  }, {
+    "%ID" : 176,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 411,
+    "end" : 418,
+    "order" : 0
+  }, {
+    "%ID" : 177,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 419,
+    "end" : 428,
+    "order" : 0
+  }, {
+    "%ID" : 178,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 429,
+    "end" : 433,
+    "order" : 0
+  }, {
+    "%ID" : 179,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 434,
+    "end" : 435,
+    "order" : 0
+  }, {
+    "%ID" : 180,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 436,
+    "end" : 442,
+    "order" : 0
+  }, {
+    "%ID" : 181,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 443,
+    "end" : 452,
+    "order" : 0
+  }, {
+    "%ID" : 182,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 453,
+    "end" : 456,
+    "order" : 0
+  }, {
+    "%ID" : 183,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 457,
+    "end" : 469,
+    "order" : 0
+  }, {
+    "%ID" : 184,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 470,
+    "end" : 474,
+    "order" : 0
+  }, {
+    "%ID" : 185,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 474,
+    "end" : 475,
+    "order" : 0
+  }, {
+    "%ID" : 186,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 476,
+    "end" : 478,
+    "order" : 0
+  }, {
+    "%ID" : 187,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 479,
+    "end" : 482,
+    "order" : 0
+  }, {
+    "%ID" : 188,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 483,
+    "end" : 490,
+    "order" : 0
+  }, {
+    "%ID" : 189,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 491,
+    "end" : 493,
+    "order" : 0
+  }, {
+    "%ID" : 190,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 494,
+    "end" : 501,
+    "order" : 0
+  }, {
+    "%ID" : 191,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 502,
+    "end" : 511,
+    "order" : 0
+  }, {
+    "%ID" : 192,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 512,
+    "end" : 524,
+    "order" : 0
+  }, {
+    "%ID" : 193,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 525,
+    "end" : 529,
+    "order" : 0
+  }, {
+    "%ID" : 194,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 530,
+    "end" : 542,
+    "order" : 0
+  }, {
+    "%ID" : 195,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 543,
+    "end" : 546,
+    "order" : 0
+  }, {
+    "%ID" : 196,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 547,
+    "end" : 557,
+    "order" : 0
+  }, {
+    "%ID" : 197,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 557,
+    "end" : 558,
+    "order" : 0
+  }, {
+    "%ID" : 198,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 559,
+    "end" : 567,
+    "order" : 0
+  }, {
+    "%ID" : 199,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 568,
+    "end" : 570,
+    "order" : 0
+  }, {
+    "%ID" : 200,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 571,
+    "end" : 584,
+    "order" : 0
+  }, {
+    "%ID" : 201,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 585,
+    "end" : 592,
+    "order" : 0
+  }, {
+    "%ID" : 202,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 593,
+    "end" : 597,
+    "order" : 0
+  }, {
+    "%ID" : 203,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 598,
+    "end" : 608,
+    "order" : 0
+  }, {
+    "%ID" : 204,
+    "%TYPE" : "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+    "@sofa" : 2,
+    "begin" : 608,
+    "end" : 609,
+    "order" : 0
+  }, {
+    "%ID" : 205,
+    "%TYPE" : "de.tudarmstadt.ukp.inception.annotation.type.ResumptionLocation",
+    "@sofa" : 2,
+    "offset" : 38
+  }, {
+    "%ID" : 2,
+    "%TYPE" : "uima.cas.Sofa",
+    "sofaNum" : 1,
+    "sofaID" : "_InitialView",
+    "mimeType" : "text",
+    "sofaString" : "Department: Haematology Group\rDate of registration: 20/04/2022\rA 69-year-old patient with a medical history of arterial hypertension and cholecystectomy. On 26 March 2022, the patient developed fatigue, anorexia and a febrile syndrome. Consequently, on 12 April 2022, a full blood count was performed, revealing leukocytosis, anaemia and thrombocytopenia. On 20 April 2022, the patient was diagnosed with acute myeloid leukaemia with a normal karyotype and intermediate risk. It was decided to propose induction chemotherapy with mitoxantrone and cytarabine, followed by consolidation therapy with cytarabine.\r\r"
+  } ],
+  "%VIEWS" : {
+    "_InitialView" : {
+      "%SOFA" : 2,
+      "%MEMBERS" : [ 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205 ]
+    }
+  }
+}

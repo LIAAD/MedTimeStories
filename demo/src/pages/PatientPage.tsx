@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useLoaded } from "../data/DataContext";
 import { compareReports } from "../data/loader";
-import { chainEvents, formatDate, reportLabel, reportUrl, truncate } from "../lib/util";
+import { crossReportRelations, formatDate, reportLabel, reportUrl, truncate } from "../lib/util";
 import { Card, EmptyState, Tabs } from "../components/ui";
 import StatsPanel from "../components/StatsPanel";
 import CorefView from "../components/CorefView";
@@ -24,7 +24,7 @@ export default function PatientPage() {
 
   if (!patient) return <EmptyState title={`Patient "${patientId}" not found`} hint="Use the Patients link in the breadcrumb." />;
   const stats = idx.patientStats.get(patient.id)!;
-  const cross = (idx.chainsByPatient.get(patient.id) ?? []).filter((c) => c.crossReport);
+  const cross = crossReportRelations(idx, patient);
 
   const stat = (label: string, v: number) => (
     <Card className="p-3">
@@ -39,8 +39,8 @@ export default function PatientPage() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {stat("Reports", stats.reportCount)}
         {stat("Events", stats.eventCount)}
-        {stat("Temporal relations", stats.relationCount)}
-        {stat("Cross-report chains", stats.crossChainCount)}
+        {stat("Relations", stats.relationCount)}
+        {stat("Cross-report relations", stats.crossRelationCount)}
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
@@ -83,26 +83,23 @@ export default function PatientPage() {
 
         <aside className="space-y-4">
           <Card className="p-4">
-            <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Cross-report links</h4>
+            <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Cross-report relations</h4>
             {cross.length === 0 ? (
-              <p className="text-sm text-slate-500">No chains span multiple reports.</p>
+              <p className="text-sm text-slate-500">No relations span multiple reports.</p>
             ) : (
               <ul className="space-y-2 text-sm">
-                {cross.slice(0, 5).map((c) => {
-                  const m = chainEvents(idx, c);
-                  return (
-                    <li key={c.id}>
-                      <Link to={`/patient/${encodeURIComponent(patient.id)}?tab=coref`} className="hover:underline">
-                        {[...new Set(m.map((e) => e.surface.toLowerCase()))].slice(0, 3).join(" → ")}
-                      </Link>
-                      <span className="text-xs text-slate-500"> · {m.length} mentions, {c.reportIds.length} reports</span>
-                    </li>
-                  );
-                })}
+                {cross.slice(0, 5).map((r) => (
+                  <li key={r.id}>
+                    <Link to={`/patient/${encodeURIComponent(patient.id)}?tab=coref`} className="hover:underline">
+                      {r.source.surface} → {r.target.surface}
+                    </Link>
+                    <span className="text-xs text-slate-500"> · {r.type}, {reportLabel(idx, r.source.reportId)} → {reportLabel(idx, r.target.reportId)}</span>
+                  </li>
+                ))}
                 {cross.length > 5 && (
                   <li>
                     <button onClick={() => setSp({ tab: "coref" })} className="text-xs text-indigo-600 hover:underline dark:text-indigo-400">
-                      View all {cross.length} chains
+                      View all {cross.length} relations
                     </button>
                   </li>
                 )}

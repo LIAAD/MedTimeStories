@@ -31,13 +31,6 @@ export default function ReportConnections({ patient }: { patient: Patient }) {
       }
     }
 
-    for (const chain of patient.identityRelations) {
-      const linkedReports = [...new Set(chain.chain.map((eventId) => idx.events.get(eventId)?.reportId).filter((id): id is string => !!id))].sort(
-        (a, b) => (reportOrder.get(a) ?? 0) - (reportOrder.get(b) ?? 0),
-      );
-      for (let index = 0; index < linkedReports.length - 1; index++) addConnection(linkedReports[index], linkedReports[index + 1]);
-    }
-
     const nodes: GNodeData[] = reports.map((report, index) => ({
       id: report.id,
       label: report.title,

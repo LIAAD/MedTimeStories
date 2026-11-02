@@ -38,6 +38,7 @@ const NEST_GAP = 8;
 const COL_GAP = 70;
 const ROW_GAP = 12;
 const LANE_PAD = 14;
+const DATE_AXIS_SPACE = 16;
 export const LEFT = 96;
 const TOP = 8;
 const SAME_COLUMN = new Set(["SIMULTANEOUS", "BEGINS", "BEGUN_BY", "BEGINS_ON", "INCLUDES", "CONTAINS", "IS_INCLUDED", "DURING", "IDENTITY"]);
@@ -345,7 +346,7 @@ export function layoutGraph(nodes: LNode[], edges: LEdge[], nest = false, hidden
   const laneTop = new Map<string, number>();
   let y = TOP;
   for (const l of laneNames) {
-    const h = laneMax.get(l)! + LANE_PAD * 2;
+    const h = laneMax.get(l)! + LANE_PAD * 2 + (l.toUpperCase() === "DATES" ? DATE_AXIS_SPACE : 0);
     lanes.push({ name: l, y, h });
     laneTop.set(l, y);
     y += h;

@@ -1,5 +1,5 @@
 services:
-  medstories:
+  medtimestories:
     build:
       context: .
       args:

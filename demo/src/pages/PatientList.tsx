@@ -6,7 +6,7 @@ import { Card, EmptyState } from "../components/ui";
 export default function PatientList() {
   const { data, idx } = useLoaded();
   const { filters, active, matchEvent } = useFilters();
-  const [sortKey, setSortKey] = useState<"id" | "reports" | "events" | "chains">("id");
+  const [sortKey, setSortKey] = useState<"id" | "reports" | "events" | "relations">("id");
 
   const rows = useMemo(() => {
     const q = filters.q.trim().toLowerCase();
@@ -20,7 +20,7 @@ export default function PatientList() {
       .filter((r) => r.show)
       .sort((a, b) => {
         if (sortKey === "id") return a.p.id.localeCompare(b.p.id);
-        const v = (r: typeof a) => (sortKey === "reports" ? r.s.reportCount : sortKey === "events" ? r.s.eventCount : r.s.crossChainCount);
+        const v = (r: typeof a) => (sortKey === "reports" ? r.s.reportCount : sortKey === "events" ? r.s.eventCount : r.s.crossRelationCount);
         return v(b) - v(a);
       });
   }, [data, idx, active, filters.q, matchEvent, sortKey]);
@@ -48,7 +48,7 @@ export default function PatientList() {
                 {th("id", "Patient")}
                 {th("reports", "Reports")}
                 {th("events", "Events")}
-                {th("chains", "Cross-report chains")}
+                {th("relations", "Cross-report relations")}
                 {active && <th className="px-4 py-2 text-left">Matching events</th>}
               </tr>
             </thead>
@@ -62,7 +62,7 @@ export default function PatientList() {
                   </td>
                   <td className="px-4 py-3 tabular-nums">{s.reportCount}</td>
                   <td className="px-4 py-3 tabular-nums">{s.eventCount}</td>
-                  <td className="px-4 py-3 tabular-nums">{s.crossChainCount}</td>
+                  <td className="px-4 py-3 tabular-nums">{s.crossRelationCount}</td>
                   {active && <td className="px-4 py-3 tabular-nums">{matches}</td>}
                 </tr>
               ))}

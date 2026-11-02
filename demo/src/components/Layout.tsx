@@ -52,7 +52,7 @@ function SearchBar() {
       </select>
       <label className="inline-flex items-center gap-1.5 text-sm">
         <input type="checkbox" className="accent-indigo-600" checked={filters.coref} onChange={(e) => setFilters({ coref: e.target.checked })} />
-        Cross-report coref only
+        Cross-report relations only
       </label>
       {active && (
         <button onClick={reset} className="text-sm text-indigo-600 hover:underline dark:text-indigo-400">Clear</button>

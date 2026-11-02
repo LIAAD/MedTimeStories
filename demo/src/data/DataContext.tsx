@@ -104,7 +104,7 @@ function FilterProvider({ children }: { children: ReactNode }) {
         if (q && !e.surface.toLowerCase().includes(q)) return false;
         if (filters.type && graphEventKind(e).type !== filters.type) return false;
         if (filters.rel && !idx.relationsByEvent.get(e.id)?.some((r) => r.relation.type === filters.rel)) return false;
-        if (filters.coref && !idx.chainByEvent.get(e.id)?.crossReport) return false;
+        if (filters.coref && !idx.relationsByEvent.get(e.id)?.some((r) => idx.events.get(r.other)?.reportId !== e.reportId)) return false;
         return true;
       },
     };

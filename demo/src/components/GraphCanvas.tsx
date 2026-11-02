@@ -1,7 +1,12 @@
-import { useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
 import { layoutGraph, NODE_H, NODE_W } from "../lib/graphLayout";
 import { typeStyle } from "../lib/colors";
-import { truncate } from "../lib/util";
+import { truncate, type DateMarker } from "../lib/util";
+
+const MARKER_STYLE: Record<DateMarker, { fill: string; label: string }> = {
+  admission: { fill: "#2563eb", label: "Admission" },
+  discharge: { fill: "#dc2626", label: "Discharge" },
+};
 
 export interface GNodeData {
   id: string;
@@ -12,6 +17,7 @@ export interface GNodeData {
   hint?: number;
   temporalTime?: number;
   present?: boolean;
+  markers?: DateMarker[];
 }
 export interface GEdgeData {
   id: string;
@@ -40,10 +46,18 @@ export default function GraphCanvas({ nodes, edges, selectedIds, onSelect, onHov
   );
   const edgeById = new Map(layout.edges.map((e) => [e.id, e]));
   const anySel = selectedIds.size > 0;
+  const [zoom, setZoom] = useState(1);
+  const box = useRef<HTMLDivElement>(null);
+  const clamp = (z: number) => Math.min(3, Math.max(0.2, Math.round(z * 100) / 100));
+  const fit = () => {
+    const w = box.current?.clientWidth;
+    if (w) setZoom(clamp((w - 2) / layout.width));
+  };
 
   return (
-    <div className="max-h-[70vh] overflow-auto rounded-lg border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-      <svg width={layout.width} height={layout.height} className="block">
+    <div className="flex items-start gap-2">
+      <div ref={box} className="max-h-[70vh] min-w-0 flex-1 overflow-auto rounded-lg border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+      <svg width={layout.width * zoom} height={layout.height * zoom} viewBox={`0 0 ${layout.width} ${layout.height}`} className="block">
         <defs>
           <marker id="g-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
             <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8" />
@@ -137,7 +151,7 @@ export default function GraphCanvas({ nodes, edges, selectedIds, onSelect, onHov
               onMouseLeave={() => onHover?.(null)}
               className="cursor-pointer"
             >
-              <title>{n.label}</title>
+              <title>{[n.label, ...(n.markers ?? []).map((m) => MARKER_STYLE[m].label)].join(" · ")}</title>
               <rect width={w} height={h} rx={8} fill={s.hex} fillOpacity={0.2} stroke={sel ? "#6366f1" : s.hex} strokeWidth={sel ? 3 : 1.5} />
               <text x={w / 2} y={18} textAnchor="middle" fontSize="12" fontWeight={600} className="fill-slate-900 dark:fill-slate-100">
                 {truncate(n.label, 20)}
@@ -145,10 +159,32 @@ export default function GraphCanvas({ nodes, edges, selectedIds, onSelect, onHov
               <text x={w / 2} y={34} textAnchor="middle" fontSize="10" className="fill-slate-600 dark:fill-slate-400">
                 {truncate(n.sublabel ?? n.type.toLowerCase(), 27)}
               </text>
+              {(n.markers ?? []).map((m, i) => (
+                <circle key={m} cx={w - 9 - i * 14} cy={9} r={5} fill={MARKER_STYLE[m].fill} className="stroke-white dark:stroke-slate-900" strokeWidth={1.5} />
+              ))}
             </g>
           );
         })}
       </svg>
+      </div>
+      <div className="flex w-12 shrink-0 flex-col items-center gap-1 rounded-lg border border-slate-200 bg-white p-1 text-sm dark:border-slate-800 dark:bg-slate-900">
+        <button type="button" title="Zoom in" onClick={() => setZoom((z) => clamp(z + 0.1))} className="h-8 w-8 rounded hover:bg-slate-100 dark:hover:bg-slate-800">+</button>
+        <input
+          type="range"
+          min={0.2}
+          max={3}
+          step={0.05}
+          value={zoom}
+          onChange={(e) => setZoom(clamp(Number(e.target.value)))}
+          aria-label="Zoom"
+          className="h-28 w-6 cursor-pointer"
+          style={{ writingMode: "vertical-lr", direction: "rtl" }}
+        />
+        <button type="button" title="Zoom out" onClick={() => setZoom((z) => clamp(z - 0.1))} className="h-8 w-8 rounded hover:bg-slate-100 dark:hover:bg-slate-800">−</button>
+        <span className="text-[10px] text-slate-500">{Math.round(zoom * 100)}%</span>
+        <button type="button" title="Fit to width" onClick={fit} className="h-7 w-9 rounded text-[10px] hover:bg-slate-100 dark:hover:bg-slate-800">Fit</button>
+        <button type="button" title="Reset zoom" onClick={() => setZoom(1)} className="h-7 w-9 rounded text-[10px] hover:bg-slate-100 dark:hover:bg-slate-800">1:1</button>
+      </div>
     </div>
   );
 }

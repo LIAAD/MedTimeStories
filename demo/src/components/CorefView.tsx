@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Patient } from "../data/schema";
 import { useFilters, useLoaded } from "../data/DataContext";
-import { chainEvents, eventUrl, formatDate, reportLabel } from "../lib/util";
+import { crossReportRelations, eventUrl, formatDate, reportLabel } from "../lib/util";
 import { Card, EmptyState } from "./ui";
 
 export default function CorefView({ patient }: { patient: Patient }) {
@@ -10,26 +10,11 @@ export default function CorefView({ patient }: { patient: Patient }) {
   const { active, matchEvent } = useFilters();
   const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set());
 
-  const rows = useMemo(
-    () =>
-      (idx.chainsByPatient.get(patient.id) ?? [])
-        .filter((c) => c.crossReport)
-        .map((c) => ({ chain: c, mentions: chainEvents(idx, c) }))
-        .filter((r) => !active || r.mentions.some(matchEvent))
-        .sort((a, b) => b.mentions.length - a.mentions.length),
-    [idx, patient.id, active, matchEvent],
-  );
-
   const allRelations = useMemo(
-    () =>
-      patient.reports.flatMap((r) => r.temporalRelations).flatMap((t) => {
-        const source = idx.events.get(t.source);
-        const target = idx.events.get(t.target);
-        return source && target && source.reportId !== target.reportId ? [{ id: t.id, type: t.type, source, target }] : [];
-      }),
+    () => crossReportRelations(idx, patient),
     [idx, patient],
   );
-  const linkTypes = useMemo(() => ["IDENTITY", ...[...new Set(allRelations.map((r) => r.type))].sort()], [allRelations]);
+  const linkTypes = useMemo(() => [...new Set(allRelations.map((r) => r.type))].sort(), [allRelations]);
   const relations = useMemo(
     () =>
       allRelations
@@ -43,7 +28,6 @@ export default function CorefView({ patient }: { patient: Patient }) {
       n.has(t) ? n.delete(t) : n.add(t);
       return n;
     });
-  const shownRows = hiddenTypes.has("IDENTITY") ? [] : rows;
 
   return (
     <div className="space-y-3">
@@ -63,90 +47,45 @@ export default function CorefView({ patient }: { patient: Patient }) {
           </button>
         ))}
       </div>
-      <p className="text-sm text-slate-500">
-        {shownRows.length} identity and {relations.length} temporal relation(s) between different reports.
-      </p>
-      {shownRows.length === 0 && relations.length === 0 && <EmptyState title="No cross-report relations match" hint="Adjust the filters above." />}
-      {shownRows.map(({ chain, mentions }) => {
-
-        const groups: { reportId: string; items: typeof mentions }[] = [];
-        for (const m of mentions) {
-          const g = groups[groups.length - 1];
-          if (g && g.reportId === m.reportId) g.items.push(m);
-          else groups.push({ reportId: m.reportId, items: [m] });
-        }
-        return (
-          <Card key={chain.id} className="p-3">
-            <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
-              <span className="rounded bg-indigo-100 px-1.5 py-0.5 font-medium text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300">IDENTITY</span>
-              <span className="font-mono">{chain.id}</span>
-              <span>{mentions.length} mentions · {chain.reportIds.length} report(s)</span>
-            </div>
-            <div className="flex flex-wrap items-stretch gap-2">
-              {groups.map((g, gi) => {
-                const rep = idx.reports.get(g.reportId)!;
-                return (
-                  <div key={gi} className="flex items-center gap-2">
-                    {gi > 0 && <span className="text-slate-400">→</span>}
-                    <div className="rounded-md border border-slate-200 px-2 py-1.5 dark:border-slate-700">
-                      <div className="mb-1 text-[11px] text-slate-500">
-                        {reportLabel(idx, rep.id)} · {rep.type} · {formatDate(rep.date)}
-                      </div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {g.items.map((m) => (
-                          <Link
-                            key={m.id}
-                            to={eventUrl(idx, m.id)}
-                            title={`${rep.title} @ ${m.start}`}
-                            className="rounded-full border border-slate-300 bg-slate-50 px-2.5 py-0.5 text-sm hover:border-indigo-400 hover:bg-indigo-50 dark:border-slate-600 dark:bg-slate-800 dark:hover:bg-indigo-500/20"
-                          >
-                            {m.surface} <span className="text-xs text-slate-400">@{m.start}</span>
-                          </Link>
-                        ))}
-                      </div>
+      <p className="text-sm text-slate-500">{relations.length} relation(s) between different reports.</p>
+      {relations.length === 0 && <EmptyState title="No cross-report relations match" hint="Adjust the filters above." />}
+      {relations.map((r) => (
+        <Card key={r.id} className="p-3">
+          <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+            <span
+              className={`rounded px-1.5 py-0.5 font-medium ${
+                r.type === "IDENTITY"
+                  ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300"
+                  : "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300"
+              }`}
+            >
+              {r.type}
+            </span>
+          </div>
+          <div className="flex flex-wrap items-stretch gap-2">
+            {[r.source, r.target].map((e, i) => {
+              const rep = idx.reports.get(e.reportId)!;
+              return (
+                <div key={e.id} className="flex items-center gap-2">
+                  {i > 0 && <span className="text-slate-400">→</span>}
+                  <div className="rounded-md border border-slate-200 px-2 py-1.5 dark:border-slate-700">
+                    <div className="mb-1 text-[11px] text-slate-500">
+                      {reportLabel(idx, rep.id)} · {rep.type} · {formatDate(rep.date)}
                     </div>
+                    <Link
+                      to={eventUrl(idx, e.id)}
+                      title={`${rep.title} @ ${e.start}`}
+                      className="rounded-full border border-slate-300 bg-slate-50 px-2.5 py-0.5 text-sm hover:border-indigo-400 hover:bg-indigo-50 dark:border-slate-600 dark:bg-slate-800 dark:hover:bg-indigo-500/20"
+                    >
+                      {e.surface} <span className="text-xs text-slate-400">@{e.start}</span>
+                    </Link>
                   </div>
-                );
-              })}
-            </div>
-          </Card>
-        );
-      })}
-      {relations.length > 0 && (
-        <>
-          {relations.map((r) => (
-            <Card key={r.id} className="p-3">
-              <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                <span className="rounded bg-amber-100 px-1.5 py-0.5 font-medium text-amber-700 dark:bg-amber-500/20 dark:text-amber-300">{r.type}</span>
-                <span className="font-mono">{r.id}</span>
-                <span>temporal · 2 report(s)</span>
-              </div>
-              <div className="flex flex-wrap items-stretch gap-2">
-                {[r.source, r.target].map((e, i) => {
-                  const rep = idx.reports.get(e.reportId)!;
-                  return (
-                    <div key={e.id} className="flex items-center gap-2">
-                      {i > 0 && <span className="text-slate-400">→</span>}
-                      <div className="rounded-md border border-slate-200 px-2 py-1.5 dark:border-slate-700">
-                        <div className="mb-1 text-[11px] text-slate-500">
-                          {reportLabel(idx, rep.id)} · {rep.type} · {formatDate(rep.date)}
-                        </div>
-                        <Link
-                          to={eventUrl(idx, e.id)}
-                          title={`${rep.title} @ ${e.start}`}
-                          className="rounded-full border border-slate-300 bg-slate-50 px-2.5 py-0.5 text-sm hover:border-indigo-400 hover:bg-indigo-50 dark:border-slate-600 dark:bg-slate-800 dark:hover:bg-indigo-500/20"
-                        >
-                          {e.surface} <span className="text-xs text-slate-400">@{e.start}</span>
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </Card>
-          ))}
-        </>
-      )}
+                </div>
+              );
+            })}
+          </div>
+        </Card>
+      ))}
     </div>
   );
 }

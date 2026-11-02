@@ -1,13 +1,12 @@
 import { useMemo, useState } from "react";
-import type { ClinEvent, IdentityRelation, TemporalRelation } from "../data/schema";
+import type { ClinEvent, TemporalRelation } from "../data/schema";
 import GraphCanvas, { type GEdgeData, type GNodeData } from "./GraphCanvas";
-import { graphEventKind, graphEventLabel, graphEventLane, graphEventTime } from "../lib/util";
+import { dateMarker, graphEventKind, graphEventLabel, graphEventLane, graphEventTime, type DateMarker } from "../lib/util";
 import { EmptyState, Toggle } from "./ui";
 
 interface Props {
   events: ClinEvent[];
   relations: TemporalRelation[];
-  identityRelations: IdentityRelation[];
   selectedId?: string | null;
   onSelect: (id: string) => void;
   onHover: (id: string | null) => void;
@@ -17,7 +16,7 @@ interface Props {
   sublabelPrefix?: (e: ClinEvent) => string;
 }
 
-export default function TemporalGraph({ events, relations, identityRelations, selectedId, onSelect, onHover, eventOrder, sublabelPrefix }: Props) {
+export default function TemporalGraph({ events, relations, selectedId, onSelect, onHover, eventOrder, sublabelPrefix }: Props) {
   const [hiddenRel, setHiddenRel] = useState<Set<string>>(new Set());
   const [showIsolated, setShowIsolated] = useState(false);
   const [showGeneralEvents, setShowGeneralEvents] = useState(false);
@@ -31,47 +30,39 @@ export default function TemporalGraph({ events, relations, identityRelations, se
   );
   const visible = useMemo(() => new Set(visibleEvents.map((e) => e.id)), [visibleEvents]);
   const inScope = useMemo(() => relations.filter((r) => visible.has(r.source) && visible.has(r.target)), [relations, visible]);
-  const identityEdges = useMemo(
-    () =>
-      identityRelations.flatMap((chain) => {
-        const mentions = [...new Set(chain.chain.filter((eventId) => visible.has(eventId)))];
-        return mentions.slice(1).map((eventId, index): GEdgeData => ({
-          id: `${chain.id}:${mentions[index]}:${eventId}`,
-          source: mentions[index],
-          target: eventId,
-          type: "IDENTITY",
-          directed: false,
-        }));
-      }),
-    [identityRelations, visible],
-  );
   const relCounts = useMemo(() => {
     const m = new Map<string, number>();
     inScope.forEach((r) => m.set(r.type, (m.get(r.type) ?? 0) + 1));
-    if (identityEdges.length) m.set("IDENTITY", (m.get("IDENTITY") ?? 0) + identityEdges.length);
     return [...m.entries()].sort();
-  }, [inScope, identityEdges]);
+  }, [inScope]);
   const { nodes, edges, repOf } = useMemo(() => {
-    // Date expressions linked by identity are the same time point: merge them into one node.
+    // Date expressions linked by an identity relation, or with exactly the same date, are the same time point: merge them into one node.
     const byId = new Map(visibleEvents.map((e) => [e.id, e]));
     const repOf = new Map<string, string>();
-    for (const chain of identityRelations) {
-      const dates = [...new Set(chain.chain)].filter((id) => byId.has(id) && graphEventTime(byId.get(id)!) !== undefined);
-      if (dates.length < 2) continue;
-      const rep = dates.map((id) => repOf.get(id) ?? id).sort((a, b) => byId.get(a)!.start - byId.get(b)!.start)[0];
+    const order = (id: string) => (eventOrder ? (eventOrder.get(id) ?? 0) : byId.get(id)!.start);
+    const mergeDates = (dates: string[]) => {
+      if (dates.length < 2) return;
+      const rep = dates.map((id) => repOf.get(id) ?? id).sort((a, b) => order(a) - order(b))[0];
       for (const id of dates) {
         const old = repOf.get(id) ?? id;
         for (const [k, v] of repOf) if (v === old) repOf.set(k, rep);
         repOf.set(id, rep);
       }
+    };
+    for (const r of inScope) {
+      if (r.type === "IDENTITY" && [r.source, r.target].every((id) => graphEventTime(byId.get(id)!) !== undefined)) mergeDates([r.source, r.target]);
     }
+    const byTime = new Map<number, string[]>();
+    for (const e of visibleEvents) {
+      const t = graphEventTime(e);
+      if (t !== undefined) byTime.set(t, [...(byTime.get(t) ?? []), e.id]);
+    }
+    byTime.forEach(mergeDates);
     const rep = (id: string) => repOf.get(id) ?? id;
     const seen = new Set<string>();
-    const edges: GEdgeData[] = [
-      ...inScope.filter((r) => !hiddenRel.has(r.type)),
-      ...identityEdges.filter((edge) => !hiddenRel.has(edge.type)),
-    ]
-      .map((e) => ({ ...e, source: rep(e.source), target: rep(e.target) }))
+    const edges: GEdgeData[] = inScope
+      .filter((r) => !hiddenRel.has(r.type))
+      .map((r): GEdgeData => ({ ...r, source: rep(r.source), target: rep(r.target), directed: r.type !== "IDENTITY" }))
       .filter((e) => {
         if (e.type === "IDENTITY" && e.source === e.target) return false;
         const key = `${e.source}|${e.target}|${e.type}`;
@@ -79,6 +70,13 @@ export default function TemporalGraph({ events, relations, identityRelations, se
         seen.add(key);
         return true;
       });
+    const markersOf = new Map<string, Set<DateMarker>>();
+    for (const e of visibleEvents) {
+      const m = dateMarker(e);
+      if (!m) continue;
+      const r = rep(e.id);
+      markersOf.set(r, (markersOf.get(r) ?? new Set()).add(m));
+    }
     const used = new Set(edges.flatMap((e) => [e.source, e.target]));
     const nodes: GNodeData[] = visibleEvents
       .filter((e) => rep(e.id) === e.id)
@@ -93,12 +91,14 @@ export default function TemporalGraph({ events, relations, identityRelations, se
           lane: graphEventLane(e),
           sublabel: sublabelPrefix ? `${sublabelPrefix(e)} · ${kind.sublabel}` : kind.sublabel,
           hint: index,
+          markers: [...(markersOf.get(e.id) ?? [])],
           temporalTime: graphEventTime(e),
           present: e.type.toUpperCase() === "TIME" && /^val=(?:past|future|present)_ref\s+anchor_value=\d{4}-\d{2}-\d{2}$/.test(String(e.attributes?.Value ?? "").trim()),
         };
       });
     return { nodes, edges, repOf };
-  }, [visibleEvents, inScope, identityEdges, identityRelations, hiddenRel, showIsolated, eventOrder, sublabelPrefix]);
+  }, [visibleEvents, inScope, hiddenRel, showIsolated, eventOrder, sublabelPrefix]);
+
 
   const toggleRel = (t: string) =>
     setHiddenRel((cur) => {
@@ -130,7 +130,7 @@ export default function TemporalGraph({ events, relations, identityRelations, se
         </span>
       </div>
       {nodes.length === 0 ? (
-        <EmptyState title="Nothing to draw" hint="No visible temporal or identity links in this report (check type filters)." />
+        <EmptyState title="Nothing to draw" hint="No visible relations in this report (check type filters)." />
       ) : (
         <GraphCanvas
           nodes={nodes}
@@ -142,7 +142,7 @@ export default function TemporalGraph({ events, relations, identityRelations, se
           hiddenIds={hiddenIds}
         />
       )}
-      <p className="text-xs text-slate-500">Left to right follows temporal start order. Simultaneous events share a column; colors identify event types.</p>
+      <p className="text-xs text-slate-500">Left to right follows temporal start order. Simultaneous events share a column; colors identify event types. <span className="inline-block h-2 w-2 rounded-full bg-blue-600" /> admission date, <span className="inline-block h-2 w-2 rounded-full bg-red-600" /> discharge date.</p>
     </div>
   );
 }

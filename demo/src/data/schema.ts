@@ -8,7 +8,6 @@ export const EventSchema = z.object({
   start: z.number().int().min(0),
   end: z.number().int().min(1),
   surface: z.string().min(1),
-  surfaceEn: z.string().optional(),
   type: z.string().min(1),
   attributes: z.record(attrValue).optional(),
 });
@@ -17,7 +16,7 @@ export const TemporalRelationSchema = z.object({
   id: z.string().min(1),
   source: z.string().min(1),
   target: z.string().min(1),
-  // Open vocabulary (BEFORE, AFTER, OVERLAP, CONTAINS, BEGINS-ON, ENDS-ON, SIMULTANEOUS, ...)
+  // Open vocabulary (BEFORE, AFTER, OVERLAP, CONTAINS, BEGINS-ON, ENDS-ON, SIMULTANEOUS, IDENTITY, ...)
   type: z.string().min(1).transform((s) => s.toUpperCase()),
 });
 
@@ -33,7 +32,6 @@ export const ReportSchema = z
       .transform((v) => v ?? undefined)
       .refine((v) => v === undefined || !Number.isNaN(Date.parse(v)), "date must be a valid ISO date string"),
     text: z.string(),
-    textEn: z.string().optional(),
     events: z.array(EventSchema),
     temporalRelations: z.array(TemporalRelationSchema).default([]),
   })
@@ -52,15 +50,9 @@ export const ReportSchema = z
     });
   });
 
-export const IdentityRelationSchema = z.object({
-  id: z.string().min(1),
-  chain: z.array(z.string().min(1)).min(2, "a coreference chain needs at least 2 event ids"),
-});
-
 export const PatientSchema = z.object({
   id: z.string().min(1),
   reports: z.array(ReportSchema),
-  identityRelations: z.array(IdentityRelationSchema).default([]),
 });
 
 export const DatasetSchema = z.object({ patients: z.array(PatientSchema) });
@@ -68,7 +60,6 @@ export const DatasetSchema = z.object({ patients: z.array(PatientSchema) });
 export type ClinEvent = z.infer<typeof EventSchema>;
 export type TemporalRelation = z.infer<typeof TemporalRelationSchema>;
 export type Report = z.infer<typeof ReportSchema>;
-export type IdentityRelation = z.infer<typeof IdentityRelationSchema>;
 export type Patient = z.infer<typeof PatientSchema>;
 export type Dataset = z.infer<typeof DatasetSchema>;
 
@@ -102,13 +93,8 @@ function checkReferences(data: Dataset): string[] {
     for (const r of p.reports) {
       for (const t of r.temporalRelations) {
         for (const end of ["source", "target"] as const) {
-          if (!own.has(t[end])) issues.push(`Temporal relation "${t.id}" (report "${r.id}"): ${end} "${t[end]}" is not an event of patient "${p.id}"`);
+          if (!own.has(t[end])) issues.push(`Relation "${t.id}" (report "${r.id}"): ${end} "${t[end]}" is not an event of patient "${p.id}"`);
         }
-      }
-    }
-    for (const c of p.identityRelations) {
-      for (const id of c.chain) {
-        if (!own.has(id)) issues.push(`Identity relation "${c.id}" (patient "${p.id}"): event "${id}" does not exist for this patient`);
       }
     }
   }

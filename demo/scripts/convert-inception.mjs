@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, extname } from "node:path";
 
@@ -8,8 +7,6 @@ function usage() {
 Options:
   --out <file>       Output path (default: inception/converted/converted-dataset.json)
   --config <file>    Optional JSON metadata map keyed by input filename
-  --translations <file>
-                     Optional English translations produced by scripts/translate.py
   --help             Show this help
 
 Provide each input JSON file as a separate argument.`);
@@ -21,10 +18,10 @@ function parseArgs(args) {
     const arg = args[i];
     if (arg === "--help" || arg === "-h") {
       options.help = true;
-    } else if (arg === "--out" || arg === "--config" || arg === "--translations") {
+    } else if (arg === "--out" || arg === "--config") {
       const value = args[++i];
       if (!value) throw new Error(`Missing value for ${arg}`);
-      options[arg === "--out" ? "output" : arg.slice(2)] = value;
+      options[arg === "--out" ? "output" : "config"] = value;
     } else if (arg.startsWith("-")) {
       throw new Error(`Unknown option: ${arg}`);
     } else {
@@ -89,16 +86,22 @@ function readCas(path) {
 
 function splitReports(text) {
   const reports = [];
+  // Surrounding whitespace is trimmed and whitespace-only segments (e.g. trailing newlines) are skipped.
+  const add = (start, end) => {
+    const raw = text.slice(start, end);
+    const trimmed = raw.trim();
+    if (!trimmed) return;
+    const from = start + raw.indexOf(trimmed);
+    reports.push({ start: from, end: from + trimmed.length, text: trimmed });
+  };
   const separator = /\r?\n[ \t]*\r?\n/g;
   let start = 0;
   let match;
   while ((match = separator.exec(text))) {
-    if (match.index > start) {
-      reports.push({ start, end: match.index, text: text.slice(start, match.index) });
-    }
+    add(start, match.index);
     start = match.index + match[0].length;
   }
-  if (start < text.length) reports.push({ start, end: text.length, text: text.slice(start) });
+  add(start, text.length);
   return reports;
 }
 
@@ -158,25 +161,6 @@ function convertDocument(path, config = {}) {
     report.events.push(event);
   }
 
-  const events = reports.flatMap((report) => report.events);
-  const parent = new Map(events.map((event) => [event.id, event.id]));
-  const find = (id) => {
-    let root = id;
-    while (parent.get(root) !== root) root = parent.get(root);
-    while (parent.get(id) !== id) {
-      const next = parent.get(id);
-      parent.set(id, root);
-      id = next;
-    }
-    return root;
-  };
-  const union = (left, right) => {
-    const leftRoot = find(left);
-    const rightRoot = find(right);
-    if (leftRoot !== rightRoot) parent.set(rightRoot, leftRoot);
-  };
-
-  const temporalRelations = [];
   for (const relation of cas.relations) {
     const link = relation.temporal_links;
     if (typeof link !== "string" || !link.startsWith("TLINK_")) continue;
@@ -185,47 +169,19 @@ function convertDocument(path, config = {}) {
     if (!source || !target) {
       throw new Error(`${path}: relation ${relation["%ID"]} points to a missing span`);
     }
-    if (link === "TLINK_identity") {
-      union(source, target);
-    } else {
-      const sourceReport = reportByEventId.get(source);
-      sourceReport.temporalRelations.push({
-        id: `${sourceReport.id}_t${sourceReport.temporalRelations.length + 1}`,
-        source,
-        target,
-        type: relationType(link),
-      });
-    }
+    const sourceReport = reportByEventId.get(source);
+    sourceReport.temporalRelations.push({
+      id: `${sourceReport.id}_t${sourceReport.temporalRelations.length + 1}`,
+      source,
+      target,
+      type: relationType(link),
+    });
   }
-
-  const groups = new Map();
-  for (const event of events) {
-    const root = find(event.id);
-    const group = groups.get(root) ?? [];
-    group.push(event.id);
-    groups.set(root, group);
-  }
-  const identityRelations = [...groups.values()]
-    .filter((chain) => chain.length > 1)
-    .map((chain, index) => ({ id: `${patientId}_c${index + 1}`, chain }));
 
   return {
     patientId,
     reports: reports.map(({ sourceStart, sourceEnd, ...report }) => report),
-    identityRelations,
   };
-}
-
-// Translations are keyed by the SHA-256 of the report text and by event surface, so edited reports are never paired with stale translations.
-function applyTranslations(reports, translations) {
-  for (const report of reports) {
-    const textEn = translations.reports?.[createHash("sha256").update(report.text, "utf8").digest("hex")];
-    if (textEn) report.textEn = textEn;
-    for (const event of report.events) {
-      const surfaceEn = translations.surfaces?.[event.surface];
-      if (surfaceEn) event.surfaceEn = surfaceEn;
-    }
-  }
 }
 
 function main() {
@@ -239,27 +195,22 @@ function main() {
 
   for (const input of options.inputs) {
     const metadata = config[basename(input)] ?? {};
-    const { patientId, reports, identityRelations } = convertDocument(input, metadata);
+    const { patientId, reports } = convertDocument(input, metadata);
     for (const report of reports) {
       if (reportIds.has(report.id)) throw new Error(`Duplicate report ID: ${report.id}`);
       reportIds.add(report.id);
     }
-    const patient = patients.get(patientId) ?? { id: patientId, reports: [], identityRelations: [] };
+    const patient = patients.get(patientId) ?? { id: patientId, reports: [] };
     patient.reports.push(...reports);
-    patient.identityRelations.push(...identityRelations);
     patients.set(patientId, patient);
   }
 
   const output = { patients: [...patients.values()] };
-  if (options.translations) {
-    const translations = JSON.parse(readFileSync(options.translations, "utf8"));
-    applyTranslations(output.patients.flatMap((patient) => patient.reports), translations);
-  }
   const serialized = JSON.stringify(output, null, 2);
   mkdirSync(dirname(options.output), { recursive: true });
   writeFileSync(options.output, serialized);
   const reports = output.patients.flatMap((patient) => patient.reports);
-  console.log(`Wrote ${output.patients.length} patients, ${reports.length} reports, ${reports.reduce((sum, report) => sum + report.events.length, 0)} spans, and ${reports.reduce((sum, report) => sum + report.temporalRelations.length, 0)} temporal links to ${options.output}`);
+  console.log(`Wrote ${output.patients.length} patients, ${reports.length} reports, ${reports.reduce((sum, report) => sum + report.events.length, 0)} spans, and ${reports.reduce((sum, report) => sum + report.temporalRelations.length, 0)} relations (temporal and identity) to ${options.output}`);
 }
 
 try {

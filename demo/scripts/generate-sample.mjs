@@ -177,9 +177,8 @@ function parseMarkup(markup) {
 }
 
 const out = {
-  patients: patients.map((p) => ({
-    id: p.id,
-    reports: p.reports.map((r) => {
+  patients: patients.map((p) => {
+    const reports = p.reports.map((r) => {
       const { text, events } = parseMarkup(r.markup);
       const gid = (local) => `${r.id}_${local}`;
       const ids = new Set(events.map((e) => e.local));
@@ -208,9 +207,17 @@ const out = {
           return { id: `${r.id}_t${i + 1}`, source: gid(a), target: gid(b), type };
         }),
       };
-    }),
-    identityRelations: p.chains.map((chain, i) => ({ id: `${p.id}_c${i + 1}`, chain })),
-  })),
+    });
+    // Each consecutive pair of a coreferent group becomes an IDENTITY relation, stored with its source event's report.
+    const reportOf = new Map(reports.flatMap((r) => r.events.map((e) => [e.id, r])));
+    for (const group of p.chains) {
+      for (let i = 1; i < group.length; i++) {
+        const report = reportOf.get(group[i - 1]);
+        report.temporalRelations.push({ id: `${report.id}_t${report.temporalRelations.length + 1}`, source: group[i - 1], target: group[i], type: "IDENTITY" });
+      }
+    }
+    return { id: p.id, reports };
+  }),
 };
 
 mkdirSync("public/data", { recursive: true });
