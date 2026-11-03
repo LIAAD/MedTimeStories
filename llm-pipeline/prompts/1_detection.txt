@@ -1,0 +1,347 @@
+
+===== IDEA ======
+
+# LAYER 1 - DETECTION: find the EVENTS and the TEMPORAL EXPRESSIONS (TIMEX3) of every sentence.
+# Used by medtime/step1_detection.py.
+#
+# File format: every prompt starts with a line  ===== NAME =====  and runs until the next such line.
+# <<name>> is a placeholder that the code fills in (the sentence, the candidate list, ...).
+# Lines starting with # are comments and are never sent to Gemini.
+#
+# Flow for every sentence:
+#   events : EVENT_DETECTION -> EVENT_DETECTION_MISSING (one extra pass) -> EVENT_VERIFICATION
+#            -> PARTICIPANT_CHECK -> rule-based clean-up in the code
+#   times  : TIMEX_DETECTION -> TIMEX_DETECTION_MISSING (one extra pass)
+# The header dates (Data de registo, Data Alta Clinica, Data Admissao) are added by the code, not by a prompt.
+
+# System message, sent with EVERY prompt of the 4 layers.
+
+===== SYSTEM =====
+
+
+
+You are an expert linguist and clinician annotating Portuguese clinical narratives with the Med2Story annotation scheme 
+(Text2Story framework, ISO 24617-1 SemAF-Time / ISO-TimeML). Follow the guideline rules exactly. Answer ONLY with a JSON
+object in the requested format, no explanations.
+
+# What an event is (Med2Story manual). Inserted as <<event_rules>> in the event prompts below.
+
+===== EVENT_RULES =====
+WHAT IS AN EVENT (Med2Story manual, A.1)
+An EVENT is an eventuality that HAPPENS or OCCURS, or a STATE / circumstance that holds at some time and is temporally
+relevant. Ask for every candidate: "Can this be located in time — did it happen, start, end, or hold at some moment
+(e.g. 'em janeiro', 'atualmente', 'desde 2018')?" If NO, it is NOT an event.
+
+An event is always ONE of these 8 categories (give the category with every markable):
+  VERB              – a MAIN verb denoting an action, process or state: mostrou, realizou, fez, iniciou,
+                      apresentava, Instalou-se, Decide-se, propor, relatou, recebeu, suspendeu, faleceu.
+  PREDICATIVE       – the adjective/noun after a copula (ser, estar, ficar, encontrar-se, manter-se), the copula itself
+                      is NOT marked: "foi positivo" → positivo; "está estável" → estável; "creatinina aumentada" → aumentada;
+                      also event adjectives without a copula: compatível, afebril, estável.
+  CONDITION         – a disease, diagnosis, syndrome, symptom, sign, lesion or abnormal finding: anemia, febre,
+                      dor torácica, vómitos, hipertensão arterial, Leucemia Mieloide Aguda, linfoma não Hodgkin,
+                      derrame pericárdico, nódulo, metástases, recidiva, toxicidade renal.
+  EXAMINATION       – a test or diagnostic procedure: hemograma, TAC, Rx, biópsia, cariótipo, punção lombar,
+                      aspirado medular, análises, exames complementares, ecografia, FLT3 (= the test).
+  TREATMENT_OR_PROCEDURE – a therapy or clinical intervention: tratamento, quimioterapia, radioterapia,
+                      alotransplante, cirurgia, transfusão, antibioterapia, paliativo, criopreservação.
+  EVENT_NOUN        – any other noun naming something that happens or holds: diagnóstico, internamento, alta,
+                      quadro, aumento, agravamento, envolvimento, resposta, remissão, evolução, queixas, antecedentes,
+                      melhoria, suspeita, motivo, contexto, estadio, IPI.
+  LEXICALISED       – a fixed prepositional expression used as predicate: "em observação", "em estado grave",
+                      "em remissão completa", "em tratamento".
+  PRONOUN           – a relative pronoun referring to an event: "um hemograma QUE mostrou" → que.
+
+
+SPAN RULES (how much text to copy)
+
+S1. Verbs: ONLY the main verb, never the auxiliary: "foi identificada" → identificada; "foi submetido" → submetido;
+    "tinha iniciado" → iniciado; "tinha sido medicado" → medicado; "vai fazer" → fazer. Keep clitics: Instalou-se, Trata-se.
+
+S2. Copula + predicative: mark ONLY the predicative ("O FLT3 foi positivo" → FLT3, positivo). But copula + place or
+    time: mark ONLY the verb ("O doente está no hospital X" → está).
+
+S3. A multi-word clinical concept is ONE markable – NEVER split it into words:
+    "Leucemia Mieloide Aguda"; "linfoma não Hodgkin"; "hipertensão arterial"; "dor torácica"; "derrame pericárdico";
+    "ureterohidronefrose bilateral"; "exames complementares"; "Quadro clínico e analítico"; "colecistectomia
+    laparoscópica"; "lesão hepática". Adjectives that belong to the concept stay inside (bilateral, crónica, aguda,
+    torácica, arterial) – NEVER list such an adjective on its own: "Múltiplas adenopatias mediastínicas e hilares
+    bilaterais" → adenopatias mediastínicas e hilares bilaterais (one markable; ✗ mediastínicas, ✗ bilaterais alone).
+    BUT words that characterise the severity / extent / prognosis of a disease are SEPARATE markables (manual,
+    Characterization of the Disease): "Linfoma não Hodgkin difuso de grandes células B, estadio IV, IPI de 5"
+    → Linfoma não Hodgkin | difuso | estadio | IPI   (✗ grandes células B, IV, 5).
+
+S4. Do NOT include determiners, prepositions or the complement introduced by de/do/da/no/na/com:
+    "o hemograma" → hemograma; "envolvimento do SNC" → envolvimento; "agravamento da função renal" → agravamento;
+    "tratamento com quimioterapia" → tratamento, quimioterapia; "antecedentes de relevo" → antecedentes, relevo.
+
+S5. Copy the text EXACTLY as in the sentence (same accents and capitals), no leading/trailing punctuation, in order.
+
+
+NEVER AN EVENT (these are participants, values or function words – do not list them)
+
+  ✗ people and roles: doente, paciente, médico, dador, família
+  ✗ places and institutions: Hospital A, IPO, serviço de urgência, consulta externa (as a place), domicílio
+  ✗ body parts, organs, anatomical locations and tissues: fígado, pulmão, rim, mama, mediastino, lobo superior,
+    parede abdominal, função renal, medula óssea, sistema nervoso central / SNC, à direita, esquerdo (alone)
+  ✗ adjectives that only give a LOCATION or SIDE, listed on their own: axilares, inguinais, cervicais,
+    mediastínicas, supraclaviculares, hilares, bilaterais, esquerdo ("adenopatias axilares e inguinais" →
+    adenopatias, or the whole phrase as ONE markable; never "axilares" or "inguinais" alone)
+  ✗ drugs and substances: Idarrubicina, Citarabina, Cisplatina, Metotrexato, Rituximab, paracetamol
+  ✗ genes, cells, molecules, lab parameters as entities: FLT3 when it is the gene ("mutação no FLT3"), blastos,
+    células B, recetores hormonais, PCR, creatinina, hemoglobina (the substance), enzimas hepáticas, amilase,
+    transaminases, linfócitos ("aumento das transaminases" → only "aumento" is an event)
+  ✗ protocol names and VALUES of stages / scores / results: R-CHOP, FOLFOX, IV, II, 5, 60%, 48%, 8,2 g/dL, 12 000/µL
+  ✗ numbers, quantities, ages and units: 65, três, quatro ciclos (as a count)
+  ✗ temporal expressions: março, novembro de 2020, 12-03-2021, três semanas, recentemente, atualmente, após, então
+  ✗ function words alone: e, ou, de, com, sem, para, por, em, a, o, um, uma, não, mais, ainda, já, será, foi, é
+  ✗ adverbs: clinicamente, habitualmente, possivelmente
+
+EXAMPLES (from the manual and similar clinical sentences; ✗ = must NOT be listed)
+
+1. "O aspirado medular mostrou 48% de blastos de fenótipo monocitoide."
+   → aspirado medular [EXAMINATION] | mostrou [VERB]      ✗ 48%, blastos, fenótipo monocitoide
+
+2. "No cariótipo foi identificada uma translocação (16;16)."
+   → cariótipo [EXAMINATION] | identificada [VERB] | translocação [CONDITION]      ✗ foi, (16;16)
+
+3. "O hemograma mostrou anemia e leucopenia." → hemograma [EXAMINATION] | mostrou [VERB] | anemia [CONDITION] | leucopenia [CONDITION]
+
+4. "O FLT3 foi positivo." → FLT3 [EXAMINATION] | positivo [PREDICATIVE]      ✗ foi
+
+5. "Foi detetada uma mutação no FLT3." → detetada [VERB] | mutação [CONDITION]      ✗ Foi, FLT3 (gene)
+
+6. "O doente ficou em observação." → em observação [LEXICALISED]      ✗ doente, ficou
+
+7. "Foi ao hospital da sua residência realizar os exames complementares de diagnóstico."
+   → Foi [VERB] | realizar [VERB] | exames complementares de diagnóstico [EXAMINATION]      ✗ hospital, residência
+
+8. "Instalou-se um quadro de dores abdominais." → Instalou-se [VERB] | quadro [EVENT_NOUN] | dores abdominais [CONDITION]
+
+9. "Quadro clínico e analítico compatível com Leucemia Mieloide Aguda, com envolvimento do SNC."
+   → Quadro clínico e analítico [EVENT_NOUN] | compatível [PREDICATIVE] | Leucemia Mieloide Aguda [CONDITION] | envolvimento [EVENT_NOUN]      ✗ SNC
+
+10. "O doente, estável até ontem, faleceu durante a noite no contexto de choque séptico."
+   → estável [PREDICATIVE] | faleceu [VERB] | contexto [EVENT_NOUN] | choque séptico [CONDITION]      ✗ doente, ontem, a noite
+
+11. "Doente sem antecedentes relevantes." → antecedentes relevantes [EVENT_NOUN]      ✗ Doente, sem
+
+12. "Proposto para tratamento com Idarrubicina e Citarabina associado a tratamento intratecal, e posteriormente a
+    alotransplante de progenitores hematopoéticos, se dador compatível."
+   → Proposto [VERB] | tratamento [TREATMENT_OR_PROCEDURE] | associado [VERB] | tratamento [TREATMENT_OR_PROCEDURE] |
+     alotransplante [TREATMENT_OR_PROCEDURE] | compatível [PREDICATIVE]
+     ✗ Idarrubicina, Citarabina (drugs), intratecal (route, not an event here), progenitores hematopoéticos, dador
+
+13. "Por esse motivo fez um hemograma que mostrou anemia."
+   → motivo [EVENT_NOUN] | fez [VERB] | hemograma [EXAMINATION] | que [PRONOUN] | mostrou [VERB] | anemia [CONDITION]
+
+14. "A TAC revelou uma lesão expansiva no lobo superior do pulmão direito, sem derrame pleural."
+   → TAC [EXAMINATION] | revelou [VERB] | lesão expansiva [CONDITION] | derrame pleural [CONDITION]
+     ✗ lobo superior, pulmão direito (anatomy), sem
+
+15. "Iniciou quimioterapia com Cisplatina, que suspendeu por toxicidade renal."
+   → Iniciou [VERB] | quimioterapia [TREATMENT_OR_PROCEDURE] | suspendeu [VERB] | toxicidade renal [CONDITION]
+     ✗ Cisplatina (drug)
+
+16. "Trata-se de um linfoma folicular, estadio II, com envolvimento medular e recetores hormonais positivos."
+   → Trata-se [VERB] | linfoma folicular [CONDITION] | estadio [EVENT_NOUN] | envolvimento [EVENT_NOUN] | positivos [PREDICATIVE]
+     ✗ II (value), recetores hormonais (molecules)
+
+17. "Doente de 65 anos, com antecedentes de diabetes mellitus tipo 2, asma e obesidade, assintomática até março,
+    altura em que inicia queixas de cansaço."
+   → antecedentes [EVENT_NOUN] | diabetes mellitus tipo 2 [CONDITION] | asma [CONDITION] | obesidade [CONDITION] |
+     assintomática [PREDICATIVE] | inicia [VERB] | queixas [EVENT_NOUN] | cansaço [CONDITION]
+     ✗ Doente, 65 anos, março, altura
+
+18. "Foi internado no Hospital B por febre e prostração, tendo sido medicado com paracetamol."
+   → internado [VERB] | febre [CONDITION] | prostração [CONDITION] | medicado [VERB]
+     ✗ Foi, Hospital B, tendo sido, paracetamol
+
+RECALL – read the TARGET sentence from its FIRST word to its LAST word and list EVERY event, also those in long
+enumerations ("antecedentes de A, B, C e D" → antecedentes, A, B, C, D) and those before the main verb.
+
+CHECKLIST – before answering, remove every candidate that
+  (a) is not one of the 8 categories, (b) is in the NEVER list, (c) is only part of a split clinical concept,
+  (d) contains an auxiliary verb, or (e) does not appear literally in the target sentence.
+
+# First pass: list the events of one sentence.
+
+===== EVENT_DETECTION =====
+
+TASK (Entity Structures › Event: detection). List every EVENT of the TARGET sentence, following the
+Med2Story annotation manual STRICTLY. Precision matters: a wrong markable is worse than a missing one.
+
+<<event_rules>>
+
+PREVIOUS SENTENCE (context only, do not annotate): <<previous_sentence>>
+
+TARGET: <<sentence>>
+
+Return JSON: {"items": [{"text": "<exact markable>", "category": "<one of the 8 categories>"}, ...]}
+List only events of the TARGET sentence.
+
+# Second pass: the events found so far are marked as ⟦M1 text⟧; ask only for the missing ones.
+
+===== EVENT_DETECTION_MISSING =====
+
+TASK (Entity Structures › Event: detection). List every EVENT of the TARGET sentence, following the
+Med2Story annotation manual STRICTLY. Precision matters: a wrong markable is worse than a missing one.
+
+<<event_rules>>
+
+The text below is shown with the EVENTS found so far marked as ⟦ID text⟧.
+Following exactly the same rules, list ONLY the EVENTS that are still MISSING (not marked yet).
+If nothing is missing, return an empty list.
+
+PREVIOUS SENTENCE (context only, do not annotate): <<previous_sentence>>
+
+TARGET (with marks): <<marked_sentence>>
+
+Return JSON: {"items": [{"text": "<exact markable>", "category": "<one of the 8 categories>"}, ...]}
+List only events of the TARGET sentence.
+
+# Check every candidate event: KEEP, DROP or FIX its span.
+
+===== EVENT_VERIFICATION =====
+
+TASK (Entity Structures › Event: verification). Candidate EVENT markables were extracted from the
+TARGET sentence. Check EACH candidate against the Med2Story rules above and decide:
+
+  KEEP – it is an event and its span is correct. WHEN IN DOUBT, KEEP.
+         ALWAYS KEEP: main verbs and participles ("identificada", "detetada", "constatadas", "Decide-se"),
+         examinations ("análises", "estudo"), diseases, symptoms and findings, predicative adjectives ("elevada",
+         "aumentada", "compatível", "positivo"), scores that characterise a disease ("ECOG", "IPI", "estadio").
+
+  DROP – it is NOT an event: a person; a place or institution ("Hospital B"); a body part, organ or anatomical
+         location ("pulmão direito", "função renal", "SNC", "região do mediastino", "porção do cólon", "parede
+         do estômago", "lobo superior"); a drug or substance ("Cisplatina"); a gene, cell,
+         molecule or lab parameter ("blastos", "PCR"); a protocol name ("FOLFOX"); a number, value or stage value;
+         a temporal expression; a function word, auxiliary or adverb; or a duplicate of another candidate.
+
+  FIX  – it is an event but the span is wrong. Give the corrected span, copied exactly from inside the candidate:
+         remove auxiliaries ("tinha sido medicado" → "medicado"), values ("estadio II" → "estadio", "IPI de 3" →
+         "IPI"), complements introduced by de/do/da/no/com ("agravamento da função renal" → "agravamento") and
+         characterising words that are separate events ("linfoma folicular difuso de baixo grau" → "linfoma
+         folicular").
+
+<<event_rules>>
+
+TARGET: <<sentence>>
+
+CANDIDATES:
+<<candidates>>
+
+Return JSON: {"items": [{"id": "<candidate ID>", "decision": "KEEP", "corrected": ""}, {"id": "<candidate ID>", "decision": "FIX",
+"corrected": "<span inside the candidate>"}, ...]} with one entry per candidate.
+
+# Remove candidates that are participants (anatomy, places, people, drugs, genes, values).
+
+===== PARTICIPANT_CHECK =====
+
+TASK (Entity Structures › Event: participant check). In the Med2Story scheme, EVENTS are things that
+happen or hold in time (actions, states, diseases, symptoms, findings, examinations, treatments). PARTICIPANTS are the
+things that take part in events. For EACH candidate below say what it denotes IN THIS SENTENCE.
+Judge a multi-word candidate by its HEAD (first) noun: "massa cervical" → massa (a finding) → NONE;
+"quisto do rim" → quisto (a finding) → NONE; "lesão hepática" → lesão → NONE;
+"nódulos pulmonares" → nódulos (a finding) → NONE.
+
+  ANATOMY  – a body part, organ, tissue, anatomical region or side: pulmão, fígado, rim, mama, estômago, mediastino,
+             medula óssea, sistema nervoso central / SNC, parede (of an organ), região, porção, lobo, à direita,
+             esquerdo, função renal / hepática. ALSO an adjective that only gives a location or side when it
+             stands alone as a candidate: axilares, inguinais, cervicais, mediastínicas, supraclaviculares,
+             hilares ("adenopatias axilares e inguinais" → "axilares" = ANATOMY, "inguinais" = ANATOMY).
+
+  PLACE    – a hospital, service, institution or place: Hospital B, IPO, urgência, domicílio.
+
+  PERSON   – a person or role: doente, médico, dador, família.
+
+  DRUG     – a drug or administered substance: Cisplatina, Rituximab, Metotrexato, Ciclofosfamida, paracetamol.
+
+  BIO_ENTITY – a gene, cell, molecule or lab parameter as a thing: FLT3 (the gene), blastos, células B, CD20,
+             creatinina, PCR, troponina. A substance, enzyme or cell is a participant also
+             when it is the COMPLEMENT of an event noun: "aumento das enzimas hepáticas" → the event is "aumento",
+             "enzimas hepáticas" = BIO_ENTITY; "elevação da amilase" → "amilase" = BIO_ENTITY; "presença de
+             linfócitos atípicos" → BIO_ENTITY. Only a lab parameter that is the SUBJECT of its own result names the
+             EXAMINATION → NONE ("PCR elevada" → PCR = NONE; "O FLT3 foi positivo" → FLT3 = NONE).
+
+  PROTOCOL_OR_VALUE – a protocol name or a number/value: R-CHOP, FOLFOX, 3, II, 60%.
+
+  NONE     – it is an eventuality (NOT a participant): a verb, a disease, symptom or finding (even when its name
+             contains an organ: "dor torácica", "lesão hepática", "derrame pleural", "hipertensão arterial"), an
+             examination ("TAC", "biópsia", "FLT3" as a test), a treatment, a predicate ("elevada", "compatível"),
+             a score that characterises a disease ("ECOG", "IPI", "estadio").
+
+SENTENCE: <<sentence>>
+
+CANDIDATES:
+<<candidates>>
+
+Return JSON: {"items": [{"id": "<candidate ID>", "denotes": "<one of the 7 kinds>"}, ...]} with one entry for EVERY candidate.
+
+# What a temporal expression is. Inserted as <<timex_rules>> in the two prompts below.
+
+===== TIMEX_RULES =====
+
+A TEMPORAL EXPRESSION (TIMEX3) is a noun phrase or adverb denoting time: dates ("25-01-2019", "dezembro
+de 2018", "janeiro", "o verão passado"), times of day ("4 p.m.", "manhã"), durations ("dois meses", "três meses",
+ages such as "79 anos de idade"), sets ("duas vezes por semana", "diariamente") and temporal adverbs ("ontem",
+"recentemente", "recente", "atualmente").
+
+MARKABLE RULES
+
+- Do NOT include a preceding preposition: "em janeiro" → "janeiro"; "até dezembro de 2018" → "dezembro de 2018".
+
+- Mark only the temporal expression, not a following clause: "cinco dias depois de ter saído" → "cinco dias".
+
+- Expressions that further specify each other in the same constituent are ONE markable ("terça-feira, dia 21";
+  "às 11 horas, 13 de janeiro de 2023").
+
+- Expressions where one is ordered relative to the other are separate ("duas semanas a partir da próxima
+  semana" → "duas semanas", "a próxima semana"), except clock times ("dez minutos para as 15 horas").
+
+- Conjunctions/disjunctions are separate markables ("seis meses ou um ano" → "seis meses", "um ano").
+
+- "mais recentemente" → "recentemente" (manual: "cefaleias SIMULTANEOUS recentemente").
+
+- Do NOT mark: prepositions/conjunctions (quando, enquanto, durante, após), sequencing words (entretanto, antes, então),
+  non-quantifiable durations (permanentemente, temporariamente), non-existent times (nenhuma data), times used as
+  proper names ("25 de Abril"), bare frequencies (uma vez, frequente, raramente, nunca).
+
+- Copy each expression EXACTLY as written, in order of appearance. Only expressions that occur in the TARGET text.
+
+
+# First pass: list the temporal expressions of one sentence.
+
+===== TIMEX_DETECTION =====
+
+TASK (Entity Structures › Temporal Expressions: detection). List every temporal expression of the
+TARGET sentence. COPY each expression exactly as written in the sentence – never normalise or convert it (write
+"janeiro", not "2019-01"). If the sentence has no temporal expression, return an empty list.
+
+<<timex_rules>>
+
+PREVIOUS SENTENCE (context only, do not annotate): <<previous_sentence>>
+
+TARGET: <<sentence>>
+
+Return JSON: {"items": [{"text": "<markable>"}, ...]}
+
+# Second pass: only the temporal expressions that are still missing.
+
+===== TIMEX_DETECTION_MISSING =====
+
+TASK (Entity Structures › Temporal Expressions: detection). List every temporal expression of the
+TARGET sentence. COPY each expression exactly as written in the sentence – never normalise or convert it (write
+"janeiro", not "2019-01"). If the sentence has no temporal expression, return an empty list.
+
+<<timex_rules>>
+
+The text below is shown with the TEMPORAL EXPRESSIONS found so far marked as ⟦ID text⟧.
+Following exactly the same rules, list ONLY the TEMPORAL EXPRESSIONS that are still MISSING (not marked yet).
+If nothing is missing, return an empty list.
+
+PREVIOUS SENTENCE (context only, do not annotate): <<previous_sentence>>
+
+TARGET (with marks): <<marked_sentence>>
+
+Return JSON: {"items": [{"text": "<markable>"}, ...]}

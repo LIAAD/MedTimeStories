@@ -1,0 +1,229 @@
+===== IDEA ======
+
+# LAYER 4 - TEMPORAL LINKS (TLINKs) between events and temporal expressions.
+# Used by medtime/step4_links.py.
+#
+# File format: every prompt starts with a line  ===== NAME =====  and runs until the next such line.
+# <<name>> is a placeholder that the code fills in (the sentence, the candidate list, ...).
+# Lines starting with # are comments and are never sent to Gemini.
+#
+#   1. PAIR_DETECTION (+ PAIR_DETECTION_MISSING for events still unlinked): which pairs are linked,
+#      sentence by sentence (current sentence + previous sentence + the report date)
+#   2. RELATION_STEP + RELATION: ...  - one YES/NO question per relation type, most specific first
+#   3. RELATION_FALLBACK - single-choice relation for links that got NO everywhere (else SIMULTANEOUS)
+#   4. CROSS_REPORT - links between two consecutive reports of the same patient
+# The direction of every link is fixed by the code before typing: event -> temporal expression,
+# otherwise the later mention -> the earlier mention.
+
+
+
+# The 13 relation types. Inserted as <<relations>> in RELATION_FALLBACK and CROSS_REPORT.
+===== TLINK_RELATIONS =====
+RELATIONS (read as: SOURCE relation TARGET)
+
+TLINK_before (BEFORE) – source occurs before target ("É de referir que o FLT3 foi positivo": positivo BEFORE referir).
+
+TLINK_after (AFTER) – source occurs after target ("O aspirado medular mostrou 48% de blastos": mostrou AFTER aspirado medular).
+
+TLINK_before_overlap (BEFORE_OVERLAP) – source starts before target and continues into it ("iniciou tratamento a
+   2.4.23, sendo já seguido pelo médico": seguido BEFORE_OVERLAP 2.4.23).
+
+TLINK_after_overlap (AFTER_OVERLAP) – source starts after target but within its timeframe ("febre, vómitos e mais
+   recentemente cefaleias": cefaleias AFTER_OVERLAP vómitos; cefaleias SIMULTANEOUS recentemente).
+
+TLINK_includes (INCLUDES) – source includes target ("Uma punção lombar mostrou envolvimento do SNC": envolvimento INCLUDES mostrou).
+
+TLINK_is_included (IS_INCLUDED) – source is included in target ("tinha iniciado antibioterapia no dia anterior":
+   iniciado IS_INCLUDED o dia anterior; "Por esse motivo fez um hemograma": fez IS_INCLUDED motivo).
+
+TLINK_during (DURING) – source occurs during target ("Durante o exame físico, referiu dores intensas": dores
+   intensas DURING exame físico).
+
+TLINK_simultaneous (SIMULTANEOUS) – same time; also the DEFAULT when nothing allows a more specific relation
+   ("hipersudorese e infeções de repetição": infeções de repetição SIMULTANEOUS hipersudorese).
+
+TLINK_identity (IDENTITY) – the same eventuality: "quadro caracterizado por": caracterizado IDENTITY quadro;
+   relative pronoun ("um hemograma que mostrou": que IDENTITY hemograma); "hemograma IDENTITY fez"; causatives
+   ("A infeção causou aumento": causou IDENTITY infeção, aumento AFTER causou); light verbs ("deu entrada":
+   entrada IDENTITY deu; "teve alta a 2.3.2017": alta IDENTITY teve, alta IS_INCLUDED 2.3.2017); reporting verbs
+   referring to the same act ("disse ... Referiu ainda": referiu IDENTITY disse).
+
+TLINK_begins (BEGINS) – source begins target ("dor abdominal desde abril de 2014": dor abdominal BEGINS abril de 2014).
+
+TLINK_ends (ENDS) – source ends target ("Glasdegib termina a 5.6.2012": termina ENDS 5.6.2012).
+
+TLINK_begun_by (BEGUN_BY) – source is begun by target ("Em janeiro de 2014, inicia queixas": queixas BEGUN_BY
+   inicia, inicia BEGUN_BY janeiro de 2014).
+
+TLINK_ended_by (ENDED_BY) – source is ended by target ("Em abril de 2013, terminou o tratamento": tratamento
+   ENDED_BY terminou, terminou ENDED_BY abril de 2013).
+
+===== PAIR_DETECTION =====
+TASK (Link Structures › Temporal Links: pair detection). Find the pairs of entities of the CURRENT
+sentence that must be connected by a temporal link (TLINK). Do NOT decide the relation type yet.
+Entities are marked ⟦E# ...⟧ (events) and ⟦T# ...⟧ (temporal expressions); <<doctime_id>> is the DOCTIME (report
+creation date, <<dct>>).
+
+A TLINK connects two events, two temporal expressions, or an event and a temporal expression, whenever the text
+allows ordering them in time: an event and the temporal expression that locates it; an event and the event it
+depends on (argument of a reporting / aspectual / intensional verb, examination and its result, cause and
+effect); coreferent mentions (relative pronoun and antecedent, light verb and its noun, "quadro caracterizado
+por"); consecutive events of the narrative. Link every event of the current sentence to at least one entity.
+
+RULES
+- At least one entity of each pair belongs to the CURRENT sentence; the other may be in the current sentence, the
+  previous sentence(s) or the DOCTIME.
+- Only use IDs from the ENTITIES list.
+
+PREVIOUS SENTENCE(S):
+<<previous>>
+
+CURRENT SENTENCE:
+<<current>>
+
+ENTITIES:
+<<entities>>
+
+Return JSON: {"pairs": [{"source": "<entity ID>", "target": "<entity ID>"}, ...]}
+
+# Same as PAIR_DETECTION, but asks only for the events of the current sentence that have no link yet.
+===== PAIR_DETECTION_MISSING =====
+TASK (Link Structures › Temporal Links: pair detection). Find the pairs of entities of the CURRENT
+sentence that must be connected by a temporal link (TLINK). Do NOT decide the relation type yet.
+Entities are marked ⟦E# ...⟧ (events) and ⟦T# ...⟧ (temporal expressions); <<doctime_id>> is the DOCTIME (report
+creation date, <<dct>>).
+
+A TLINK connects two events, two temporal expressions, or an event and a temporal expression, whenever the text
+allows ordering them in time: an event and the temporal expression that locates it; an event and the event it
+depends on (argument of a reporting / aspectual / intensional verb, examination and its result, cause and
+effect); coreferent mentions (relative pronoun and antecedent, light verb and its noun, "quadro caracterizado
+por"); consecutive events of the narrative. Link every event of the current sentence to at least one entity.
+
+RULES
+- At least one entity of each pair belongs to the CURRENT sentence; the other may be in the current sentence, the
+  previous sentence(s) or the DOCTIME.
+- Only use IDs from the ENTITIES list.
+
+PREVIOUS SENTENCE(S):
+<<previous>>
+
+CURRENT SENTENCE:
+<<current>>
+
+ENTITIES:
+<<entities>>
+
+The following events of the CURRENT sentence are NOT linked yet: <<unlinked>>.
+For each of them give the entity it is most directly temporally related to (an event, a temporal expression or the
+DOCTIME). Only use IDs from the ENTITIES list.
+
+Return JSON: {"pairs": [{"source": "<unlinked event ID>", "target": "<entity ID>"}, ...]}
+
+
+# One YES/NO step: is the relation of these links <<label>>?
+===== RELATION_STEP =====
+TASK (<<step>> – <<path>>). Decision step of the Med2Story tree: for EACH candidate below answer YES if
+it is **<<label>>**, otherwise NO.
+
+<<label>>: <<definition>>
+
+Answer YES only when the candidate clearly fits this definition in this report. Answer NO otherwise: a NO is not
+an error, the candidate is checked against the next classes of the tree.
+
+REPORT (entities marked ⟦ID text⟧):
+<<report>>
+
+CANDIDATES:
+<<candidates>>
+
+Return JSON: {"items": [{"id": "<candidate ID>", "answer": "YES or NO"}, ...]} with one entry for EVERY candidate.
+
+# <<definition>> for TLINK_identity (step P3.1).
+===== RELATION: IDENTITY =====
+read the link as "SOURCE IDENTITY TARGET" (the direction is fixed): the two mentions are the SAME eventuality: "quadro caracterizado por" (caracterizado IDENTITY quadro); relative pronoun and antecedent ("um hemograma que mostrou": que IDENTITY hemograma); "fez um hemograma" (hemograma IDENTITY fez); causative verb and cause ("A infeção causou": causou IDENTITY infeção); light verbs ("deu entrada": entrada IDENTITY deu; "teve alta": alta IDENTITY teve); reporting verbs for the same act (referiu IDENTITY disse); repeated mentions.
+
+# <<definition>> for TLINK_begins (step P3.2).
+===== RELATION: BEGINS =====
+read the link as "SOURCE BEGINS TARGET" (the direction is fixed): the source BEGINS the target / the target starts at the source ("dor abdominal desde abril de 2014": dor abdominal BEGINS abril de 2014; "internamento de abril a maio": internamento BEGINS abril).
+
+# <<definition>> for TLINK_ends (step P3.3).
+===== RELATION: ENDS =====
+read the link as "SOURCE ENDS TARGET" (the direction is fixed): the source ENDS the target ("Glasdegib termina a 5.6.2012": termina ENDS 5.6.2012; "internamento de abril a maio de 2017": internamento ENDS maio de 2017).
+
+# <<definition>> for TLINK_begun_by (step P3.4).
+===== RELATION: BEGUN_BY =====
+read the link as "SOURCE BEGUN_BY TARGET" (the direction is fixed): the source is BEGUN BY the target ("Em janeiro de 2014, inicia queixas": queixas BEGUN_BY inicia, inicia BEGUN_BY janeiro de 2014).
+
+# <<definition>> for TLINK_ended_by (step P3.5).
+===== RELATION: ENDED_BY =====
+read the link as "SOURCE ENDED_BY TARGET" (the direction is fixed): the source is ENDED BY the target ("Em abril de 2013, terminou o tratamento": tratamento ENDED_BY terminou, terminou ENDED_BY abril de 2013).
+
+# <<definition>> for TLINK_during (step P3.6).
+===== RELATION: DURING =====
+read the link as "SOURCE DURING TARGET" (the direction is fixed): the source occurs DURING the target ("Durante o exame físico, referiu dores intensas": dores intensas DURING exame físico).
+
+# <<definition>> for TLINK_includes (step P3.7).
+===== RELATION: INCLUDES =====
+read the link as "SOURCE INCLUDES TARGET" (the direction is fixed): the source temporally INCLUDES the target ("Uma punção lombar mostrou envolvimento do SNC": envolvimento INCLUDES mostrou).
+
+# <<definition>> for TLINK_is_included (step P3.8).
+===== RELATION: IS_INCLUDED =====
+read the link as "SOURCE IS_INCLUDED TARGET" (the direction is fixed): the source is INCLUDED in the target, typically an event inside the time that locates it ("tinha iniciado antibioterapia no dia anterior": iniciado IS_INCLUDED o dia anterior; "teve alta a 2.3.2017": alta IS_INCLUDED 2.3.2017; "Por esse motivo fez um hemograma": fez IS_INCLUDED motivo).
+
+# <<definition>> for TLINK_before_overlap (step P3.9).
+===== RELATION: BEFORE_OVERLAP =====
+read the link as "SOURCE BEFORE_OVERLAP TARGET" (the direction is fixed): the source starts BEFORE the target and continues into it ("iniciou tratamento a 2.4.23, sendo já seguido pelo médico": seguido BEFORE_OVERLAP 2.4.23).
+
+# <<definition>> for TLINK_after_overlap (step P3.10).
+===== RELATION: AFTER_OVERLAP =====
+read the link as "SOURCE AFTER_OVERLAP TARGET" (the direction is fixed): the source starts AFTER the target but within its timeframe ("febre, vómitos e mais recentemente cefaleias": cefaleias AFTER_OVERLAP vómitos).
+
+# <<definition>> for TLINK_before (step P3.11).
+===== RELATION: BEFORE =====
+read the link as "SOURCE BEFORE TARGET" (the direction is fixed): the source occurs BEFORE the target ("É de referir que o FLT3 foi positivo": positivo BEFORE referir).
+
+# <<definition>> for TLINK_after (step P3.12).
+===== RELATION: AFTER =====
+read the link as "SOURCE AFTER TARGET" (the direction is fixed): the source occurs AFTER the target ("O aspirado medular mostrou 48% de blastos": mostrou AFTER aspirado medular; "A infeção causou aumento": aumento AFTER causou).
+
+# <<definition>> for TLINK_simultaneous (step P3.13).
+===== RELATION: SIMULTANEOUS =====
+read the link as "SOURCE SIMULTANEOUS TARGET" (the direction is fixed): source and target happen at the same time ("hipersudorese e infeções de repetição": infeções de repetição SIMULTANEOUS hipersudorese; "mais recentemente cefaleias": cefaleias SIMULTANEOUS recentemente).
+
+===== RELATION_FALLBACK =====
+TASK (Temporal Links: TLINK type of links no sub-type node extracted). Give the relation type of every candidate temporal link below.
+The direction is already fixed (event → temporal expression; otherwise from the later to the earlier mention in the
+text): read each link as "SOURCE relation TARGET". Entities are marked ⟦E# ...⟧ / ⟦T# ...⟧; <<doctime_id>> is the
+DOCTIME (<<dct>>).
+
+<<relations>>
+
+TEXT:
+<<report>>
+
+LINKS:
+<<links>>
+
+Return JSON: {"links": [{"id": "<link ID>", "relation": "..."}, ...]} with one entry per link.
+
+===== CROSS_REPORT =====
+TASK (Temporal Links: cross-report links). Two consecutive reports of the same patient are given, with
+their events marked ⟦E# ...⟧.
+
+<<relations>>
+
+Create:
+(a) IDENTITY links between an event of the CURRENT report and an event of the PREVIOUS report that refer to the same
+    eventuality (the same diagnosis, examination or treatment mentioned again). Source = current-report event.
+(b) exactly one link between the FIRST event of the current report (<<first>>) and the LAST event of the previous
+    report (<<last>>); choose the most appropriate relation (source = <<first>>).
+(c) a link when an event of the previous report that is not temporally located there is temporally anchored by an
+    event of the current report.
+
+PREVIOUS REPORT (DCT <<dct_previous>>):
+<<previous>>
+
+CURRENT REPORT (DCT <<dct_current>>):
+<<current>>
+
+Return JSON: {"tlinks": [{"source": "<current-report event ID>", "relation": "...", "target": "<previous-report event ID>"}, ...]}

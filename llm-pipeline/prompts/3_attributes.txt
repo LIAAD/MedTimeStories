@@ -1,0 +1,141 @@
+===== IDEA ======
+
+# LAYER 3 - ATTRIBUTES: fill in the attributes of the events and temporal expressions.
+# Used by medtime/step3_attributes.py.
+#
+# File format: every prompt starts with a line  ===== NAME =====  and runs until the next such line.
+# <<name>> is a placeholder that the code fills in (the sentence, the candidate list, ...).
+# Lines starting with # are comments and are never sent to Gemini.
+#
+#   OBSERVATIONS  - full form of abbreviations in specialized events (manual: 'observations' field)
+#   MORPHOSYNTAX  - PoS, polarity, tense, aspect, vform, mood, modality of every event (one sentence at a time)
+#   SEMANTICS     - aspectual class and type of every verb event
+#   TIMEX_VALUE   - normalised value (ISO-TimeML) and function of every temporal expression
+# After the prompts, a few deterministic rules from the manual and the annotators are applied in the code
+# (gerunds have no tense, verb lists for the class, imperfect -ava = Imperfective, durations from the text).
+
+===== OBSERVATIONS =====
+TASK (<<step>> – <<path>>). The listed medical events are, or contain, abbreviations. As the manual asks
+("the word written in full in the open field observations"), give the full form of each abbreviation in Portuguese
+(e.g. "LDH" → "lactato desidrogenase", "SNC" → "sistema nervoso central", "TAC" → "tomografia axial computorizada").
+If you do not know the full form, return "".
+
+REPORT:
+<<report>>
+
+EVENTS:
+<<events>>
+
+Return JSON: {"events": [{"id": "<event ID>", "observations": "<full form>"}, ...]}
+
+===== MORPHOSYNTAX =====
+TASK (Event › General Event: MORPHOSYNTACTIC information). For every EVENT marked ⟦ID text⟧ in the
+sentence give its morphosyntactic attributes.
+
+pos: VERB | NOUN | ADJECTIVE | PREPOSITION (prepositional / lexicalised expressions: "em remissão completa",
+     "em estado grave") | PRONOUN (e.g. relative "que").
+polarity: NEG if the event is negated ("não", "sem", "nem", "nada", "ausência de", negative verbs such as
+     "deixar de"); otherwise POS. "Doente sem antecedentes relevantes" → antecedentes relevantes = NEG.
+tense (of the compound tense): PRESENT | PAST | FUTURE | NONE. Verbs AND predicative complements of a copula get
+     a tense, taken from the copula ("O FLT3 foi positivo" → positivo: ADJECTIVE, PAST, PERFECTIVE); other
+     non-verbal events get NONE.
+     NON-FINITE FORMS HAVE NO TENSE → tense NONE:
+       - every GERUND ("-ndo"): "tratando-se", "condicionando", "estendendo-se", "associando-se", "sendo" → NONE
+         (a gerund is never PAST, even in a past narrative);
+       - a free infinitive: "por apresentar", "para realizar", "decide-se propor" (propor) → NONE;
+       - a participle used as an adjective: "leucemia associada a mutação" (associada) → NONE.
+     A present-tense form used to narrate the past keeps tense PRESENT ("Em março de 2020, inicia
+     quimioterapia" → inicia: PRESENT, vform NONE). A conjugated verb (inicia, realizou, apresentava) is FINITE:
+     vform NONE; PARTICIPLE only for -ado / -ido / -ada / -ida forms.
+     A participle or infinitive INSIDE a compound or periphrastic verb takes the tense of its auxiliary:
+       "foi submetido" → submetido PAST; "tinha iniciado" → iniciado PAST; "esteve a fazer" → fazer PAST.
+aspect: PROGRESSIVE ("está a ser acompanhado") | PERFECTIVE ("fez", "mostrou") | IMPERFECTIVE ("encontrava-se",
+     "apresentava") | PERFECTIVE_PROGRESSIVE ("esteve a fazer") | IMPERFECTIVE_PROGRESSIVE ("estava a ser
+     seguido") | NONE. Same rule as tense for non-verbal events.
+vform (verbs only, else NONE): GERUNDIVE ("tratando-se") | INFINITIVE ("apresentar") | PARTICIPLE ("associada") |
+     NONE (finite verb).
+mood (verbs only, else NONE): SUBJUNCTIVE ("que faça") | CONDITIONAL ("aceitaria", "faria") | FUTURE ("estará") |
+     NONE (indicative).
+modality (verbs only, else NONE): DEVER | PODER | TER_DE | SER_CAPAZ_DE when the event is governed by that modal
+     verb ("deve cumprir" → cumprir: DEVER), otherwise NONE.
+
+SENTENCE: <<sentence>>
+
+EVENTS:
+<<events>>
+
+Return JSON: {"events": [{"id": "<event ID>", "pos": "...", "polarity": "...", "tense": "...", "aspect": "...",
+"vform": "...", "mood": "...", "modality": "..."}, ...]} with one entry per event.
+
+===== SEMANTICS =====
+TASK (Event › General Event: SEMANTIC information). For every VERB event listed below give its
+aspectual CLASS and its TYPE (Med2Story manual, General Event attributes 1 and 2). The events are marked ⟦ID text⟧
+in the sentence.
+
+CLASS – go down this list and take the FIRST that fits:
+  1. REPORTING – the subject declares, narrates or informs: referir, relatar, declarar, dizer, explicar, informar,
+     mencionar ("É de referir que…" → referir; "O paciente relatou astenia" → relatou).
+  2. PERCEPTION – a PERSON perceives with the senses: ver, ouvir ("O doente ouviu a explicação" → ouviu).
+     An examination that "revela / mostra" a finding is NOT perception (→ STATE).
+  3. ASPECTUAL – the verb marks the BEGINNING, CONTINUATION or END of ANOTHER event: começar, iniciar, continuar,
+     manter, terminar, concluir, interromper ("O doente começou a apresentar sintomas" → começou;
+     "inicia queixas de dor" → inicia; "terminou o tratamento" → terminou).
+  4. I_ACTION – an action that introduces ANOTHER event as its argument: tentar, adiar, evitar, cancelar, pedir,
+     solicitar, ordenar, autorizar, prometer, oferecer, propor, decidir, sugerir, concordar
+     ("Decide-se propor o doente para tratamento" → Decide-se = I_ACTION, propor = I_ACTION; "Solicita-se
+     criopreservação" → Solicita-se = I_ACTION; "Propõe-se tratamento" → Propõe-se = I_ACTION).
+  5. I_STATE – a mental state about another event: acreditar, pensar, imaginar, querer, esperar, recear,
+     preocupar-se ("O paciente acredita que a dor…" → acredita).
+  6. STATE – something HOLDS true; having, showing or being in a condition: apresentar ("apresentava anemia"),
+     mostrar / revelar / evidenciar when an exam shows a finding ("O hemograma mostrou anemia" → mostrou = STATE),
+     encontrar-se, manter-se em, ter, estar.
+  7. OCCURRENCE – any other situation that HAPPENS: realizar, fazer, internar, transferir, confirmar, constatar,
+     identificar, detetar, diagnosticar, falecer, receber, instalar-se, condicionar, estender-se
+     (confirmar a diagnosis is OCCURRENCE, not REPORTING)
+     ("Em fevereiro, realizou exames" → realizou).
+
+TYPE – ask "what kind of situation is it?":
+  STATE – the situation simply HOLDS; nothing changes (apresentava, mostrou, se encontrava em tratamento, tem).
+     Verbs of class STATE are almost always type STATE.
+  TRANSITION – something CHANGES or is COMPLETED: the situation has an END POINT and leaves a new state (a
+     result). Includes achievements, which happen at one moment (iniciar, detetar, identificar, confirmar,
+     falecer, transferir, internar, instalar-se, decidir) and accomplishments, which take time but reach an
+     end (realizar um exame, fazer quimioterapia, propor, receber tratamento). In clinical reports most action
+     verbs are TRANSITION ("Decide-se propor o doente para tratamento" → Decide-se and propor = TRANSITION).
+  PROCESS – a dynamic activity with NO natural end point, described only as going on for some time
+     ("O doente dormiu bem durante a primeira noite" → dormiu; "está a ser acompanhado"; "tem sido seguido";
+     "foi piorando progressivamente"). Use PROCESS ONLY for such ongoing activities without a result.
+  Quick test: done / started / ended / changed? → TRANSITION. Just holds? → STATE. Goes on with no end? → PROCESS.
+
+SENTENCE: <<sentence>>
+
+VERB EVENTS:
+<<events>>
+
+Return JSON: {"events": [{"id": "<event ID>", "event_class": "...", "event_type": "..."}, ...]} with one entry per event.
+
+===== TIMEX_VALUE =====
+TASK (Temporal Expressions › value and function). Normalise every temporal expression marked ⟦T# text⟧
+(TIDES 2005 / ISO-TimeML). The report was written on <<dct>> (DOCTIME); resolve underspecified and relative
+expressions against it.
+
+value, according to the type:
+  DATE: "2019-01-25", "2018-12", "2019"; a bare month in a report written on 2019-05-15 → "janeiro" = "2019-01";
+        "recentemente"/"recente" → "PAST_REF"; "atualmente"/"neste momento" → "PRESENT_REF"; vague future →
+        "FUTURE_REF".
+  TIME: "2019-01-25T16:00" or "T16:00" ("4 p.m." → "T16:00").
+  DURATION: "P2M" (dois meses), "P10M", "P3D", "PT2H", "P79Y" (79 anos de idade).
+  SET: the period, with freq or quant: "duas vezes por semana" → "P1W", freq "2X"; "de dois em dois dias" → "P2D",
+        quant "EVERY"; "três dias por semana" → "P1W", quant "EACH"; "diariamente" → "P1D", quant "EVERY".
+freq / quant: only for SET, otherwise "".
+function: ADMISSION_TIME (date the patient was admitted) | DISCHARGE_TIME (date the patient was discharged) | NONE.
+anchor: if the expression is anaphoric or relative to ANOTHER temporal expression of the list ("nesse dia", "no dia
+        seguinte", "dois dias depois"), give that expression's ID (e.g. "T3"); otherwise "".
+
+REPORT:
+<<report>>
+
+TEMPORAL EXPRESSIONS:
+<<timexes>>
+
+Return JSON: {"timexes": [{"id": "<expression ID>", "value": "...", "freq": "", "quant": "", "function": "NONE", "anchor": ""}, ...]}

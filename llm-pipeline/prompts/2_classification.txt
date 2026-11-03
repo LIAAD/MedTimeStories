@@ -1,0 +1,175 @@
+===== IDEA ======
+
+# LAYER 2 - CLASSIFICATION: walk the events and temporal expressions down the Med2Story tree.
+# Used by medtime/step2_classification.py.
+#
+# File format: every prompt starts with a line  ===== NAME =====  and runs until the next such line.
+# <<name>> is a placeholder that the code fills in (the sentence, the candidate list, ...).
+# Lines starting with # are comments and are never sent to Gemini.
+#
+# Most steps are the same YES/NO question (YES_NO_STEP) asked with a different <<label>> / <<definition>>:
+#   1. Specialized Event?   YES_NO_STEP + SPECIALIZED_EVENT       (NO -> General Event)
+#   2. type of each temporal expression: TIMEX_TYPE_STEP + TIMEX_TYPE: DATE / TIME / DURATION / SET,
+#      then TIMEX_TYPE_FALLBACK for the ones that got no type or more than one
+#   3. medical class: YES_NO_STEP + CLASS: ... in Decision Tree 1 order (the first YES wins),
+#      then MEDICAL_CLASS_FALLBACK for the events that answered NO everywhere
+#   4. Personal History attribute: YES_NO_STEP + HISTORY: ... (NO everywhere -> Undefined)
+# <<step>> and <<path>> name the node of the tree, e.g. P1.1.4 and
+# 'Entity Structures › Event › Specialized Event › Examination'.
+
+
+# One decision step of the tree, asked for a batch of candidates.
+
+===== YES_NO_STEP =====
+
+TASK (<<step>> – <<path>>). Decision step of the Med2Story tree: for EACH candidate below answer YES if
+it is **<<label>>**, otherwise NO.
+
+<<label>>: <<definition>>
+
+Answer YES only when the candidate clearly fits this definition in this report. Answer NO otherwise: a NO is not
+an error, the candidate is checked against the next classes of the tree.
+
+REPORT (entities marked ⟦ID text⟧):
+<<report>>
+
+CANDIDATES:
+<<candidates>>
+
+Return JSON: {"items": [{"id": "<candidate ID>", "answer": "YES or NO"}, ...]} with one entry for EVERY candidate.
+
+# <<definition>> for the step 'Specialized Event' (label: Specialized Event).
+===== SPECIALIZED_EVENT =====
+an eventuality that conveys information specific to the medical domain: symptoms and signs, diseases and diagnoses, personal history, examinations and their results, characterisation of a disease (stage, severity), medical procedures, treatments and drugs, administration routes, responses to treatment ("hemograma", "anemia", "febre", "quimioterapia", "remissão completa", "hipertensão arterial", "biópsia", "estadio", "intratecal", "tratamento", "antecedentes"). A VERB is NEVER a Specialized event: realizou, fez, submetido, medicado, apresentava, inicia, mostrou, revelou, propor are General Events. Only nouns, adjectives and lexicalised expressions can be Specialized events.
+
+# <<definition>> for the medical class 'Sign or Symptom' (step P1.1.1).
+===== CLASS: SIGN_OR_SYMPTOM =====
+a clinical manifestation OBSERVED BY THE DOCTOR at the bedside (objective sign) or REPORTED BY THE PATIENT (subjective symptom): febre, dor, cefaleias, tosse, dispneia, náuseas, vómitos, enjoo, obstipação, tumefação, mancha, hipersudorese, astenia, prurido. NOT a Sign or Symptom: a DISEASE or DIAGNOSIS name (linfoma, leucemia, carcinoma, pneumonia, diabetes); a finding obtained by a LAB TEST or IMAGING (anemia, leucocitose, trombocitopenia, nódulo, derrame, metástases: those are Examination Results); the stage or severity of a disease; a past illness; an examination; a treatment.
+
+# <<definition>> for the medical class 'Personal History' (step P1.1.2).
+===== CLASS: PERSONAL_HISTORY =====
+the patient's medical, personal and family history that occurred BEFORE the principal diagnosis, usually listed after "antecedentes de": past illnesses, comorbidities, hospitalisations, surgeries, allergies, gynaecologic and obstetric history, habits (acidente de viação, depressão, mastectomia, cancro prévio, alergia, diabetes mellitus, hipertensão arterial). Also the word "antecedentes" itself. NOT: the current illness, its symptoms, its examinations or the principal diagnosis.
+
+# <<definition>> for the medical class 'Intercurrence' (step P1.1.3).
+===== CLASS: INTERCURRENCE =====
+a condition that APPEARS UNEXPECTEDLY DURING the treatment or hospitalisation for the principal diagnosis and was NOT present initially: a concurrent illness (infeção urinária, pneumonia, neutropenia febril, queda), a complication of the primary disease, or a side effect of its treatment (alergia à penicilina, mucosite after chemotherapy). Also the word "intercorrência". NOT: findings of the initial work-up before the diagnosis, the principal diagnosis itself, a second main disease diagnosed later (that is a Principal Diagnosis).
+
+# <<definition>> for the medical class 'Examination' (step P1.1.4).
+===== CLASS: EXAMINATION =====
+a TEST or PROCEDURE aimed at diagnosing a condition: hemograma, TAC, Rx, ecografia, cariótipo, biópsia, punção lombar, aspirado medular, endoscopia, análises clínicas, exames complementares, FLT3 or another marker when it names the test ("O FLT3 foi positivo").
+
+# <<definition>> for the medical class 'Examination Result' (step P1.1.5).
+===== CLASS: EXAMINATION_RESULT =====
+the RESULT or interpretation of an examination, without numbers: what a lab test, imaging or biopsy found (anemia, leucopenia, leucocitose, trombocitopenia, positivo, nódulo, quisto, derrame pleural, lesão, metástases, "envolvimento" shown by a punção lombar, "aumento" of a lab value). NOT: symptoms reported by the patient (dor, náuseas, vómitos → Sign or Symptom); a disease name given as the diagnosis (→ Principal Diagnosis); substances or cells themselves (they are not events).
+
+# <<definition>> for the medical class 'Principal Diagnosis' (step P1.1.6).
+===== CLASS: PRINCIPAL_DIAGNOSIS =====
+the MOST SIGNIFICANT DIAGNOSIS of the report, the disease that guides the treatment plan and the patient's care: leucemia mieloide aguda, linfoma não Hodgkin, carcinoma da mama. EVERY mention of that disease is Principal Diagnosis — also when it is repeated, when it is the result of a biopsy ("biópsia compatível com linfoma"), and when a new main disease is diagnosed in a later report. A disease name is NEVER a Sign or Symptom.
+
+# <<definition>> for the medical class 'Characterization of the Disease' (step P1.1.7).
+===== CLASS: CHARACTERIZATION_OF_THE_DISEASE =====
+a word that characterises a disease in terms of SEVERITY, EXTENT or PROGNOSIS: difuso, estadio, IPI, grau, agressivo, metastático, "envolvimento" of an organ by the disease (extension).
+
+# <<definition>> for the medical class 'Medical Procedure' (step P1.1.8).
+===== CLASS: MEDICAL_PROCEDURE =====
+a clinical intervention that is NOT aimed at assessing the patient's condition (not an examination) nor at treating the disease: criopreservação de esperma, colocação de cateter.
+
+# <<definition>> for the medical class 'Treatment' (step P1.1.9).
+===== CLASS: TREATMENT =====
+an intervention applied to IMPROVE or CURE the medical condition: tratamento (always), quimioterapia, radioterapia, alotransplante, cirurgia, paliativo (sintomático), profilaxia, ensaio clínico / protocolo.
+
+# <<definition>> for the medical class 'Drug Administration Route' (step P1.1.10).
+===== CLASS: DRUG_ADMINISTRATION_ROUTE =====
+the ROUTE through which a medication is introduced into the body: intratecal, oral, endovenoso, subcutâneo, intramuscular.
+
+# <<definition>> for the medical class 'Treatment Response' (step P1.1.11).
+===== CLASS: TREATMENT_RESPONSE =====
+an assessment of how the patient RESPONDED to a treatment: remissão completa, resposta completa, resposta parcial, ausência de resposta, progressão, 1.ª remissão.
+
+# Single-choice question for specialized events that answered NO at every class step.
+===== MEDICAL_CLASS_FALLBACK =====
+TASK (<<step>> – <<path>>). Every listed EVENT is a medical (specialized) event that no medical-class node
+answered YES at no step of the decision tree. Give its medical class by applying Decision Tree 1 in order (the first "yes" gives the class):
+ 1. Clinical manifestation observed by the doctor or reported by the patient? → SIGN_OR_SYMPTOM
+ 2. Patient's history that occurred BEFORE the principal diagnosis (or the word "antecedentes")? → PERSONAL_HISTORY
+ 3. Arose unexpectedly during treatment/hospitalisation, not initially present? → INTERCURRENCE
+ 4. Test or procedure aimed at diagnosing a condition? → EXAMINATION
+ 5. Result or interpretation of an examination, not numeric? → EXAMINATION_RESULT
+ 6. The most significant diagnosis guiding the treatment plan? → PRINCIPAL_DIAGNOSIS
+ 7. Characterises a disease in terms of severity or prognosis? → CHARACTERIZATION_OF_THE_DISEASE
+ 8. Clinical intervention not aimed at assessing the condition or treating the disease? → MEDICAL_PROCEDURE
+ 9. Intervention to improve or cure the condition ("tratamento" always)? → TREATMENT
+10. Route through which a medication is introduced into the body? → DRUG_ADMINISTRATION_ROUTE
+11. Assessment of how the patient responded to treatment? → TREATMENT_RESPONSE
+
+REPORT:
+<<report>>
+
+EVENTS:
+<<events>>
+
+Return JSON: {"events": [{"id": "<event ID>", "medical_class": "..."}, ...]} with one entry per event.
+
+# <<definition>> for the Personal History attribute 'Past Medical History' (step P1.1.2.1).
+===== HISTORY: PAST_MEDICAL_HISTORY =====
+a history item that is NOT PRESENT AT THE MOMENT: it was treated, removed or resolved (mastectomia, cancro prévio / carcinoma da mama em 2014 tratado, radioterapia in the past, alergia in the past, depressão that does not remain present).
+
+# <<definition>> for the Personal History attribute 'Comorbidity' (step P1.1.2.2).
+===== HISTORY: COMORBIDITY =====
+a condition that was present BEFORE the principal diagnosis and STILL EXISTS, not related to the principal diagnosis: chronic diseases such as hipertensão arterial, diabetes mellitus, dislipidemia, hiperplasia benigna da próstata, gastrite crónica that remains, depressão that remains. A chronic disease listed in the antecedentes with no sign that it was cured IS a Comorbidity.
+
+# <<definition>> for the Personal History attribute 'Undefined' (step P1.1.2.3).
+===== HISTORY: UNDEFINED =====
+a history item for which it is UNCLEAR whether it is still present (e.g. "síndrome depressivo" mentioned without any information on its current state).
+
+# Pick the temporal expressions of one type; it may also add an expression that layer 1 missed.
+===== TIMEX_TYPE_STEP =====
+TASK (<<step>> – <<path>>: sub-extraction).
+The temporal expressions are marked in the report as ⟦ID text⟧. Extract the ones that are **<<label>>**.
+
+<<label>>: <<definition>>
+
+RULES
+- Select marked items by their ID (field "text": copy the marked text).
+- If a <<label>> item occurs in the report but is NOT marked, add it with "id": "" and its exact text (without a preceding preposition).
+- Extract ONLY <<label>> items. If there are none, return an empty list.
+
+REPORT:
+<<report>>
+
+CANDIDATES (the marked temporal expressions):
+<<candidates>>
+
+Return JSON: {"items": [{"id": "<ID of a marked candidate>", "text": "<its text>"}, {"id": "", "text": "<unmarked <<label>> item>"}, ...]}
+
+# <<definition>> for the type 'Date' (step P2.1).
+===== TIMEX_TYPE: DATE =====
+calendar time: a day, month, year or period of the calendar, including relative and vague references ("ontem", "21 de março", "o verão de 2000", "5.4.2017", "janeiro", "dezembro de 2018", "recentemente", "atualmente").
+
+# <<definition>> for the type 'Time' (step P2.2).
+===== TIMEX_TYPE: TIME =====
+a time of the day ("cinco horas", "às 7h30", "a manhã de 21 de março", "ontem à noite").
+
+# <<definition>> for the type 'Duration' (step P2.3).
+===== TIMEX_TYPE: DURATION =====
+a length of time ("dois meses", "3 horas", "toda a noite", "cerca de três semanas", ages such as "79 anos de idade").
+
+# <<definition>> for the type 'Set' (step P2.4).
+===== TIMEX_TYPE: SET =====
+a set of times / a temporal frequency ("duas vezes por semana", "cada dois dias", "diariamente", "de 8 em 8 horas").
+
+# Single-choice type for expressions that got no type (or several) above.
+===== TIMEX_TYPE_FALLBACK =====
+TASK (<<step>> – <<path>>). Give the type of every temporal expression marked ⟦T# text⟧ below.
+  DATE – calendar time ("ontem", "21 de março", "5.4.2017", "janeiro", "recentemente").
+  TIME – time of the day ("cinco horas", "ontem à noite").
+  DURATION – a length of time ("dois meses", "3 horas", "79 anos de idade").
+  SET – a set of times / frequency ("duas vezes por semana", "diariamente").
+
+REPORT:
+<<report>>
+
+TEMPORAL EXPRESSIONS:
+<<timexes>>
+
+Return JSON: {"timexes": [{"id": "<expression ID>", "type": "..."}, ...]} with one entry per expression.
