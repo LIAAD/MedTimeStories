@@ -19,7 +19,7 @@ The resources include detailed annotation instructions, a visual overview of the
 
 The following figure provides a visual overview of the scheme. For detailed annotation instructions, consult **Med2Story Annotation Guidelines**.
 
-![Med2Story Temporal Annotation Scheme](Med2Story%20scheme.png)
+<img src="Med2Story%20scheme.png" alt="Med2Story Temporal Annotation Scheme" width="500">
 
 ## Cross-Document Annotation
 
