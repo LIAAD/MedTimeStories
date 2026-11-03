@@ -1,4 +1,4 @@
-# MedTime Stories
+# MedTimeStories
 
 **Drop in your INCEpTION exports, get an interactive patient-centred view of clinical narratives.**
 
