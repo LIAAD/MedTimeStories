@@ -25,7 +25,7 @@ The following figure provides a visual overview of the scheme. For detailed anno
 
 The following figure summarises the rules for annotating temporal information across different medical reports relating to the same patient.
 
-<img src="Cross%20document%20annotation.png" alt="Cross-Document Annotation" width="500">
+<img src="Cross%20document%20annotation.png" alt="Cross-Document Annotation" width="600">
 
 ## Dataset Documentation
 
