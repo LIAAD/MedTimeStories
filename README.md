@@ -1,4 +1,11 @@
 # MedTimeStories
+MedTimeStories is an end-to-end system for modelling and visualising the clinical timelines of patients with Acute Myeloid Leukaemia, based on the temporal annotations defined by the Med2Story Temporal Annotation Scheme.
+The platform was developed in collaboration with haematologists to address the specific needs of this clinical setting.
+
+## Demo
+
+Watch the demonstration of our tool: https://drive.google.com/file/d/1qMVtoc8Bb-v3l20yHk-Yk4yBMx3xoF_O/view
+
 
 **Drop in your INCEpTION exports, get an interactive patient-centred view of clinical narratives.**
 
