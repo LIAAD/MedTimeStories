@@ -12,6 +12,8 @@ This is a research prototype for demonstration and exploration, not a medical de
 
 Watch the demonstration of our tool: https://drive.google.com/file/d/1qMVtoc8Bb-v3l20yHk-Yk4yBMx3xoF_O/view
 
+Explore MedTimeStories: https://medtimestories.inesctec.pt/
+
 ## Quick start
 
 1. Put your INCEpTION CAS JSON exports (one file per patient) in a folder, e.g. `inception/`.
