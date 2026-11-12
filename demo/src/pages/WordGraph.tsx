@@ -10,13 +10,37 @@ export default function WordGraph() {
   const { data } = useLoaded();
   const full = useMemo(() => buildWordGraph(data), [data]);
   const types = useMemo(() => [...new Set(full.nodes.map((n) => n.type))].sort(), [full]);
+  const typeStats = useMemo(() => {
+    const stats = new Map<string, { words: number; mentions: number }>();
+    for (const n of full.nodes) {
+      const current = stats.get(n.type) ?? { words: 0, mentions: 0 };
+      current.words++;
+      current.mentions += n.count;
+      stats.set(n.type, current);
+    }
+    return stats;
+  }, [full]);
   const [minCount, setMinCount] = useState(1);
   const [maxNodes, setMaxNodes] = useState(40);
-  const [type, setType] = useState("");
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [q, setQ] = useState("");
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
+  const hasTypeFilter = selectedTypes.length > 0;
+  const selectedTypeStats = useMemo(
+    () => selectedTypes.reduce(
+      (total, selectedType) => {
+        const stats = typeStats.get(selectedType);
+        return {
+          words: total.words + (stats?.words ?? 0),
+          mentions: total.mentions + (stats?.mentions ?? 0),
+        };
+      },
+      { words: 0, mentions: 0 },
+    ),
+    [selectedTypes, typeStats],
+  );
 
   const { nodes, edges, layout } = useMemo(() => {
     const ql = q.trim().toLowerCase();
@@ -31,11 +55,11 @@ export default function WordGraph() {
     const matched = [...degree.keys()]
       .filter((id) => {
         const n = byId.get(id)!;
-        return (!type || n.type === type) && (!ql || n.label.includes(ql));
+        return (!hasTypeFilter || selectedTypes.includes(n.type)) && (!ql || n.label.includes(ql));
       })
       .sort(byDegree);
     const keep = new Set(matched.slice(0, maxNodes));
-    if (ql || type) {
+    if (ql) {
       // Matches are shown together with their neighbours so their connections stay visible.
       const nb = new Set<string>();
       edgesF.forEach((e) => {
@@ -46,12 +70,12 @@ export default function WordGraph() {
     }
     const nodesAll = [...keep].map((id) => byId.get(id)!);
     const edges = edgesF.filter(
-      (e) => keep.has(e.source) && keep.has(e.target) && (!(ql || type) || matched.includes(e.source) || matched.includes(e.target)),
+      (e) => keep.has(e.source) && keep.has(e.target) && (!(ql || hasTypeFilter) || matched.includes(e.source) || matched.includes(e.target)),
     );
     const linked = new Set(edges.flatMap((e) => [e.source, e.target]));
     const nodes = nodesAll.filter((n) => linked.has(n.id));
     return { nodes, edges, layout: packedLayout(nodes, edges, W) };
-  }, [full, minCount, maxNodes, type, q]);
+  }, [full, minCount, maxNodes, selectedTypes, hasTypeFilter, q]);
   const { pos, width: gw, height: gh } = layout;
 
   const maxEdge = Math.max(1, ...edges.map((e) => e.count));
@@ -74,14 +98,19 @@ export default function WordGraph() {
   // A word connected in both directions appears once on each side, so the two relations never overlap.
   const focusRows = useMemo(() => {
     if (!selected) return null;
+    const visibleNode = (id: string) => {
+      if (!hasTypeFilter) return true;
+      const node = full.nodes.find((n) => n.id === id);
+      return !!node && selectedTypes.includes(node.type);
+    };
     const rel = (e: (typeof full.edges)[number]) =>
       Object.entries(e.relations).sort((x, y) => y[1] - x[1]).map(([r, c]) => `${r}×${c}`).join(", ");
-    const ins = full.edges.filter((e) => e.target === selected).sort((a, b) => b.count - a.count)
+    const ins = full.edges.filter((e) => e.target === selected && visibleNode(e.source)).sort((a, b) => b.count - a.count)
       .map((e) => ({ id: e.source, label: rel(e), count: e.count }));
-    const outs = full.edges.filter((e) => e.source === selected).sort((a, b) => b.count - a.count)
+    const outs = full.edges.filter((e) => e.source === selected && visibleNode(e.target)).sort((a, b) => b.count - a.count)
       .map((e) => ({ id: e.target, label: rel(e), count: e.count }));
     return { ins, outs };
-  }, [selected, full]);
+  }, [selected, full, hasTypeFilter, selectedTypes]);
   const viewBox = `0 0 ${gw} ${gh}`;
   // Labels are shown for the most frequent words, small clusters, and the focused neighbourhood.
   const labelled = useMemo(() => {
@@ -107,10 +136,31 @@ export default function WordGraph() {
         </div>
         <div className="ml-auto flex flex-wrap items-center gap-3 text-sm">
           <input type="search" placeholder="Filter word…" value={q} onChange={(e) => setQ(e.target.value)} className={`${field} w-40`} />
-          <select aria-label="Event type" value={type} onChange={(e) => setType(e.target.value)} className={field}>
-            <option value="">All event types</option>
-            {types.map((t) => <option key={t}>{t}</option>)}
-          </select>
+          <fieldset className="flex max-w-xl flex-wrap items-center gap-x-3 gap-y-1">
+            <legend className="mr-1">Event types</legend>
+            <label className="inline-flex items-center gap-1">
+              <input
+                type="checkbox"
+                checked={!hasTypeFilter}
+                onChange={() => setSelectedTypes([])}
+              />
+              All
+            </label>
+            {types.map((eventType) => (
+              <label key={eventType} className="inline-flex items-center gap-1 whitespace-nowrap">
+                <input
+                  type="checkbox"
+                  checked={selectedTypes.includes(eventType)}
+                  onChange={(event) => setSelectedTypes((current) =>
+                    event.target.checked
+                      ? [...current, eventType]
+                      : current.filter((value) => value !== eventType),
+                  )}
+                />
+                {eventType}
+              </label>
+            ))}
+          </fieldset>
           <label className="flex items-center gap-1.5">
             Min count {minCount}
             <input type="range" min={1} max={20} value={minCount} onChange={(e) => setMinCount(+e.target.value)} />
@@ -184,7 +234,13 @@ export default function WordGraph() {
               );
             })()
           ) : (
-          <svg viewBox={viewBox} style={{ width: `${zoom * 100}%` }} className="block h-auto" onClick={() => setSelected(null)}>
+          <svg
+            viewBox={viewBox}
+            style={{ width: `${zoom * 100}%` }}
+            className="block h-auto"
+            onMouseLeave={() => setHovered(null)}
+            onClick={() => setSelected(null)}
+          >
             <defs>
               <marker id="w-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
                 <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8" />
@@ -267,7 +323,12 @@ export default function WordGraph() {
             <span className={`h-2.5 w-2.5 rounded-full ${typeStyle(t).dot}`} />{t}
           </span>
         ))}
-        <span className="ml-auto">{nodes.length} words, {edges.length} connections shown</span>
+        <span className="ml-auto">
+          {hasTypeFilter
+            ? `${selectedTypes.length} selected type${selectedTypes.length === 1 ? "" : "s"}: ${selectedTypeStats.mentions} event mentions across ${selectedTypeStats.words} words`
+            : `${full.nodes.reduce((sum, n) => sum + n.count, 0)} event mentions across ${full.nodes.length} words`}
+          {" · "}showing {nodes.length} of {full.nodes.length} words, {edges.length} connections
+        </span>
       </div>
       {sel && (
         <Card className="p-4 text-sm">
