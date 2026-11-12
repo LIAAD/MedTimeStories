@@ -81,7 +81,8 @@ function readCas(path) {
   const spans = members.filter((item) => item["%TYPE"] === "custom.Span");
   const relations = members.filter((item) => item["%TYPE"] === "custom.Relation");
   if (!spans.length) throw new Error(`${path}: no custom.Span annotations found`);
-  return { text: sofa.sofaString, spans, relations };
+  // a lone CR is a line break too; swapping it for LF keeps the length, so the span offsets stay valid
+  return { text: sofa.sofaString.replace(/\r(?!\n)/g, "\n"), spans, relations };
 }
 
 function splitReports(text) {
@@ -94,7 +95,7 @@ function splitReports(text) {
     const from = start + raw.indexOf(trimmed);
     reports.push({ start: from, end: from + trimmed.length, text: trimmed });
   };
-  const separator = /\r?\n[ \t]*\r?\n/g;
+  const separator = /(?:\r?\n[ \t]*){2,}/g;
   let start = 0;
   let match;
   while ((match = separator.exec(text))) {

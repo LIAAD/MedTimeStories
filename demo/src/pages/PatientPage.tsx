@@ -24,7 +24,7 @@ export default function PatientPage() {
 
   if (!patient) return <EmptyState title={`Patient "${patientId}" not found`} hint="Use the Patients link in the breadcrumb." />;
   const stats = idx.patientStats.get(patient.id)!;
-  const cross = crossReportRelations(idx, patient);
+  const cross = crossReportRelations(idx, patient, idx.chainsByPatient.get(patient.id) ?? []);
 
   const stat = (label: string, v: number) => (
     <Card className="p-3">
@@ -39,7 +39,7 @@ export default function PatientPage() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {stat("Reports", stats.reportCount)}
         {stat("Events", stats.eventCount)}
-        {stat("Relations", stats.relationCount)}
+        {stat("Temporal relations", stats.relationCount)}
         {stat("Cross-report relations", stats.crossRelationCount)}
       </div>
 

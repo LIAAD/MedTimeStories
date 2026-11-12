@@ -8,6 +8,7 @@ export const EventSchema = z.object({
   start: z.number().int().min(0),
   end: z.number().int().min(1),
   surface: z.string().min(1),
+  surfaceEn: z.string().optional(),
   type: z.string().min(1),
   attributes: z.record(attrValue).optional(),
 });
@@ -18,6 +19,11 @@ export const TemporalRelationSchema = z.object({
   target: z.string().min(1),
   // Open vocabulary (BEFORE, AFTER, OVERLAP, CONTAINS, BEGINS-ON, ENDS-ON, SIMULTANEOUS, IDENTITY, ...)
   type: z.string().min(1).transform((s) => s.toUpperCase()),
+});
+
+export const IdentityRelationSchema = z.object({
+  id: z.string().min(1),
+  chain: z.array(z.string().min(1)).min(2),
 });
 
 export const ReportSchema = z
@@ -52,13 +58,17 @@ export const ReportSchema = z
 
 export const PatientSchema = z.object({
   id: z.string().min(1),
+  /** Set for patients annotated live in the demo (not part of the loaded dataset). */
+  annotated: z.boolean().optional(),
   reports: z.array(ReportSchema),
+  identityRelations: z.array(IdentityRelationSchema).default([]),
 });
 
 export const DatasetSchema = z.object({ patients: z.array(PatientSchema) });
 
 export type ClinEvent = z.infer<typeof EventSchema>;
 export type TemporalRelation = z.infer<typeof TemporalRelationSchema>;
+export type IdentityRelation = z.infer<typeof IdentityRelationSchema>;
 export type Report = z.infer<typeof ReportSchema>;
 export type Patient = z.infer<typeof PatientSchema>;
 export type Dataset = z.infer<typeof DatasetSchema>;

@@ -33,6 +33,38 @@ export default function PatientList() {
     </th>
   );
 
+  const table = (list: typeof rows) => (
+    <Card className="overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500 dark:border-slate-800">
+          <tr>
+            {th("id", "Patient")}
+            {th("reports", "Reports")}
+            {th("events", "Events")}
+            {th("relations", "Cross-report relations")}
+            {active && <th className="px-4 py-2 text-left">Matching events</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {list.map(({ p, s, matches }) => (
+            <tr key={p.id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800/50">
+              <td className="px-4 py-3">
+                <Link to={`/patient/${encodeURIComponent(p.id)}`} className="font-medium text-indigo-600 hover:underline dark:text-indigo-400">
+                  {p.id}
+                </Link>
+              </td>
+              <td className="px-4 py-3 tabular-nums">{s.reportCount}</td>
+              <td className="px-4 py-3 tabular-nums">{s.eventCount}</td>
+              <td className="px-4 py-3 tabular-nums">{s.crossRelationCount}</td>
+              {active && <td className="px-4 py-3 tabular-nums">{matches}</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Card>
+  );
+  const live = rows.filter((r) => r.p.annotated);
+
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold">Patients</h1>
@@ -41,34 +73,16 @@ export default function PatientList() {
       ) : rows.length === 0 ? (
         <EmptyState title="No patients match the current search" hint="Clear or relax the filters in the header." />
       ) : (
-        <Card className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500 dark:border-slate-800">
-              <tr>
-                {th("id", "Patient")}
-                {th("reports", "Reports")}
-                {th("events", "Events")}
-                {th("relations", "Cross-report relations")}
-                {active && <th className="px-4 py-2 text-left">Matching events</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map(({ p, s, matches }) => (
-                <tr key={p.id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800/50">
-                  <td className="px-4 py-3">
-                    <Link to={`/patient/${encodeURIComponent(p.id)}`} className="font-medium text-indigo-600 hover:underline dark:text-indigo-400">
-                      {p.id}
-                    </Link>
-                  </td>
-                  <td className="px-4 py-3 tabular-nums">{s.reportCount}</td>
-                  <td className="px-4 py-3 tabular-nums">{s.eventCount}</td>
-                  <td className="px-4 py-3 tabular-nums">{s.crossRelationCount}</td>
-                  {active && <td className="px-4 py-3 tabular-nums">{matches}</td>}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Card>
+        <>
+          {table(rows.filter((r) => !r.p.annotated))}
+          {live.length > 0 && (
+            <section className="space-y-2">
+              <h2 className="text-lg font-semibold">Automatically annotated</h2>
+              <p className="text-sm text-slate-500">Annotated live with the LLM pipeline; kept only until the page is reloaded.</p>
+              {table(live)}
+            </section>
+          )}
+        </>
       )}
     </div>
   );

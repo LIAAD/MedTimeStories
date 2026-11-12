@@ -2,11 +2,12 @@ import {
   validateDataset,
   type ClinEvent,
   type Dataset,
+  type IdentityRelation,
   type Patient,
   type Report,
   type TemporalRelation,
 } from "./schema";
-import { graphEventKind } from "../lib/util";
+import { crossReportRelations, graphEventKind } from "../lib/util";
 /** Override with VITE_DATASET_URL in .env.local, or pass a URL to loadDataset(). */
 export const DEFAULT_DATASET_URL: string = import.meta.env.VITE_DATASET_URL ?? "/data/dataset.json";
 
@@ -16,10 +17,17 @@ export interface RelationRef {
   other: string;
 }
 
+export interface Chain extends IdentityRelation {
+  patientId: string;
+  reportIds: string[];
+  crossReport: boolean;
+}
+
 export interface PatientStats {
   reportCount: number;
   eventCount: number;
   relationCount: number;
+  chainCount: number;
   crossRelationCount: number;
 }
 
@@ -28,6 +36,8 @@ export interface Indexes {
   reports: Map<string, Report>;
   events: Map<string, ClinEvent>;
   relationsByEvent: Map<string, RelationRef[]>;
+  chainByEvent: Map<string, Chain>;
+  chainsByPatient: Map<string, Chain[]>;
   patientStats: Map<string, PatientStats>;
   /** Chronological position of a report within its patient (0-based). */
   reportIndex: Map<string, number>;
@@ -52,6 +62,8 @@ export function buildIndexes(data: Dataset): Indexes {
     reports: new Map(),
     events: new Map(),
     relationsByEvent: new Map(),
+    chainByEvent: new Map(),
+    chainsByPatient: new Map(),
     patientStats: new Map(),
     reportIndex: new Map(),
     eventTypes: [],
@@ -79,19 +91,30 @@ export function buildIndexes(data: Dataset): Indexes {
 
   for (const p of data.patients) {
     let relationCount = 0;
-    let crossRelationCount = 0;
     let eventCount = 0;
     for (const r of p.reports) {
       eventCount += r.events.length;
       for (const t of r.temporalRelations) {
         relationCount++;
-        if (idx.events.get(t.source)?.reportId !== idx.events.get(t.target)?.reportId) crossRelationCount++;
         relTypes.add(t.type);
         push(t.source, { relation: t, direction: "out", other: t.target });
         push(t.target, { relation: t, direction: "in", other: t.source });
       }
     }
-    idx.patientStats.set(p.id, { reportCount: p.reports.length, eventCount, relationCount, crossRelationCount });
+    const chains: Chain[] = p.identityRelations.map((c) => {
+      const reportIds = [...new Set(c.chain.map((id) => idx.events.get(id)!.reportId))];
+      const chain: Chain = { ...c, patientId: p.id, reportIds, crossReport: reportIds.length > 1 };
+      for (const id of c.chain) idx.chainByEvent.set(id, chain);
+      return chain;
+    });
+    idx.chainsByPatient.set(p.id, chains);
+    idx.patientStats.set(p.id, {
+      reportCount: p.reports.length,
+      eventCount,
+      relationCount,
+      chainCount: chains.length,
+      crossRelationCount: crossReportRelations(idx, p, chains).length,
+    });
   }
 
   idx.eventTypes = [...eventTypes].sort();

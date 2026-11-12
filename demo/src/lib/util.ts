@@ -1,5 +1,5 @@
 import type { Indexes } from "../data/loader";
-import type { ClinEvent, Patient } from "../data/schema";
+import type { ClinEvent, IdentityRelation, Patient } from "../data/schema";
 
 export interface CrossRelation {
   id: string;
@@ -9,14 +9,27 @@ export interface CrossRelation {
 }
 
 /** Relations of a patient whose two events are in different reports. */
-export function crossReportRelations(idx: Indexes, patient: Patient): CrossRelation[] {
+export function crossReportRelations(idx: Indexes, patient: Patient, chains: IdentityRelation[] = []): CrossRelation[] {
   const out: CrossRelation[] = [];
   for (const t of patient.reports.flatMap((r) => r.temporalRelations)) {
     const source = idx.events.get(t.source);
     const target = idx.events.get(t.target);
     if (source && target && source.reportId !== target.reportId) out.push({ id: t.id, type: t.type, source, target });
   }
+  for (const chain of chains) {
+    for (let i = 1; i < chain.chain.length; i++) {
+      const source = idx.events.get(chain.chain[i - 1]);
+      const target = idx.events.get(chain.chain[i]);
+      if (source && target && source.reportId !== target.reportId) {
+        out.push({ id: `${chain.id}-${i}`, type: "IDENTITY", source, target });
+      }
+    }
+  }
   return out;
+}
+
+export function chainEvents(idx: Indexes, chain: IdentityRelation): ClinEvent[] {
+  return chain.chain.map((id) => idx.events.get(id)).filter((event): event is ClinEvent => !!event);
 }
 
 export function reportUrl(patientId: string, reportId: string, eventId?: string, extra?: Record<string, string>): string {
@@ -73,23 +86,19 @@ export function graphEventLane(event: ClinEvent): string {
   return isDateTimeExpression(event) ? "Dates" : "Events";
 }
 
-function utcDate(year: number, month: number, day: number): number | undefined {
+export function graphEventTime(event: ClinEvent): number | undefined {
+  if (!isDateTimeExpression(event)) return undefined;
+  const value = event.attributes?.Value;
+  if (typeof value !== "string") return undefined;
+  const match = /^(\d{4})(?:[-/.](\d{1,2})(?:[-/.](\d{1,2}))?)?$/.exec(value.trim());
+  if (!match) return undefined;
+  const year = Number(match[1]);
+  const month = Number(match[2] ?? 1);
+  const day = Number(match[3] ?? 1);
   const timestamp = Date.UTC(year, month - 1, day);
   const parsed = new Date(timestamp);
   if (parsed.getUTCFullYear() !== year || parsed.getUTCMonth() !== month - 1 || parsed.getUTCDate() !== day) return undefined;
   return timestamp;
-}
-
-export function graphEventTime(event: ClinEvent): number | undefined {
-  if (!isDateTimeExpression(event)) return undefined;
-  const value = event.attributes?.Value;
-  if (typeof value === "string") {
-    const match = /^(\d{4})(?:[-/.](\d{1,2})(?:[-/.](\d{1,2}))?)?$/.exec(value.trim());
-    if (match) return utcDate(Number(match[1]), Number(match[2] ?? 1), Number(match[3] ?? 1));
-  }
-  // No usable Value: accept a day-first date written in the text itself (e.g. 20/04/2022).
-  const text = /^(\d{1,2})[/.-](\d{1,2})[/.-](\d{4})$/.exec(event.surface.trim());
-  return text ? utcDate(Number(text[3]), Number(text[2]), Number(text[1])) : undefined;
 }
 
 export function reportLabel(idx: Indexes, reportId: string): string {

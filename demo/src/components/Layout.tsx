@@ -140,6 +140,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Link to="/" className="mr-2 text-lg font-semibold text-indigo-600 dark:text-indigo-400">
             ⚕ MedTime Stories
           </Link>
+          <Link to="/annotate" className="text-sm font-medium text-indigo-600 hover:underline dark:text-indigo-400">Annotate</Link>
           <Link to="/patterns" className="text-sm text-slate-600 hover:underline dark:text-slate-300">Patterns</Link>
           <Link to="/words" className="text-sm text-slate-600 hover:underline dark:text-slate-300">Word graph</Link>
           <HistoryButtons />

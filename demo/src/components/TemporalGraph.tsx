@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { ClinEvent, TemporalRelation } from "../data/schema";
+import type { ClinEvent, IdentityRelation, TemporalRelation } from "../data/schema";
 import GraphCanvas, { type GEdgeData, type GNodeData } from "./GraphCanvas";
 import { dateMarker, graphEventKind, graphEventLabel, graphEventLane, graphEventTime, type DateMarker } from "../lib/util";
 import { EmptyState, Toggle } from "./ui";
@@ -7,6 +7,7 @@ import { EmptyState, Toggle } from "./ui";
 interface Props {
   events: ClinEvent[];
   relations: TemporalRelation[];
+  identityRelations?: IdentityRelation[];
   selectedId?: string | null;
   onSelect: (id: string) => void;
   onHover: (id: string | null) => void;
@@ -92,6 +93,7 @@ export default function TemporalGraph({ events, relations, selectedId, onSelect,
           lane: graphEventLane(e),
           sublabel: sublabelPrefix ? `${sublabelPrefix(e)} · ${kind.sublabel}` : kind.sublabel,
           hint: index,
+          group: e.reportId,
           markers: [...(markersOf.get(e.id) ?? [])],
           temporalTime: graphEventTime(e),
           present: e.type.toUpperCase() === "TIME" && /^val=(?:past|future|present)_ref\s+anchor_value=\d{4}-\d{2}-\d{2}$/.test(String(e.attributes?.Value ?? "").trim()),

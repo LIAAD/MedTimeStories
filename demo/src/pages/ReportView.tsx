@@ -154,7 +154,7 @@ function ReportInner({ report }: { report: Report }) {
         </span>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="space-y-3">
           <Tabs value={tab} onChange={setTab} tabs={[{ id: "text", label: "Text" }, { id: "graph", label: "Temporal graph" }]} />
           {tab === "text" ? (

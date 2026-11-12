@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-import { loadDataset, type LoadedDataset } from "./loader";
+import { buildIndexes, loadDataset, type LoadedDataset } from "./loader";
 import { graphEventKind } from "../lib/util";
 import { DatasetValidationError } from "./schema";
-import type { ClinEvent } from "./schema";
+import type { ClinEvent, Patient } from "./schema";
 import { Spinner } from "../components/ui";
 
 type State =
@@ -11,6 +11,14 @@ type State =
   | { status: "ready"; loaded: LoadedDataset };
 
 const DataCtx = createContext<LoadedDataset | null>(null);
+const AddPatientCtx = createContext<((p: Patient) => void) | null>(null);
+
+/** Adds (or replaces) a patient in the in-memory dataset, e.g. one annotated live. */
+export function useAddPatient(): (p: Patient) => void {
+  const v = useContext(AddPatientCtx);
+  if (!v) throw new Error("useAddPatient must be used inside <DataGate>");
+  return v;
+}
 
 export function useLoaded(): LoadedDataset {
   const v = useContext(DataCtx);
@@ -29,6 +37,13 @@ export function DataGate({ children }: { children: ReactNode }) {
     );
   }, []);
   useEffect(load, [load]);
+  const addPatient = useCallback((patient: Patient) => {
+    setState((cur) => {
+      if (cur.status !== "ready") return cur;
+      const data = { patients: [...cur.loaded.data.patients.filter((p) => p.id !== patient.id), patient] };
+      return { status: "ready", loaded: { data, idx: buildIndexes(data) } };
+    });
+  }, []);
 
   if (state.status === "loading") {
     return (
@@ -60,9 +75,11 @@ export function DataGate({ children }: { children: ReactNode }) {
     );
   }
   return (
-    <DataCtx.Provider value={state.loaded}>
-      <FilterProvider>{children}</FilterProvider>
-    </DataCtx.Provider>
+    <AddPatientCtx.Provider value={addPatient}>
+      <DataCtx.Provider value={state.loaded}>
+        <FilterProvider>{children}</FilterProvider>
+      </DataCtx.Provider>
+    </AddPatientCtx.Provider>
   );
 }
 

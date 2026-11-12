@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { typeStyle } from "../lib/colors";
-import { graphEventKind } from "../lib/util";
 import type { ClinEvent } from "../data/schema";
 
 export function Spinner() {
@@ -35,12 +34,11 @@ export function TypeChip({ type, className = "" }: { type: string; className?: s
 }
 
 export function EventChip({ event, className = "" }: { event: ClinEvent; className?: string }) {
-  const k = graphEventKind(event);
-  const s = typeStyle(k.type);
+  const s = typeStyle(event.type);
   return (
     <span className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-medium ${s.chip} ${className}`}>
       <span className={`h-2 w-2 rounded-full ${s.dot}`} />
-      {k.sublabel}
+      {event.type}
     </span>
   );
 }

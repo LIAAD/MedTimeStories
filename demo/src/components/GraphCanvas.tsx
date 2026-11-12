@@ -15,6 +15,7 @@ export interface GNodeData {
   type: string;
   lane?: string;
   hint?: number;
+  group?: string;
   temporalTime?: number;
   present?: boolean;
   markers?: DateMarker[];
@@ -43,7 +44,7 @@ interface Props {
 
 export default function GraphCanvas({ nodes, edges, selectedIds, onSelect, onHover, nestIncluded, hiddenIds, showEdges = true }: Props) {
   const layout = useMemo(
-    () => layoutGraph(nodes.map((n) => ({ id: n.id, lane: n.lane ?? "Events", hint: n.hint, temporalTime: n.temporalTime, present: n.present })),     edges.map((e) => ({ ...e, type: e.layoutType ?? e.type })), nestIncluded, hiddenIds),
+    () => layoutGraph(nodes.map((n) => ({ id: n.id, lane: n.lane ?? "Events", hint: n.hint, group: n.group, temporalTime: n.temporalTime, present: n.present })),     edges.map((e) => ({ ...e, type: e.layoutType ?? e.type })), nestIncluded, hiddenIds),
         [nodes, edges, nestIncluded, hiddenIds],
   );
   const edgeById = new Map(layout.edges.map((e) => [e.id, e]));

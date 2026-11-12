@@ -1,0 +1,28 @@
+services:
+  medtimestories:
+    image: lfcc1/medtimestories:1.2
+    build:
+      context: ./demo
+      args:
+        VITE_DATASET_URL: ${VITE_DATASET_URL:-/data/inception-dataset.json}
+    ports:
+      - "8080:80"
+    volumes:
+      - ./demo/inception:/inception:ro
+    depends_on:
+      - annotator
+    restart: unless-stopped
+
+  # LLM annotation pipeline behind the "Annotate" page; reads GEMINI_API_KEY from llm-pipeline/.env
+  annotator:
+    image: lfcc1/medtimestories-annotator:1.2
+    build:
+      context: ./llm-pipeline
+    env_file:
+      - ./llm-pipeline/.env
+    volumes:
+      - annotator-cache:/cache
+    restart: unless-stopped
+
+volumes:
+  annotator-cache:

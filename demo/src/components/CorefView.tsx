@@ -11,7 +11,7 @@ export default function CorefView({ patient }: { patient: Patient }) {
   const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set());
 
   const allRelations = useMemo(
-    () => crossReportRelations(idx, patient),
+    () => crossReportRelations(idx, patient, idx.chainsByPatient.get(patient.id) ?? []),
     [idx, patient],
   );
   const linkTypes = useMemo(() => [...new Set(allRelations.map((r) => r.type))].sort(), [allRelations]);

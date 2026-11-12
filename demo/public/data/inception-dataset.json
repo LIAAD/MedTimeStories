@@ -8,7 +8,7 @@
           "patientId": "P_lma_001-English-Sample",
           "title": "lma_001 (English Sample).json - Report 1",
           "type": "clinical note",
-          "text": "Department: Haematology Group\rDate of registration: 20/04/2022\rA 69-year-old patient with a medical history of arterial hypertension and cholecystectomy. On 26 March 2022, the patient developed fatigue, anorexia and a febrile syndrome. Consequently, on 12 April 2022, a full blood count was performed, revealing leukocytosis, anaemia and thrombocytopenia. On 20 April 2022, the patient was diagnosed with acute myeloid leukaemia with a normal karyotype and intermediate risk. It was decided to propose induction chemotherapy with mitoxantrone and cytarabine, followed by consolidation therapy with cytarabine.",
+          "text": "Department: Haematology Group\nDate of registration: 20/04/2022\nA 69-year-old patient with a medical history of arterial hypertension and cholecystectomy. On 26 March 2022, the patient developed fatigue, anorexia and a febrile syndrome. Consequently, on 12 April 2022, a full blood count was performed, revealing leukocytosis, anaemia and thrombocytopenia. On 20 April 2022, the patient was diagnosed with acute myeloid leukaemia with a normal karyotype and intermediate risk. It was decided to propose induction chemotherapy with mitoxantrone and cytarabine, followed by consolidation therapy with cytarabine.",
           "events": [
             {
               "id": "R_lma_001-English-Sample_1_e1",
@@ -457,6 +457,1763 @@
               "source": "R_lma_001-English-Sample_1_e3",
               "target": "R_lma_001-English-Sample_1_e1",
               "type": "BEFORE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P_lma_002-English_Sample",
+      "reports": [
+        {
+          "id": "R_lma_002-English_Sample_1",
+          "patientId": "P_lma_002-English_Sample",
+          "title": "lma_002 (English_Sample).json - Report 1",
+          "type": "clinical note",
+          "text": "Department: Multidisciplinary Onco-Haematology Group\nDate of registration: 09/05/2018\nA 74-year-old patient with a medical history of arterial hypertension, benign prostatic hyperplasia, glaucoma and splenectomy following a road traffic accident.\nOn 23/04/2018, the patient developed symptoms characterised by asthenia, weight loss, night sweats and gingival bleeding. Consequently, a full blood count was performed on 30/04/2018, revealing leukocytosis, anaemia and thrombocytopenia.\nBone marrow aspiration revealed 55% blasts with a myeloid phenotype. The karyotype was normal. An FLT3 mutation was detected.\nThe clinical presentation and laboratory findings were consistent with a diagnosis of acute myeloid leukaemia (AML) with an FLT3 mutation.\nIt was decided to propose the patient for chemotherapy with azacitidine + venetoclax/placebo (clinical trial M15-656).",
+          "events": [
+            {
+              "id": "R_lma_002-English_Sample_1_e1",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 61,
+              "end": 73,
+              "surface": "registration",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e2",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 75,
+              "end": 85,
+              "surface": "09/05/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "TemporalFunction": "DOCTIME",
+                "Value": "2018-05-09"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e3",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 115,
+              "end": 130,
+              "surface": "medical history",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e4",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 134,
+              "end": 155,
+              "surface": "arterial hypertension",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Comorbidity",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e5",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 157,
+              "end": 185,
+              "surface": "benign prostatic hyperplasia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Comorbidity",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e6",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 187,
+              "end": 195,
+              "surface": "glaucoma",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Comorbidity",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e7",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 200,
+              "end": 211,
+              "surface": "splenectomy",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Past Medical History",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e8",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 224,
+              "end": 245,
+              "surface": "road traffic accident",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Personal History",
+                "PersonalHistory": "Past Medical History",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e9",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 250,
+              "end": 260,
+              "surface": "23/04/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-04-23"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e10",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 274,
+              "end": 283,
+              "surface": "developed",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e11",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 284,
+              "end": 292,
+              "surface": "symptoms",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Sign or Symptom",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e12",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 293,
+              "end": 306,
+              "surface": "characterised",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e13",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 310,
+              "end": 318,
+              "surface": "asthenia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Sign or Symptom",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e14",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 320,
+              "end": 331,
+              "surface": "weight loss",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Sign or Symptom",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e15",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 333,
+              "end": 345,
+              "surface": "night sweats",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Sign or Symptom",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e16",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 350,
+              "end": 367,
+              "surface": "gingival bleeding",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Sign or Symptom",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e17",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 385,
+              "end": 401,
+              "surface": "full blood count",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e18",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 406,
+              "end": 415,
+              "surface": "performed",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e19",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 419,
+              "end": 429,
+              "surface": "30/04/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-04-30"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e20",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 431,
+              "end": 440,
+              "surface": "revealing",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "VForm": "Gerundive"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e21",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 441,
+              "end": 453,
+              "surface": "leukocytosis",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e22",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 455,
+              "end": 462,
+              "surface": "anaemia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e23",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 467,
+              "end": 483,
+              "surface": "thrombocytopenia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e24",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 485,
+              "end": 507,
+              "surface": "Bone marrow aspiration",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e25",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 508,
+              "end": 516,
+              "surface": "revealed",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e26",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 517,
+              "end": 527,
+              "surface": "55% blasts",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e27",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 535,
+              "end": 552,
+              "surface": "myeloid phenotype",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e28",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 558,
+              "end": 567,
+              "surface": "karyotype",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e29",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 572,
+              "end": 578,
+              "surface": "normal",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e30",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 583,
+              "end": 596,
+              "surface": "FLT3 mutation",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Examination Result",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e31",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 601,
+              "end": 609,
+              "surface": "detected",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e32",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 615,
+              "end": 636,
+              "surface": "clinical presentation",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e33",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 641,
+              "end": 660,
+              "surface": "laboratory findings",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e34",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 666,
+              "end": 676,
+              "surface": "consistent",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e35",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 684,
+              "end": 693,
+              "surface": "diagnosis",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e36",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 697,
+              "end": 720,
+              "surface": "acute myeloid leukaemia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e37",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 722,
+              "end": 725,
+              "surface": "AML",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Principal Diagnosis",
+                "Pos": "Noun",
+                "Observations": "Acute Myeloid Leukaemia"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e38",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 735,
+              "end": 748,
+              "surface": "FLT3 mutation",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Characterization of the Disease",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e39",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 757,
+              "end": 764,
+              "surface": "decided",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "I_Action",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e40",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 768,
+              "end": 775,
+              "surface": "propose",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "I_Action",
+                "Event_Type": "Transition",
+                "Tense": "Present",
+                "VForm": "Infinitive"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e41",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 792,
+              "end": 804,
+              "surface": "chemotherapy",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e42",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 810,
+              "end": 821,
+              "surface": "azacitidine",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e43",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 824,
+              "end": 834,
+              "surface": "venetoclax",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e44",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 835,
+              "end": 842,
+              "surface": "placebo",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_e45",
+              "reportId": "R_lma_002-English_Sample_1",
+              "start": 844,
+              "end": 866,
+              "surface": "clinical trial M15-656",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "R_lma_002-English_Sample_1_t1",
+              "source": "R_lma_002-English_Sample_1_e1",
+              "target": "R_lma_002-English_Sample_1_e2",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t2",
+              "source": "R_lma_002-English_Sample_1_e3",
+              "target": "R_lma_002-English_Sample_1_e1",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t3",
+              "source": "R_lma_002-English_Sample_1_e4",
+              "target": "R_lma_002-English_Sample_1_e3",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t4",
+              "source": "R_lma_002-English_Sample_1_e5",
+              "target": "R_lma_002-English_Sample_1_e3",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t5",
+              "source": "R_lma_002-English_Sample_1_e6",
+              "target": "R_lma_002-English_Sample_1_e3",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t6",
+              "source": "R_lma_002-English_Sample_1_e7",
+              "target": "R_lma_002-English_Sample_1_e3",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t7",
+              "source": "R_lma_002-English_Sample_1_e8",
+              "target": "R_lma_002-English_Sample_1_e7",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t8",
+              "source": "R_lma_002-English_Sample_1_e9",
+              "target": "R_lma_002-English_Sample_1_e2",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t9",
+              "source": "R_lma_002-English_Sample_1_e10",
+              "target": "R_lma_002-English_Sample_1_e9",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t10",
+              "source": "R_lma_002-English_Sample_1_e10",
+              "target": "R_lma_002-English_Sample_1_e3",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t11",
+              "source": "R_lma_002-English_Sample_1_e11",
+              "target": "R_lma_002-English_Sample_1_e10",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t12",
+              "source": "R_lma_002-English_Sample_1_e11",
+              "target": "R_lma_002-English_Sample_1_e9",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t13",
+              "source": "R_lma_002-English_Sample_1_e12",
+              "target": "R_lma_002-English_Sample_1_e11",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t14",
+              "source": "R_lma_002-English_Sample_1_e13",
+              "target": "R_lma_002-English_Sample_1_e12",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t15",
+              "source": "R_lma_002-English_Sample_1_e13",
+              "target": "R_lma_002-English_Sample_1_e11",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t16",
+              "source": "R_lma_002-English_Sample_1_e14",
+              "target": "R_lma_002-English_Sample_1_e11",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t17",
+              "source": "R_lma_002-English_Sample_1_e15",
+              "target": "R_lma_002-English_Sample_1_e11",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t18",
+              "source": "R_lma_002-English_Sample_1_e16",
+              "target": "R_lma_002-English_Sample_1_e11",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t19",
+              "source": "R_lma_002-English_Sample_1_e17",
+              "target": "R_lma_002-English_Sample_1_e11",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t20",
+              "source": "R_lma_002-English_Sample_1_e18",
+              "target": "R_lma_002-English_Sample_1_e17",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t21",
+              "source": "R_lma_002-English_Sample_1_e17",
+              "target": "R_lma_002-English_Sample_1_e19",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t22",
+              "source": "R_lma_002-English_Sample_1_e19",
+              "target": "R_lma_002-English_Sample_1_e9",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t23",
+              "source": "R_lma_002-English_Sample_1_e20",
+              "target": "R_lma_002-English_Sample_1_e18",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t24",
+              "source": "R_lma_002-English_Sample_1_e21",
+              "target": "R_lma_002-English_Sample_1_e20",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t25",
+              "source": "R_lma_002-English_Sample_1_e21",
+              "target": "R_lma_002-English_Sample_1_e17",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t26",
+              "source": "R_lma_002-English_Sample_1_e22",
+              "target": "R_lma_002-English_Sample_1_e17",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t27",
+              "source": "R_lma_002-English_Sample_1_e23",
+              "target": "R_lma_002-English_Sample_1_e17",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t28",
+              "source": "R_lma_002-English_Sample_1_e24",
+              "target": "R_lma_002-English_Sample_1_e19",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t29",
+              "source": "R_lma_002-English_Sample_1_e25",
+              "target": "R_lma_002-English_Sample_1_e24",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t30",
+              "source": "R_lma_002-English_Sample_1_e26",
+              "target": "R_lma_002-English_Sample_1_e25",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t31",
+              "source": "R_lma_002-English_Sample_1_e26",
+              "target": "R_lma_002-English_Sample_1_e24",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t32",
+              "source": "R_lma_002-English_Sample_1_e27",
+              "target": "R_lma_002-English_Sample_1_e26",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t33",
+              "source": "R_lma_002-English_Sample_1_e28",
+              "target": "R_lma_002-English_Sample_1_e24",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t34",
+              "source": "R_lma_002-English_Sample_1_e28",
+              "target": "R_lma_002-English_Sample_1_e19",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t35",
+              "source": "R_lma_002-English_Sample_1_e29",
+              "target": "R_lma_002-English_Sample_1_e28",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t36",
+              "source": "R_lma_002-English_Sample_1_e30",
+              "target": "R_lma_002-English_Sample_1_e28",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t37",
+              "source": "R_lma_002-English_Sample_1_e31",
+              "target": "R_lma_002-English_Sample_1_e30",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t38",
+              "source": "R_lma_002-English_Sample_1_e32",
+              "target": "R_lma_002-English_Sample_1_e31",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t39",
+              "source": "R_lma_002-English_Sample_1_e33",
+              "target": "R_lma_002-English_Sample_1_e32",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t40",
+              "source": "R_lma_002-English_Sample_1_e34",
+              "target": "R_lma_002-English_Sample_1_e33",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t41",
+              "source": "R_lma_002-English_Sample_1_e35",
+              "target": "R_lma_002-English_Sample_1_e34",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t42",
+              "source": "R_lma_002-English_Sample_1_e36",
+              "target": "R_lma_002-English_Sample_1_e35",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t43",
+              "source": "R_lma_002-English_Sample_1_e35",
+              "target": "R_lma_002-English_Sample_1_e2",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t44",
+              "source": "R_lma_002-English_Sample_1_e37",
+              "target": "R_lma_002-English_Sample_1_e36",
+              "type": "IDENTITY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t45",
+              "source": "R_lma_002-English_Sample_1_e38",
+              "target": "R_lma_002-English_Sample_1_e36",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t46",
+              "source": "R_lma_002-English_Sample_1_e39",
+              "target": "R_lma_002-English_Sample_1_e35",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t47",
+              "source": "R_lma_002-English_Sample_1_e40",
+              "target": "R_lma_002-English_Sample_1_e39",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t48",
+              "source": "R_lma_002-English_Sample_1_e41",
+              "target": "R_lma_002-English_Sample_1_e40",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t49",
+              "source": "R_lma_002-English_Sample_1_e41",
+              "target": "R_lma_002-English_Sample_1_e35",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t50",
+              "source": "R_lma_002-English_Sample_1_e45",
+              "target": "R_lma_002-English_Sample_1_e44",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t51",
+              "source": "R_lma_002-English_Sample_1_e45",
+              "target": "R_lma_002-English_Sample_1_e43",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t52",
+              "source": "R_lma_002-English_Sample_1_e45",
+              "target": "R_lma_002-English_Sample_1_e42",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_002-English_Sample_1_t53",
+              "source": "R_lma_002-English_Sample_1_e45",
+              "target": "R_lma_002-English_Sample_1_e41",
+              "type": "IS_INCLUDED"
+            }
+          ]
+        },
+        {
+          "id": "R_lma_002-English_Sample_2",
+          "patientId": "P_lma_002-English_Sample",
+          "title": "lma_002 (English_Sample).json - Report 2",
+          "type": "clinical note",
+          "text": "Department: Onco-Haematology � Haematological Oncology Centre\nDate of clinical discharge: 18/06/2018\nDate of admission: 09/05/2018\nReason for admission: \nHyperhydration and allopurinol were initiated on 10/05/2018, followed by cytoreduction with hydroxycarbamide on 13/05/2018, with a good response and recovery from thrombocytopenia.\nTreatment with azacitidine was initiated on 21/05/2018, followed by venetoclax on 28/05/2018.",
+          "events": [
+            {
+              "id": "R_lma_002-English_Sample_2_e1",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 70,
+              "end": 88,
+              "surface": "clinical discharge",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e2",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 90,
+              "end": 100,
+              "surface": "18/06/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "TemporalFunction": "DischargeTime",
+                "Value": "2018-06-18"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e3",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 109,
+              "end": 118,
+              "surface": "admission",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e4",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 120,
+              "end": 130,
+              "surface": "09/05/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "TemporalFunction": "AdmissionTime",
+                "Value": "2018-05-09"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e5",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 142,
+              "end": 151,
+              "surface": "admission",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e6",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 154,
+              "end": 168,
+              "surface": "Hyperhydration",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e7",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 173,
+              "end": 184,
+              "surface": "allopurinol",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e8",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 190,
+              "end": 199,
+              "surface": "initiated",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e9",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 203,
+              "end": 213,
+              "surface": "10/05/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-05-10"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e10",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 215,
+              "end": 223,
+              "surface": "followed",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e11",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 227,
+              "end": 240,
+              "surface": "cytoreduction",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e12",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 246,
+              "end": 262,
+              "surface": "hydroxycarbamide",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e13",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 266,
+              "end": 276,
+              "surface": "13/05/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-05-13"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e14",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 285,
+              "end": 298,
+              "surface": "good response",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment Response",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e15",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 303,
+              "end": 333,
+              "surface": "recovery from thrombocytopenia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment Response",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e16",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 335,
+              "end": 344,
+              "surface": "Treatment",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e17",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 350,
+              "end": 361,
+              "surface": "azacitidine",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e18",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 366,
+              "end": 375,
+              "surface": "initiated",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e19",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 379,
+              "end": 389,
+              "surface": "21/05/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-05-21"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e20",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 391,
+              "end": 399,
+              "surface": "followed",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e21",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 403,
+              "end": 413,
+              "surface": "venetoclax",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_e22",
+              "reportId": "R_lma_002-English_Sample_2",
+              "start": 417,
+              "end": 427,
+              "surface": "28/05/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-05-28"
+              }
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "R_lma_002-English_Sample_2_t1",
+              "source": "R_lma_002-English_Sample_2_e2",
+              "target": "R_lma_002-English_Sample_1_e2",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t2",
+              "source": "R_lma_002-English_Sample_2_e4",
+              "target": "R_lma_002-English_Sample_1_e2",
+              "type": "IDENTITY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t3",
+              "source": "R_lma_002-English_Sample_2_e1",
+              "target": "R_lma_002-English_Sample_2_e2",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t4",
+              "source": "R_lma_002-English_Sample_2_e3",
+              "target": "R_lma_002-English_Sample_2_e4",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t5",
+              "source": "R_lma_002-English_Sample_2_e4",
+              "target": "R_lma_002-English_Sample_2_e2",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t6",
+              "source": "R_lma_002-English_Sample_2_e5",
+              "target": "R_lma_002-English_Sample_2_e3",
+              "type": "IDENTITY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t7",
+              "source": "R_lma_002-English_Sample_2_e6",
+              "target": "R_lma_002-English_Sample_2_e5",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t8",
+              "source": "R_lma_002-English_Sample_2_e7",
+              "target": "R_lma_002-English_Sample_2_e6",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t9",
+              "source": "R_lma_002-English_Sample_2_e8",
+              "target": "R_lma_002-English_Sample_2_e7",
+              "type": "BEGINS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t10",
+              "source": "R_lma_002-English_Sample_2_e7",
+              "target": "R_lma_002-English_Sample_2_e9",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t11",
+              "source": "R_lma_002-English_Sample_2_e6",
+              "target": "R_lma_002-English_Sample_2_e9",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t12",
+              "source": "R_lma_002-English_Sample_2_e9",
+              "target": "R_lma_002-English_Sample_2_e4",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t13",
+              "source": "R_lma_002-English_Sample_2_e9",
+              "target": "R_lma_002-English_Sample_2_e2",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t14",
+              "source": "R_lma_002-English_Sample_2_e8",
+              "target": "R_lma_002-English_Sample_2_e9",
+              "type": "BEGUN_BY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t15",
+              "source": "R_lma_002-English_Sample_2_e10",
+              "target": "R_lma_002-English_Sample_2_e8",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t16",
+              "source": "R_lma_002-English_Sample_2_e11",
+              "target": "R_lma_002-English_Sample_2_e10",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t17",
+              "source": "R_lma_002-English_Sample_2_e11",
+              "target": "R_lma_002-English_Sample_2_e7",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t18",
+              "source": "R_lma_002-English_Sample_2_e12",
+              "target": "R_lma_002-English_Sample_2_e11",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t19",
+              "source": "R_lma_002-English_Sample_2_e11",
+              "target": "R_lma_002-English_Sample_2_e13",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t20",
+              "source": "R_lma_002-English_Sample_2_e13",
+              "target": "R_lma_002-English_Sample_2_e9",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t21",
+              "source": "R_lma_002-English_Sample_2_e14",
+              "target": "R_lma_002-English_Sample_2_e13",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t22",
+              "source": "R_lma_002-English_Sample_2_e15",
+              "target": "R_lma_002-English_Sample_2_e14",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t23",
+              "source": "R_lma_002-English_Sample_2_e16",
+              "target": "R_lma_002-English_Sample_2_e15",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t24",
+              "source": "R_lma_002-English_Sample_2_e17",
+              "target": "R_lma_002-English_Sample_2_e16",
+              "type": "IS_INCLUDED"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t25",
+              "source": "R_lma_002-English_Sample_2_e18",
+              "target": "R_lma_002-English_Sample_2_e17",
+              "type": "BEGINS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t26",
+              "source": "R_lma_002-English_Sample_2_e18",
+              "target": "R_lma_002-English_Sample_2_e19",
+              "type": "BEGUN_BY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t27",
+              "source": "R_lma_002-English_Sample_2_e16",
+              "target": "R_lma_002-English_Sample_2_e19",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t28",
+              "source": "R_lma_002-English_Sample_2_e19",
+              "target": "R_lma_002-English_Sample_2_e13",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t29",
+              "source": "R_lma_002-English_Sample_2_e20",
+              "target": "R_lma_002-English_Sample_2_e18",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t30",
+              "source": "R_lma_002-English_Sample_2_e21",
+              "target": "R_lma_002-English_Sample_2_e20",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t31",
+              "source": "R_lma_002-English_Sample_2_e21",
+              "target": "R_lma_002-English_Sample_2_e22",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t32",
+              "source": "R_lma_002-English_Sample_2_e22",
+              "target": "R_lma_002-English_Sample_2_e19",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t33",
+              "source": "R_lma_002-English_Sample_2_e17",
+              "target": "R_lma_002-English_Sample_1_e42",
+              "type": "IDENTITY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_2_t34",
+              "source": "R_lma_002-English_Sample_2_e21",
+              "target": "R_lma_002-English_Sample_1_e43",
+              "type": "IDENTITY"
+            }
+          ]
+        },
+        {
+          "id": "R_lma_002-English_Sample_3",
+          "patientId": "P_lma_002-English_Sample",
+          "title": "lma_002 (English_Sample).json - Report 3",
+          "type": "clinical note",
+          "text": "The patient is currently undergoing treatment and has achieved a partial response.\nThe patient was hospitalised from 10 to 28 August due to febrile neutropenia associated with pneumonia caused by MRSA.\nThis report is issued at the patient's request for submission to a medical board.\nDate: 05/12/2018",
+          "events": [
+            {
+              "id": "R_lma_002-English_Sample_3_e1",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 36,
+              "end": 45,
+              "surface": "treatment",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e2",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 54,
+              "end": 62,
+              "surface": "achieved",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e3",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 65,
+              "end": 81,
+              "surface": "partial response",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Treatment Response",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e4",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 99,
+              "end": 111,
+              "surface": "hospitalised",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Process",
+                "Tense": "Past"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e5",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 117,
+              "end": 119,
+              "surface": "10",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-08-10"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e6",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 123,
+              "end": 132,
+              "surface": "28 August",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-08-28"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e7",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 140,
+              "end": 159,
+              "surface": "febrile neutropenia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Intercurrence",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e8",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 160,
+              "end": 170,
+              "surface": "associated",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e9",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 176,
+              "end": 185,
+              "surface": "pneumonia",
+              "type": "Specialized Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "specializedEventClass": "Intercurrence",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e10",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 186,
+              "end": 192,
+              "surface": "caused",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "State",
+                "Event_Type": "State",
+                "VForm": "Participle"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e11",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 217,
+              "end": 223,
+              "surface": "issued",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Verb",
+                "Class": "Occurrence",
+                "Event_Type": "Transition",
+                "Tense": "Past",
+                "Aspect": "Perfective"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e12",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 241,
+              "end": 248,
+              "surface": "request",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e13",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 253,
+              "end": 263,
+              "surface": "submission",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e14",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 269,
+              "end": 282,
+              "surface": "medical board",
+              "type": "General Event",
+              "attributes": {
+                "polarity": "POSITIVE",
+                "Pos": "Noun"
+              }
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_e15",
+              "reportId": "R_lma_002-English_Sample_3",
+              "start": 290,
+              "end": 300,
+              "surface": "05/12/2018",
+              "type": "Time",
+              "attributes": {
+                "Time_Type": "Date",
+                "Value": "2018-12-05"
+              }
+            }
+          ],
+          "temporalRelations": [
+            {
+              "id": "R_lma_002-English_Sample_3_t1",
+              "source": "R_lma_002-English_Sample_3_e15",
+              "target": "R_lma_002-English_Sample_2_e2",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t2",
+              "source": "R_lma_002-English_Sample_3_e4",
+              "target": "R_lma_002-English_Sample_3_e5",
+              "type": "BEGUN_BY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t3",
+              "source": "R_lma_002-English_Sample_3_e4",
+              "target": "R_lma_002-English_Sample_3_e6",
+              "type": "ENDED_BY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t4",
+              "source": "R_lma_002-English_Sample_3_e8",
+              "target": "R_lma_002-English_Sample_3_e7",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t5",
+              "source": "R_lma_002-English_Sample_3_e9",
+              "target": "R_lma_002-English_Sample_3_e8",
+              "type": "SIMULTANEOUS"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t6",
+              "source": "R_lma_002-English_Sample_3_e9",
+              "target": "R_lma_002-English_Sample_3_e7",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t7",
+              "source": "R_lma_002-English_Sample_3_e10",
+              "target": "R_lma_002-English_Sample_3_e9",
+              "type": "INCLUDES"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t8",
+              "source": "R_lma_002-English_Sample_3_e9",
+              "target": "R_lma_002-English_Sample_3_e5",
+              "type": "BEGUN_BY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t9",
+              "source": "R_lma_002-English_Sample_3_e9",
+              "target": "R_lma_002-English_Sample_3_e6",
+              "type": "ENDED_BY"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t10",
+              "source": "R_lma_002-English_Sample_3_e15",
+              "target": "R_lma_002-English_Sample_3_e6",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t11",
+              "source": "R_lma_002-English_Sample_3_e6",
+              "target": "R_lma_002-English_Sample_3_e5",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t12",
+              "source": "R_lma_002-English_Sample_3_e11",
+              "target": "R_lma_002-English_Sample_3_e10",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t13",
+              "source": "R_lma_002-English_Sample_3_e12",
+              "target": "R_lma_002-English_Sample_3_e11",
+              "type": "BEFORE"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t14",
+              "source": "R_lma_002-English_Sample_3_e13",
+              "target": "R_lma_002-English_Sample_3_e12",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t15",
+              "source": "R_lma_002-English_Sample_3_e14",
+              "target": "R_lma_002-English_Sample_3_e13",
+              "type": "AFTER"
+            },
+            {
+              "id": "R_lma_002-English_Sample_3_t16",
+              "source": "R_lma_002-English_Sample_3_e11",
+              "target": "R_lma_002-English_Sample_3_e15",
+              "type": "SIMULTANEOUS"
             }
           ]
         }

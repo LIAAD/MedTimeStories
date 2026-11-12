@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import type { ClinEvent, TemporalRelation } from "../data/schema";
 import { typeStyle } from "../lib/colors";
-import { graphEventKind } from "../lib/util";
 import { Card } from "./ui";
 
 function count<T>(items: T[], key: (t: T) => string): [string, number][] {
@@ -34,7 +33,7 @@ function Bars({ title, rows, color }: { title: string; rows: [string, number][];
 }
 
 export default function StatsPanel({ events, relations }: { events: ClinEvent[]; relations: TemporalRelation[] }) {
-  const ev = useMemo(() => count(events, (e) => graphEventKind(e).type), [events]);
+  const ev = useMemo(() => count(events, (e) => e.type), [events]);
   const rel = useMemo(() => count(relations, (r) => r.type), [relations]);
   return (
     <Card className="space-y-5 p-4">

@@ -102,6 +102,18 @@ const STYLES: Record<string, TypeStyle> = {
     dot: "bg-lime-500",
     hex: "#84cc16",
   },
+  "TIME (ADMISSION)": {
+    mark: "bg-cyan-200 text-cyan-950 dark:bg-cyan-500/30 dark:text-cyan-50",
+    chip: "border-cyan-400 bg-cyan-50 text-cyan-800 dark:border-cyan-500/60 dark:bg-cyan-500/10 dark:text-cyan-200",
+    dot: "bg-cyan-500",
+    hex: "#06b6d4",
+  },
+  "TIME (DISCHARGE)": {
+    mark: "bg-orange-200 text-orange-950 dark:bg-orange-500/30 dark:text-orange-50",
+    chip: "border-orange-400 bg-orange-50 text-orange-800 dark:border-orange-500/60 dark:bg-orange-500/10 dark:text-orange-200",
+    dot: "bg-orange-500",
+    hex: "#f97316",
+  },
   "TIME (DURATION)": {
     mark: "bg-purple-200 text-purple-950 dark:bg-purple-500/30 dark:text-purple-50",
     chip: "border-purple-400 bg-purple-50 text-purple-800 dark:border-purple-500/60 dark:bg-purple-500/10 dark:text-purple-200",

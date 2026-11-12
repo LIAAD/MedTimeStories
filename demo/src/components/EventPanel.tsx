@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import type { RelationRef } from "../data/loader";
 import type { ClinEvent } from "../data/schema";
 import { useLoaded } from "../data/DataContext";
-import { formatDate, reportLabel, reportUrl } from "../lib/util";
+import { chainEvents, formatDate, reportLabel, reportUrl } from "../lib/util";
 import { EmptyState, EventChip } from "./ui";
 
 interface Props {
@@ -24,6 +24,8 @@ export default function EventPanel({ event, onNavigate, onHover }: Props) {
     g[r.direction].push(r);
     grouped.set(r.relation.type, g);
   }
+  const chain = idx.chainByEvent.get(event.id);
+  const members = chain ? chainEvents(idx, chain) : [];
 
   const EventButton = ({ id, arrow }: { id: string; arrow: string }) => {
     const e = idx.events.get(id)!;
@@ -74,9 +76,9 @@ export default function EventPanel({ event, onNavigate, onHover }: Props) {
       </section>
 
       <section>
-        <h3 className="mb-2 text-sm font-semibold         uppercase tracking-wide text-slate-500">Relations</h3>
+        <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Temporal relations</h3>
         {grouped.size === 0 ? (
-                  <p className="text-sm text-slate-500">No relations.</p>
+          <p className="text-sm text-slate-500">No temporal relations.</p>
         ) : (
           [...grouped.entries()].map(([type, g]) => (
             <div key={type} className="mb-3">
@@ -95,6 +97,28 @@ export default function EventPanel({ event, onNavigate, onHover }: Props) {
               )}
             </div>
           ))
+        )}
+      </section>
+
+      <section>
+        <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Coreference chain</h3>
+        {!chain ? (
+          <p className="text-sm text-slate-500">Not part of a coreference chain.</p>
+        ) : (
+          <>
+            <p className="mb-1 text-xs text-slate-500">
+              {members.length} mentions across {chain.reportIds.length} report(s)
+            </p>
+            <ul>
+              {members.map((m) =>
+                m.id === event.id ? (
+                  <li key={m.id} className="px-2 py-1 text-sm italic text-slate-500">• {m.surface} (this mention)</li>
+                ) : (
+                  <EventButton key={m.id} id={m.id} arrow="≡" />
+                ),
+              )}
+            </ul>
+          </>
         )}
       </section>
     </div>
